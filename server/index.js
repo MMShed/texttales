@@ -16,10 +16,11 @@ const app = express();
 
 
 app.use(cors({
-  origin: true,
+  origin: "https://texttales.vercel.app",
   credentials: true
 }));
 
+app.use(express.json());
 
 const freeUserLimits = new Map();
 
@@ -90,7 +91,6 @@ app.use(session({
 
 
 // Serve React build files
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
