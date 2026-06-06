@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ✅ PAGE */
+.register_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* cleaner vertical alignment */
+    align-items: center;
+
+    min-height: 100vh;
+
+    background-color: black;
+    color: white;
+
+    padding: 20px;
+}
+
+/* ✅ TITLE */
+.register-title {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* ✅ FORM CONTAINER */
+.register_form_container form {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid white;
+    border-radius: 12px;
+
+    width: 100%;
+    max-width: 600px;   
+
+    padding: 4rem 3rem; 
+
+    gap: 2.5rem;        
+}
+
+/* ✅ INPUT GROUP */
+.register-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.register-info label {
+    font-size: 1.2rem;
+}
+
+.register-info input {
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 8px;
+
+    border: 1px solid #ccc;
+}
+
+/* ✅ BUTTON */
+.register-button {
+    padding: 0.6em 1.5em;
+
+    color: white;
+    background-color: blue;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.register-button:hover {
+    background-color: darkblue;
+}
+
+/* ✅ LINK TEXT */
+.register_form_container p {
+    font-size: 1rem;
+}
+
+/* ✅ ERROR MESSAGE (NEW) */
+.error-text {
+    color: red;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}

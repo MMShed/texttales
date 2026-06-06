@@ -1,0 +1,82 @@
+.login_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    background-color: black;
+    color: white;
+
+    padding: 20px;
+}
+
+/* ✅ TITLE */
+.login-title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+/* ✅ FORM CONTAINER (MATCH REGISTER) */
+.login_form_container form {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    border: 1px solid white;
+    border-radius: 12px;
+
+    width: 100%;
+    max-width: 600px; /* ✅ match register */
+
+    padding: 4rem 3rem; /* ✅ same padding */
+
+    gap: 2.5rem;
+}
+
+/* ✅ INPUT GROUP */
+.login-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.login-info label {
+    font-size: 1.2rem;
+}
+
+.login-info input {
+    font-size: 1.2rem;
+    padding: 8px;
+
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* ✅ BUTTON */
+.login-button {
+    padding: 0.6em 1.5em;
+
+    background-color: blue;
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: darkblue;
+}
+
+/* ✅ ERROR */
+.error-text {
+    color: red;
+    margin-bottom: 10px;
+    text-align: center;
+}

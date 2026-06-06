@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.home_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100vh;
+
+  
+    background: linear-gradient(
+        135deg,
+        #000000 0%,
+        #0a1a2f 40%,
+        #1a2a45 65%,
+        #3a1c71 100%
+    );
+
+  color: white;
+
+}
+
+
+
+.main_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main_text p {
+    margin-bottom: 1.5rem;
+}
+
+.main_text .logo {
+    font-size: 4.5em;
+    font-weight: 600;
+}
+
+.main_text .what {
+    font-size: 2.5em;
+}
+
+.main_text .why {
+    font-size: 1.5em;
+}

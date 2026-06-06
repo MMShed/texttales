@@ -1,0 +1,22 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1em;
+
+
+    background-color: purple;
+    color: white;
+}
+
+.navigation .right_bar {
+    display: flex;
+    gap: 1.5em;
+}
+
+.navigation .right_bar a{
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+}

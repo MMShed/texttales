@@ -1,0 +1,32 @@
+/* ✅ reset */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color: black; /* ✅ THIS fixes it */
+}
+
+/* ✅ main app wrapper */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ IMPORTANT: normal layout again */
+.app-content {
+  flex: 1;
+}
+
+
+/* ✅ ✅ ONLY affect chat page */
+.chat-page {
+  min-height: calc(100vh - 120px); 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* no centering */
+}
+
+.footer {
+  width: 100%;
+  background: transparent;
+}

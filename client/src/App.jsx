@@ -1,0 +1,65 @@
+import "./App.css"
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import DefaultNavbar from "./components/DefaultNavbar";
+import DefaultFooter from "./components/DefaultFooter";
+import LoggedInNavbar from "./components/LoggedInNavbar";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Explore from "./pages/Explore";
+import Register from "./pages/Register";
+import StoryPage from "./pages/StoryPage";
+
+function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const res = await fetch("http://localhost:5000/me", {
+        credentials: "include"
+      });
+
+      const data = await res.json();
+      setLoggedIn(data.loggedIn);
+    };
+
+    checkLogin();
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <div className="app-container">
+
+        <header>
+          {loggedIn ? (
+            <LoggedInNavbar setLoggedIn={setLoggedIn} />
+          ) : (
+            <DefaultNavbar />
+          )}
+        </header>
+
+        {/* ✅ THIS is important */}
+        <main className="app-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login setLoggedIn={setLoggedIn} />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/stories/:id" element={<StoryPage />} />
+          </Routes>
+        </main>
+
+        {/* ✅ Footer stays fixed visually */}
+        <div className="footer">
+          <DefaultFooter />
+        </div>
+
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
