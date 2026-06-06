@@ -152,17 +152,16 @@ app.get("/stories/:id", async (req, res) => {
 
     // Reset ONLY after 24h
     if (!data || now - data.startTime > ONE_DAY) {
-    data = {
-      count: 0,
-      startTime: now,
-      openedStories: new Set()
-    };
+      data = {
+        count: 0,
+        startTime: now,
+        openedStories: {}
+      };
     }
 
     // Only count NEW story opens
-    if (!data.openedStories.has(req.params.id)) {
+    if (!data.openedStories[req.params.id]) {
 
-      // Check limit only for guests
       if (!req.session || !req.session.user) {
         if (data.count >= 4) {
           return res.status(403).json({
@@ -171,9 +170,8 @@ app.get("/stories/:id", async (req, res) => {
         }
       }
 
-      // Increment ONLY once per story
       data.count += 1;
-      data.openedStories.add(req.params.id);
+      data.openedStories[req.params.id] = true;
     }
 
     freeUserLimits.set(ip, data);
