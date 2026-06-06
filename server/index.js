@@ -150,30 +150,27 @@ app.get("/stories/:id", async (req, res) => {
 
     let data = freeUserLimits.get(ip);
 
-    // Reset ONLY after 24h
+    // ✅ Reset if new or expired
     if (!data || now - data.startTime > ONE_DAY) {
       data = {
         count: 0,
-        startTime: now,
-        openedStories: {}
+        startTime: now
       };
     }
 
-    // Only count NEW story opens
-    if (!data.openedStories[req.params.id]) {
-
-      if (!req.session || !req.session.user) {
-        if (data.count >= 4) {
-          return res.status(403).json({
-            error: "FREE_LIMIT_REACHED"
-          });
-        }
+    // ✅ ONLY check limit for guests
+    if (!req.session || !req.session.user) {
+      if (data.count >= 4) {
+        return res.status(403).json({
+          error: "FREE_LIMIT_REACHED"
+        });
       }
 
+      // ✅ THEN increment (only once per request)
       data.count += 1;
-      data.openedStories[req.params.id] = true;
     }
 
+    // ✅ save state
     freeUserLimits.set(ip, data);
 
     const story = await Story.findById(req.params.id);
@@ -187,10 +184,11 @@ app.get("/stories/:id", async (req, res) => {
     res.json(story);
 
   } catch (err) {
-    console.error("Error in /stories/:id:", err);
+    console.error(err);
     res.status(500).json({ error: "SERVER_ERROR" });
   }
 });
+
 
 
 //app.use(express.static(path.join(__dirname, "../client/dist")));
