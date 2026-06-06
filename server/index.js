@@ -55,7 +55,7 @@ app.get("/can-view-story", (req, res) => {
       return res.json({ allowed: true });
     }
 
-    const id = req.headers["x-forwarded-for"] || req.ip;
+    const id = req.sessionID;
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -95,7 +95,7 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    const id = req.headers["x-forwarded-for"] || req.ip;
+    const id = req.sessionID;
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -216,12 +216,9 @@ app.post("/login", async (req, res) => {
 
 
 app.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie("connect.sid"); // session cookie
-    res.json({ message: "Logged out " });
-  });
+  req.session.user = null; // ✅ remove login only
+  res.json({ message: "Logged out" });
 });
-
 
 
 
