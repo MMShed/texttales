@@ -14,6 +14,8 @@ const Story = require("./models/Story");
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 
 app.use(cors({
   origin: "https://texttales.vercel.app",
@@ -78,16 +80,17 @@ function checkFreeLimit(req, res, next) {
 const session = require("express-session");
 
 app.use(session({
-  secret: process.env.SESSION_SECRET, // change later
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  
+
   cookie: {
     secure: true,
-    sameSite: "none"
+    sameSite: "none",
+    httpOnly: true
   }
-
 }));
+
 
 
 // Serve React build files
