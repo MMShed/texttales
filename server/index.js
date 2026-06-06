@@ -63,10 +63,15 @@ function checkFreeLimit(req, res, next) {
 
 
 
+
 app.use(cors({
-  origin: true,
+  origin: [
+    "http://localhost:5173",
+    "https://texttales.vercel.app/"
+  ],
   credentials: true
 }));
+
 
 
 const session = require("express-session");
