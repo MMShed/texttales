@@ -67,10 +67,10 @@ function checkFreeLimit(req, res, next) {
 app.use(cors({
   origin: [
     "http://localhost:5173",
+    "http://localhost:4173",
     "https://texttales.vercel.app/"
   ],
-  credentials: true
-}));
+  credentials: true}));
 
 
 
