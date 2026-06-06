@@ -77,7 +77,7 @@ app.use(cors({
 const session = require("express-session");
 
 app.use(session({
-  secret: "mysecretkey", // change later
+  secret: process.env.SESSION_SECRET, // change later
   resave: false,
   saveUninitialized: false,
   
@@ -185,7 +185,7 @@ app.get("/stories/:id", async (req, res) => {
 });
 
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
+//app.use(express.static(path.join(__dirname, "../client/dist")));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
@@ -290,9 +290,15 @@ app.get("/me", (req, res) => {
 
 
 // Root route
+/*
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
+}); 
+*/
+
+app.get("/", (req, res) => {
+  res.send("Backend is running ")
+})
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
