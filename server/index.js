@@ -14,6 +14,13 @@ const Story = require("./models/Story");
 
 const app = express();
 
+
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+
+
 const freeUserLimits = new Map();
 
 function checkFreeLimit(req, res, next) {
@@ -64,13 +71,6 @@ function checkFreeLimit(req, res, next) {
 
 
 
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "http://localhost:4173",
-    "https://texttales.vercel.app/"
-  ],
-  credentials: true}));
 
 
 
