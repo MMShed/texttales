@@ -41,7 +41,7 @@ function App() {
           )}
         </header>
 
-        {/* ✅ THIS is important */}
+        {/*  THIS is important */}
         <main className="app-content">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -52,7 +52,7 @@ function App() {
           </Routes>
         </main>
 
-        {/* ✅ Footer stays fixed visually */}
+        {/*  Footer stays fixed visually */}
         <div className="footer">
           <DefaultFooter />
         </div>

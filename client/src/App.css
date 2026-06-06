@@ -1,24 +1,24 @@
-/* ✅ reset */
+/*  reset */
 html, body, #root {
   height: 100%;
   margin: 0;
-  background-color: black; /* ✅ THIS fixes it */
+  background-color: black; /*  THIS fixes it */
 }
 
-/* ✅ main app wrapper */
+/*  main app wrapper */
 .app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* ✅ IMPORTANT: normal layout again */
+/*  IMPORTANT: normal layout again */
 .app-content {
   flex: 1;
 }
 
 
-/* ✅ ✅ ONLY affect chat page */
+/*   ONLY affect chat page */
 .chat-page {
   min-height: calc(100vh - 120px); 
   display: flex;

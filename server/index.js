@@ -27,7 +27,7 @@ app.use(express.json());
 const freeUserLimits = new Map();
 
 function checkFreeLimit(req, res, next) {
-  // ✅ logged in users = unlimited
+  // logged in users = unlimited
   if (req.session.user) {
     return next();
   }
@@ -38,7 +38,7 @@ function checkFreeLimit(req, res, next) {
 
   let data = freeUserLimits.get(ip);
 
-  // ✅ first time
+  // first time
   if (!data) {
     freeUserLimits.set(ip, {
       count: 1,
@@ -47,7 +47,7 @@ function checkFreeLimit(req, res, next) {
     return next();
   }
 
-  // ✅ reset after 24h
+  // reset after 24h
   if (now - data.startTime > ONE_DAY) {
     freeUserLimits.set(ip, {
       count: 1,
@@ -56,14 +56,14 @@ function checkFreeLimit(req, res, next) {
     return next();
   }
 
-  // ✅ limit reached
+  // limit reached
   if (data.count >= 4) {
     return res.status(403).json({
       error: "FREE_LIMIT_REACHED"
     });
   }
 
-  // ✅ increment usage
+  // increment usage
   data.count += 1;
   freeUserLimits.set(ip, data);
 
@@ -150,25 +150,32 @@ app.get("/stories/:id", async (req, res) => {
 
     let data = freeUserLimits.get(ip);
 
-    // ✅ Reset ONLY after 24h
+    // Reset ONLY after 24h
     if (!data || now - data.startTime > ONE_DAY) {
-      data = {
-        count: 0,
-        startTime: now
-      };
+    data = {
+      count: 0,
+      startTime: now,
+      openedStories: new Set()
+    };
     }
 
-    // ✅ FIRST: check limit BEFORE increment
-    if (!req.session || !req.session.user) {
-      if (data.count >= 4) {
-        return res.status(403).json({
-          error: "FREE_LIMIT_REACHED"
-        });
+    // Only count NEW story opens
+    if (!data.openedStories.has(req.params.id)) {
+
+      // Check limit only for guests
+      if (!req.session || !req.session.user) {
+        if (data.count >= 4) {
+          return res.status(403).json({
+            error: "FREE_LIMIT_REACHED"
+          });
+        }
       }
+
+      // Increment ONLY once per story
+      data.count += 1;
+      data.openedStories.add(req.params.id);
     }
 
-    // ✅ THEN increment AFTER passing check
-    data.count += 1;
     freeUserLimits.set(ip, data);
 
     const story = await Story.findById(req.params.id);
@@ -191,7 +198,7 @@ app.get("/stories/:id", async (req, res) => {
 //app.use(express.static(path.join(__dirname, "../client/dist")));
 
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
+  .then(() => console.log("MongoDB connected"))
   .catch(err => console.log)
 
 function auth(req, res, next) {
@@ -255,7 +262,7 @@ app.post("/login", async (req, res) => {
     });
   }
 
-  // ✅ Success
+  // Success
   req.session.user = user._id;
 
   res.json({ message: "Login successful" });
@@ -265,8 +272,8 @@ app.post("/login", async (req, res) => {
 
 app.post("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.clearCookie("connect.sid"); // ✅ session cookie
-    res.json({ message: "Logged out ✅" });
+    res.clearCookie("connect.sid"); // session cookie
+    res.json({ message: "Logged out " });
   });
 });
 
@@ -278,7 +285,7 @@ app.post("/logout", (req, res) => {
 
 
 app.get("/profile", auth, (req, res) => {
-  res.send(`Welcome ${req.user.email} ✅`);
+  res.send(`Welcome ${req.user.email} `);
 });
 
 app.get("/me", (req, res) => {

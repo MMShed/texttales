@@ -62,7 +62,7 @@ function Explore() {
             <div className="card_content">
               <h3>{story.title}</h3>
 
-              {/* ✅ hidden description on hover */}
+              {/*  hidden description on hover */}
               <p className="story_description">{story.description}</p>
             </div>
 

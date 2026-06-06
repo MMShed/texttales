@@ -33,7 +33,7 @@ function Login({setLoggedIn}) {
       const data = await res.json();
 
       if (!res.ok) {
-        // ✅ Handle errors
+        //  Handle errors
         if (data.error === "EMAIL_NOT_FOUND") {
           setError("No account found with that email.");
         } else if (data.error === "INVALID_PASSWORD") {
@@ -44,8 +44,8 @@ function Login({setLoggedIn}) {
         return;
       }
 
-      // ✅ Success → go to explore
-      setLoggedIn(true);   // ✅ THIS IS THE FIX
+      //  Success → go to explore
+      setLoggedIn(true);   //  THIS IS THE FIX
       navigate("/explore");
 
     } catch (err) {
@@ -59,7 +59,7 @@ function Login({setLoggedIn}) {
 
       <h2 className="login-title">Log In</h2>
 
-      {/* ✅ ERROR MESSAGE */}
+      {/*  ERROR MESSAGE */}
       {error && <p className="error-text">{error}</p>}
 
       <div className="login_form_container">

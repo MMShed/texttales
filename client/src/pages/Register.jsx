@@ -13,7 +13,7 @@ function Register() {
     e.preventDefault();
     setError("");
 
-    // ✅ Password match check
+    //  Password match check
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
@@ -36,7 +36,7 @@ function Register() {
 
       const data = await res.json();
 
-      // ✅ Handle backend error
+      //  Handle backend error
       if (!res.ok) {
         if (data.error === "EMAIL_EXISTS") {
           setError("This email is already in use.");
@@ -46,7 +46,7 @@ function Register() {
         return;
       }
 
-      // ✅ success
+      //  success
       alert("Account created successfully!");
 
     } catch (err) {
@@ -62,7 +62,7 @@ function Register() {
 
       <div className="register_form_container">
 
-        {/* ✅ ERROR MESSAGE */}
+        {/*  ERROR MESSAGE */}
         {error && <p className="error-text">{error}</p>}
 
         <form onSubmit={handleSubmit}>

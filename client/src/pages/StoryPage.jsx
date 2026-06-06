@@ -11,7 +11,7 @@ function StoryPage() {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
 
-  // ✅ fetch story
+  //  fetch story
   useEffect(() => {
     const fetchStory = async () => {
       try {
@@ -19,7 +19,7 @@ function StoryPage() {
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/stories/${id}`,
           {
-            credentials: "include" // ✅ THIS IS THE FIX
+            credentials: "include" //  THIS IS THE FIX
           }
         );
 
@@ -36,7 +36,7 @@ function StoryPage() {
     fetchStory();
   }, [id]);
 
-  // ✅ start story
+  //  start story
   useEffect(() => {
     if (story && story.nodes.length > 0) {
       setMessages([story.nodes[0]]);
@@ -50,7 +50,7 @@ function StoryPage() {
 
   if (!nextNode) return;
 
-  // ✅ add player message instantly (for choices)
+  //  add player message instantly (for choices)
   if (playerText) {
     setMessages((prev) => [
       ...prev,
@@ -66,7 +66,7 @@ function StoryPage() {
   const isNextPlayerMessage =
     nextNode.speaker === "You";
 
-  // ✅ ✅ ONLY show typing if next is NPC
+  //   ONLY show typing if next is NPC
   if (!isNextPlayerMessage && !nextNode.narrator_text) {
     setIsTyping(true);
 
@@ -75,7 +75,7 @@ function StoryPage() {
       setMessages((prev) => [...prev, nextNode]);
     }, 1000);
   } else {
-    // ✅ INSTANT for player or narrator
+    //  INSTANT for player or narrator
     setMessages((prev) => [...prev, nextNode]);
   }
 };
@@ -91,7 +91,7 @@ function StoryPage() {
 
       <h2 className="story-title">{story.title}</h2>
 
-      {/* ✅ HEADER */}
+      {/*  HEADER */}
       <div className="chat-header">
         <div className="avatar"></div>
         
@@ -101,7 +101,7 @@ function StoryPage() {
 
       </div>
 
-      {/* ✅ CHAT */}
+      {/*  CHAT */}
       <div className="chat-container">
         {messages.map((node, index) => {
           const previous = messages[index - 1];
@@ -110,7 +110,7 @@ function StoryPage() {
             node.speaker &&
             (!previous || previous.speaker !== node.speaker);
 
-          // ✅ ✅ FIXED LOGIC (MOST IMPORTANT PART)
+          //   FIXED LOGIC (MOST IMPORTANT PART)
           const isPlayerMessage =
             node.speaker === "You" || node.isPlayer;
 
@@ -125,14 +125,14 @@ function StoryPage() {
                   : "npc"
               }`}
             >
-              {/* ✅ NARRATOR */}
+              {/*  NARRATOR */}
               {node.narrator_text ? (
                 <div className="narrator-text">
                   {node.narrator_text}
                 </div>
               ) : (
                 <>
-                  {/* ✅ only show name for NPC */}
+                  {/*  only show name for NPC */}
                   {!isPlayerMessage && showName && (
                     <h4 className="speaker-name">
                       {node.speaker}
@@ -148,7 +148,7 @@ function StoryPage() {
           );
         })}
 
-        {/* ✅ Typing animation */}
+        {/*  Typing animation */}
         {isTyping && (
           <div className="message-container npc">
             <div className="bubble typing">
@@ -160,7 +160,7 @@ function StoryPage() {
         )}
       </div>
 
-      {/* ✅ CHOICES */}
+      {/*  CHOICES */}
       <div className="choices">
         {currentNode.choices &&
         currentNode.choices.length > 0 ? (
@@ -171,7 +171,7 @@ function StoryPage() {
               onClick={() =>
                 goToNext(choice.nextNodeId, choice.playerText)
               }
-              disabled={isTyping} // ✅ same fix
+              disabled={isTyping} //  same fix
             >
               {choice.text}
           </button>
@@ -181,7 +181,7 @@ function StoryPage() {
           <button
             className="choice-btn"
             onClick={() => goToNext(currentNode.nextNodeId)}
-            disabled={isTyping}  // ✅ KEY FIX
+            disabled={isTyping}  //  KEY FIX
           >
             Next
         </button>
