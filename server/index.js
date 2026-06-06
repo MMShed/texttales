@@ -62,10 +62,12 @@ function checkFreeLimit(req, res, next) {
 
 
 
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: true,
   credentials: true
 }));
+
 
 const session = require("express-session");
 
@@ -73,9 +75,12 @@ app.use(session({
   secret: "mysecretkey", // change later
   resave: false,
   saveUninitialized: false,
+  
   cookie: {
-    secure: false // IMPORTANT: keep false in localhost
+    secure: true,
+    sameSite: "none"
   }
+
 }));
 
 
