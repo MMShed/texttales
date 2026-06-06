@@ -26,55 +26,6 @@ app.use(express.json());
 
 const freeUserLimits = new Map();
 
-function checkFreeLimit(req, res, next) {
-  // logged in users = unlimited
-  if (req.session.user) {
-    return next();
-  }
-
-  const ip = req.ip;
-  const now = Date.now();
-  const ONE_DAY = 24 * 60 * 60 * 1000;
-
-  let data = freeUserLimits.get(ip);
-
-  // first time
-  if (!data) {
-    freeUserLimits.set(ip, {
-      count: 1,
-      startTime: now
-    });
-    return next();
-  }
-
-  // reset after 24h
-  if (now - data.startTime > ONE_DAY) {
-    freeUserLimits.set(ip, {
-      count: 1,
-      startTime: now
-    });
-    return next();
-  }
-
-  // limit reached
-  if (data.count >= 4) {
-    return res.status(403).json({
-      error: "FREE_LIMIT_REACHED"
-    });
-  }
-
-  // increment usage
-  data.count += 1;
-  freeUserLimits.set(ip, data);
-
-  next();
-}
-
-
-
-
-
-
 
 
 const session = require("express-session");
@@ -104,11 +55,11 @@ app.get("/can-view-story", (req, res) => {
       return res.json({ allowed: true });
     }
 
-    const ip = req.ip;
+    const id = req.sessionID;
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    const data = freeUserLimits.get(ip);
+    const data = freeUserLimits.get(id);
 
     if (!data || now - data.startTime > ONE_DAY) {
       return res.json({ allowed: true });
@@ -144,13 +95,13 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    const ip = req.ip;
+    const id = req.sessionID;
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    let data = freeUserLimits.get(ip);
+    let data = freeUserLimits.get(id);
 
-    //  Reset if new or expired
+    // ✅ Reset if new or expired
     if (!data || now - data.startTime > ONE_DAY) {
       data = {
         count: 0,
@@ -158,23 +109,18 @@ app.get("/stories/:id", async (req, res) => {
       };
     }
 
-    //  ONLY check limit for guests
-    // ONLY for guests
+    // ✅ Only apply limit for guests
     if (!req.session || !req.session.user) {
-      
-      // block if limit reached
       if (data.count >= 4) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED"
         });
       }
 
-      // increment ONLY for guests
       data.count += 1;
     }
 
-    // save state
-    freeUserLimits.set(ip, data);
+    freeUserLimits.set(id, data);
 
     const story = await Story.findById(req.params.id);
 
