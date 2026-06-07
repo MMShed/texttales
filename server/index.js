@@ -58,7 +58,8 @@ app.get("/can-view-story", (req, res) => {
       return res.json({ allowed: true });
     }
 
-    const id = req.sessionID;
+    const id = req.session?.user || req.ip;               
+
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -98,7 +99,7 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    const id = req.sessionID;
+    const id = req.session?.user || req.ip; 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
