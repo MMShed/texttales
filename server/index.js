@@ -32,14 +32,16 @@ const freeUserLimits = new Map();
 const session = require("express-session");
 
 app.use(session({
+  name: "connect.sid",   
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
 
   cookie: {
     secure: true,
-    sameSite: "none",
-    httpOnly: true
+    httpOnly: true,
+    sameSite: "none",   
+    maxAge: 24 * 60 * 60 * 1000
   }
 }));
 

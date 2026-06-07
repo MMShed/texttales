@@ -23,7 +23,7 @@ function Explore() {
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/stories`, {credentials: "include"});
         const data = await res.json();
         setStories(data);
       } catch (err) {
