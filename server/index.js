@@ -111,6 +111,8 @@ app.get("/stories/:id", async (req, res) => {
 
     // ✅ Only apply limit for guests
     if (!req.session || !req.session.user) {
+      
+      
       if (data.count >= 4) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED"
