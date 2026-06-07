@@ -109,31 +109,31 @@ app.get("/stories", async (req, res) => {
 app.get("/stories/:id", async (req, res) => {
   try {
     
-    if (!req.session.guestId) {
-      const rawIP = req.headers["x-forwarded-for"] || req.ip;
-      const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
-      req.session.guestId = ip;
-    }
+    const rawIP = req.headers["x-forwarded-for"] || req.ip;
+    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
-    const id = req.session?.user || req.session.guestId;
+    // ✅ logged-in or guest
+    const isLoggedIn = !!req.session?.user;
 
+    const id = isLoggedIn ? req.session.user : ip;
 
-    const now = Date.now();
-    const ONE_DAY = 24 * 60 * 60 * 1000;
 
     let data = freeUserLimits.get(id);
 
-    // ✅ Reset if new or expired
-    if (!data || now - data.startTime > ONE_DAY) {
-      data = {
-        count: 0,
-        startTime: now
-      };
-    }
+      const now = Date.now();
+      const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    // ✅ Only apply limit for guests
-    if (!req.session || !req.session.user) {
-      
+      // ✅ reset if expired or first time
+      if (!data || now - data.startTime > ONE_DAY) {
+        data = {
+          count: 0,
+          startTime: now
+        };
+      }
+
+    if (!isLoggedIn) {
+      // ✅ guest logic
+
       if (data.count >= 4) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED"
@@ -142,6 +142,7 @@ app.get("/stories/:id", async (req, res) => {
 
       data.count += 1;
     }
+
 
     freeUserLimits.set(id, data);
 
