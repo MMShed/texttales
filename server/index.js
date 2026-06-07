@@ -58,7 +58,11 @@ app.get("/can-view-story", (req, res) => {
       return res.json({ allowed: true });
     }
 
-    const id = req.session?.user || req.ip;               
+    const rawIP = req.headers["x-forwarded-for"] || req.ip;
+    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+
+    const id = req.session?.user || ip;
+        
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -99,7 +103,10 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    const id = req.session?.user || req.ip; 
+    const rawIP = req.headers["x-forwarded-for"] || req.ip;
+    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+    const id = req.session?.user || ip;
+
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
