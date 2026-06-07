@@ -30,17 +30,19 @@ const freeUserLimits = new Map();
 
 const session = require("express-session");
 
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true, //Should enable mobile users limit
 
   cookie: {
-    secure: true,
-    sameSite: "none",
+    secure: true,       // required for HTTPS
+    sameSite: "none",   // required for cross-domain
     httpOnly: true
   }
 }));
+
 
 
 
