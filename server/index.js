@@ -58,10 +58,15 @@ app.get("/can-view-story", (req, res) => {
       return res.json({ allowed: true });
     }
 
-    const rawIP = req.headers["x-forwarded-for"] || req.ip;
-    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+    
+    if (!req.session.guestId) {
+      const rawIP = req.headers["x-forwarded-for"] || req.ip;
+      const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+      req.session.guestId = ip;
+    }
 
-    const id = req.session?.user || ip;
+    const id = req.session?.user || req.session.guestId;
+
         
 
     const now = Date.now();
@@ -103,9 +108,15 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    const rawIP = req.headers["x-forwarded-for"] || req.ip;
-    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
-    const id = req.session?.user || ip;
+    
+    if (!req.session.guestId) {
+      const rawIP = req.headers["x-forwarded-for"] || req.ip;
+      const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+      req.session.guestId = ip;
+    }
+
+    const id = req.session?.user || req.session.guestId;
+
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -122,12 +133,6 @@ app.get("/stories/:id", async (req, res) => {
 
     // ✅ Only apply limit for guests
     if (!req.session || !req.session.user) {
-      
-      console.log({
-  sessionID: req.sessionID,
-  isLoggedIn: req.session?.user,
-  currentCount: data?.count
-});
       
       if (data.count >= 4) {
         return res.status(403).json({
