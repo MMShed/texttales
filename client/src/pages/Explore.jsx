@@ -68,32 +68,14 @@ function Explore() {
 
             <button
               className="play_button"
-              onClick={async () => {
-                try {
-                  const res = await fetch(
-                    `${import.meta.env.VITE_API_URL}/can-view-story`,
-                    { credentials: "include" }
-                  );
+              onClick={() => {
+                // ✅ Just navigate
+                navigate(`/stories/${story._id}`);
+              }}
+            >
+              Play Story
+          </button>
 
-                  const data = await res.json();
-
-                  if (!res.ok) {
-                    if (data.error === "FREE_LIMIT_REACHED") {
-                      alert("You've reached the free limit. Sign up to continue.");
-                      return; 
-                    }
-                  }
-
-                  // Allowed → open story
-                  navigate(`/stories/${story._id}`);
-
-                  } catch (err) {
-                    console.error(err);
-                  }
-                }}
-              >
-                Play Story
-            </button>
           </div>
         ))}
       </div>

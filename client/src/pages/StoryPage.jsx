@@ -13,28 +13,26 @@ function StoryPage() {
 
   //  fetch story
   useEffect(() => {
-    const fetchStory = async () => {
-      try {
-        
-        const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/stories/${id}`,
-          {
-            credentials: "include" //  THIS IS THE FIX
-          }
-        );
+  const fetchStory = async () => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/stories/${id}`
+      );
 
-
-        if (!res.ok) return;
-
-        const data = await res.json();
-        setStory(data);
-      } catch (err) {
-        console.error(err);
+      if (!res.ok) {
+        console.error("Failed to fetch story");
+        return;
       }
-    };
 
-    fetchStory();
-  }, [id]);
+      const data = await res.json();
+      setStory(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchStory();
+}, [id]);
 
   //  start story
   useEffect(() => {

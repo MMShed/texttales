@@ -52,48 +52,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-app.get("/can-view-story", (req, res) => {
-  try {
-    if (req.session && req.session.user) {
-      return res.json({ allowed: true });
-    }
-
-    
-    if (!req.session.guestId) {
-      const rawIP = req.headers["x-forwarded-for"] || req.ip;
-      const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
-      req.session.guestId = ip;
-    }
-
-    const id = req.session?.user || req.session.guestId;
-
-        
-
-    const now = Date.now();
-    const ONE_DAY = 24 * 60 * 60 * 1000;
-
-    const data = freeUserLimits.get(id);
-
-    if (!data || now - data.startTime > ONE_DAY) {
-      return res.json({ allowed: true });
-    }
-
-    if (data.count >= 4) {
-      return res.status(403).json({
-        error: "FREE_LIMIT_REACHED"
-      });
-    }
-
-    return res.json({ allowed: true });
-
-  } catch (err) {
-    console.error("Error in /can-view-story:", err);
-
-    return res.status(500).json({
-      error: "SERVER_ERROR"
-    });
-  }
-});
 
 app.get("/stories", async (req, res) => {
   try {
@@ -107,59 +65,13 @@ app.get("/stories", async (req, res) => {
 
 
 app.get("/stories/:id", async (req, res) => {
-  try {
-    
-    const rawIP = req.headers["x-forwarded-for"] || req.ip;
-    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+  const story = await Story.findById(req.params.id);
 
-    // ✅ logged-in or guest
-    const isLoggedIn = !!req.session?.user;
-
-    const id = isLoggedIn ? req.session.user : ip;
-
-
-    let data = freeUserLimits.get(id);
-
-      const now = Date.now();
-      const ONE_DAY = 24 * 60 * 60 * 1000;
-
-      // ✅ reset if expired or first time
-      if (!data || now - data.startTime > ONE_DAY) {
-        data = {
-          count: 0,
-          startTime: now
-        };
-      }
-
-    if (!isLoggedIn) {
-      // ✅ guest logic
-
-      if (data.count >= 4) {
-        return res.status(403).json({
-          error: "FREE_LIMIT_REACHED"
-        });
-      }
-
-      data.count += 1;
-    }
-
-
-    freeUserLimits.set(id, data);
-
-    const story = await Story.findById(req.params.id);
-
-    if (!story) {
-      return res.status(404).json({
-        error: "Story not found"
-      });
-    }
-
-    res.json(story);
-
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "SERVER_ERROR" });
+  if (!story) {
+    return res.status(404).json({ error: "Story not found" });
   }
+
+  res.json(story);
 });
 
 
