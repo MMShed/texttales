@@ -18,9 +18,10 @@ app.set("trust proxy", 1);
 
 
 app.use(cors({
-  origin: "https://texttales.vercel.app",
+  origin: true,
   credentials: true
 }));
+
 
 app.use(express.json());
 
@@ -112,6 +113,11 @@ app.get("/stories/:id", async (req, res) => {
     // ✅ Only apply limit for guests
     if (!req.session || !req.session.user) {
       
+      console.log({
+  sessionID: req.sessionID,
+  isLoggedIn: req.session?.user,
+  currentCount: data?.count
+});
       
       if (data.count >= 4) {
         return res.status(403).json({
