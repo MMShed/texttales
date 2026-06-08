@@ -11,9 +11,9 @@
 
 
 .logo img {
-  height: 6px;       /* ✅ controls size */
-  width: auto;        /* keeps proportions */
-  object-fit: contain;
+  max-height: 50px;   /* ✅ hard limit */
+  width: auto;
+  display: block
 }
 
 
