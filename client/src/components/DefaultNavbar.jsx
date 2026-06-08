@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 import "../styles/components/DefaultNavbar.css"
 
@@ -7,7 +8,7 @@ function DefaultNavbar ()
     return (    
         <nav className="navigation">
             <nav className="left_bar">
-                <h3>TextTales</h3>
+                <img src={logo} alt="logo" />
             </nav>
 
             <nav className="right_bar">

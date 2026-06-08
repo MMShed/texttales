@@ -9,6 +9,13 @@
     color: white;
 }
 
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+
 /* Right side links */
 .navigation .right_bar {
     display: flex;
@@ -38,4 +45,12 @@
     .navigation .right_bar a {
         font-size: 1.1rem;             /* smaller text */
     }
+
+
+    @media (max-width: 768px) {
+    .logo img {
+        height: 32px;
+    }
+    }
+
 }
