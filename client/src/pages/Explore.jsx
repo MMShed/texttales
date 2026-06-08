@@ -72,7 +72,7 @@ function Explore() {
               className="play_button"
               onClick={async () => {
                 try {
-                  const userId = localStorage.getItem("userId"); // ✅ DEFINE IT HERE
+                  const userId = localStorage.getItem("userId"); // DEFINE IT HERE
 
                   const res = await fetch(
                     `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
