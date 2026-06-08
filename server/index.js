@@ -301,20 +301,8 @@ app.post("/logout", (req, res) => {
 
 
 
-
-
 app.get("/profile", auth, (req, res) => {
   res.send(`Welcome ${req.user.email} `);
-});
-
-app.get("/me", (req, res) => {
-  if (req.session && req.session.user) {
-    return res.json({
-      loggedIn: true
-    });
-  }
-
-  res.json({ loggedIn: false });
 });
 
 

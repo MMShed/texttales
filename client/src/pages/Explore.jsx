@@ -65,6 +65,19 @@ function Explore() {
       fetchData();
     }, []);
 
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (!prev) return prev;       // don't touch null
+          if (prev <= 1000) return 0;   // stop at 0
+          return prev - 1000;           // subtract 1 second
+        });
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }, []);
+
+
   return (
     <div className="explore_page">
       <p className="explore_title">Explore Stories</p>
