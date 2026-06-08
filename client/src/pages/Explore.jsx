@@ -10,6 +10,9 @@ function Explore() {
   let [filter, setFilter] = useState("All");
   const [stories, setStories] = useState([]);
 
+  const [remaining, setRemaining] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(null);
+
   const filter_selections = [
     "All",
     "Horror",
@@ -19,6 +22,15 @@ function Explore() {
     "Fantasy",
     "Thriller"
   ];
+
+  function formatTime(ms) {
+    if (!ms) return "";
+
+    const hours = Math.floor(ms / (1000 * 60 * 60));
+    const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+
+    return `${hours}h ${minutes}m`;
+  }
 
   useEffect(() => {
     const fetchStories = async () => {
@@ -37,6 +49,14 @@ function Explore() {
   return (
     <div className="explore_page">
       <p className="explore_title">Explore Stories</p>
+
+
+      {remaining !== null && (
+        <div className="limit_info">
+          <p>{remaining} stories remaining</p>
+          <p>Resets in {formatTime(timeLeft)}</p>
+        </div>
+      )}
 
       <div className="story_container">
         {stories.map((story) => (
@@ -62,14 +82,15 @@ function Explore() {
                         : {}
                     }
                   );
+                  
 
-                  console.log("CHECK RESPONSE STATUS:", res.status);
+                  const data = await res.json();
+
+                  setRemaining(data.remaining);
+                  setTimeLeft(data.timeLeft);
+
 
                   if (!res.ok) {
-                    const data = await res.json();
-
-                    console.log("CHECK RESPONSE DATA:", data);
-
                     if (data.error === "FREE_LIMIT_REACHED") {
                       alert("You've reached the free limit. Please log in.");
                       return;

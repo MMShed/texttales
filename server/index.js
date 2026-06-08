@@ -80,25 +80,22 @@ function hashIdentifier(value) {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    // ✅ Get user info
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
     const userId = req.headers["x-user-id"];
-
-    // ✅ FIX: properly detect logged-in users
     const isLoggedIn = userId && userId !== "null";
 
-    // ✅ Check mode (from Explore pre-check)
     const isCheckOnly = req.query.check === "true";
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
+    let remaining = null;
+    let timeLeft = null;
+
     // ✅ ONLY track guests
     if (!isLoggedIn) {
-
-      // ✅ Hash the IP (privacy-safe)
       const hashedId = hashIdentifier(ip);
 
       let data = await Usage.findOne({ identifier: hashedId });
@@ -116,27 +113,28 @@ app.get("/stories/:id", async (req, res) => {
         );
       }
 
-      console.log("Guest count:", data.count);
+      // ✅ NOW compute remaining/timeLeft (after data exists)
+      remaining = Math.max(0, 4 - data.count);
+      timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
 
       // ✅ LIMIT CHECK
       if (data.count >= 4) {
-        console.log("❌ BLOCKED");
-
         return res.status(403).json({
-          error: "FREE_LIMIT_REACHED"
+          error: "FREE_LIMIT_REACHED",
+          remaining,
+          timeLeft
         });
       }
 
-      // ✅ ONLY increment on real fetch (not pre-check)
+      // ✅ Increment only on real fetch
       if (!isCheckOnly) {
         await Usage.updateOne(
           { identifier: hashedId },
           { $inc: { count: 1 } }
         );
 
-        console.log("✅ Incremented");
-      } else {
-        console.log("⚠️ Check only (no increment)");
+        // ✅ update remaining AFTER increment
+        remaining = Math.max(0, remaining - 1);
       }
     }
 
@@ -149,7 +147,12 @@ app.get("/stories/:id", async (req, res) => {
       });
     }
 
-    res.json(story);
+    // ✅ ALWAYS send remaining/timeLeft
+    res.json({
+      story,
+      remaining,
+      timeLeft
+    });
 
   } catch (err) {
     console.error(err);
@@ -158,7 +161,6 @@ app.get("/stories/:id", async (req, res) => {
     });
   }
 });
-
 
 
 
