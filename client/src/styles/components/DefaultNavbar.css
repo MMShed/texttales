@@ -11,7 +11,7 @@
 
 
 .logo img {
-  height: 40px;       /* ✅ controls size */
+  height: 6px;       /* ✅ controls size */
   width: auto;        /* keeps proportions */
   object-fit: contain;
 }
