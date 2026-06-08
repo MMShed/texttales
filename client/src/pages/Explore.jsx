@@ -50,13 +50,37 @@ function Explore() {
 
             <button
               className="play_button"
-              onClick={() => {
-                // ✅ Just navigate
-                navigate(`/stories/${story._id}`);
+              onClick={async () => {
+                try {
+                  const res = await fetch(
+                    `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
+                    {
+                      headers: {
+                        "x-user-id": localStorage.getItem("userId")
+                      }
+                    }
+                  );
+
+                  if (!res.ok) {
+                    const data = await res.json();
+
+                    if (data.error === "FREE_LIMIT_REACHED") {
+                      alert("You've reached the free limit. Please log in.");
+                      return; // 🚨 STOP HERE (no navigation)
+                    }
+                  }
+
+                  // ✅ Only navigate if allowed
+                  navigate(`/stories/${story._id}`);
+
+                } catch (err) {
+                  console.error(err);
+                }
               }}
             >
               Play Story
-          </button>
+            </button>
+
 
           </div>
         ))}

@@ -65,13 +65,64 @@ app.get("/stories", async (req, res) => {
 
 
 app.get("/stories/:id", async (req, res) => {
-  const story = await Story.findById(req.params.id);
+  try {
+    // ✅ Identify user
+    const rawIP = req.headers["x-forwarded-for"] || req.ip;
+    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
-  if (!story) {
-    return res.status(404).json({ error: "Story not found" });
+    const userId = req.headers["x-user-id"];
+    const isLoggedIn = !!userId;
+
+    const id = isLoggedIn ? userId : ip;
+
+    // ✅ Check mode (from Explore)
+    const isCheckOnly = req.query.check === "true";
+
+    // ✅ Get existing usage
+    let data = freeUserLimits.get(id);
+
+    const now = Date.now();
+    const ONE_DAY = 24 * 60 * 60 * 1000;
+
+    // ✅ Reset window if needed
+    if (!data || now - data.startTime > ONE_DAY) {
+      data = {
+        count: 0,
+        startTime: now
+      };
+    }
+
+    // ✅ Apply limit ONLY for guests
+    if (!isLoggedIn) {
+      if (data.count >= 4) {
+        return res.status(403).json({
+          error: "FREE_LIMIT_REACHED"
+        });
+      }
+
+      // ✅ ONLY increment when NOT check mode
+      if (!isCheckOnly) {
+        data.count += 1;
+        freeUserLimits.set(id, data);
+      }
+    }
+
+    // ✅ Fetch story
+    const story = await Story.findById(req.params.id);
+
+    if (!story) {
+      return res.status(404).json({
+        error: "Story not found"
+      });
+    }
+
+    res.json(story);
+
+  } catch (err) {
+    res.status(500).json({
+      error: "SERVER_ERROR"
+    });
   }
-
-  res.json(story);
 });
 
 
