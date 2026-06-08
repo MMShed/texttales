@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
+const Usage = require("./models/Usage");
+
+
 const User = require("./models/User");
 
 const cookieParser = require("cookie-parser");
@@ -66,9 +69,6 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-
-
-
     // ✅ Identify user
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
@@ -78,45 +78,52 @@ app.get("/stories/:id", async (req, res) => {
 
     const id = isLoggedIn ? userId : ip;
 
-
-
-    // ✅ Check mode (from Explore)
+    // ✅ Check mode (Explore pre-check)
     const isCheckOnly = req.query.check === "true";
 
-    // ✅ Get existing usage
-    let data = freeUserLimits.get(id);
-    console.log("Memory Map contents:", Array.from(freeUserLimits.entries()));
-
-
+    // ✅ Get existing usage from DB
+    let data = await Usage.findOne({ identifier: id });
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    // ✅ Reset window if needed
-    if (!data || now - data.startTime > ONE_DAY) {
-      data = {
-        count: 0,
-        startTime: now
-      };
+    // ✅ Reset if expired or doesn't exist
+    if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
+      data = await Usage.findOneAndUpdate(
+        { identifier: id },
+        {
+          identifier: id,
+          count: 0,
+          startTime: new Date()
+        },
+        { upsert: true, new: true }
+      );
     }
 
     // ✅ Apply limit ONLY for guests
     if (!isLoggedIn) {
 
+      console.log("Current count:", data.count);
 
       if (data.count >= 4) {
+        console.log("❌ BLOCKING USER");
 
+        return res.status(403).json({
+          error: "FREE_LIMIT_REACHED"
+        });
+      }
 
-  return res.status(403).json({
-    error: "FREE_LIMIT_REACHED"
-  });
-}
-
-      // ✅ ONLY increment when NOT check mode
+      // ✅ ONLY increment when NOT in check mode
       if (!isCheckOnly) {
-        data.count += 1;
-        freeUserLimits.set(id, data);
-      } 
+        console.log("✅ Incrementing count");
+
+        await Usage.updateOne(
+          { identifier: id },
+          { $inc: { count: 1 } }
+        );
+      } else {
+        console.log("⚠️ CHECK MODE → NOT incrementing");
+      }
     }
 
     // ✅ Fetch story
@@ -131,11 +138,13 @@ app.get("/stories/:id", async (req, res) => {
     res.json(story);
 
   } catch (err) {
+    console.error(err);
     res.status(500).json({
       error: "SERVER_ERROR"
     });
   }
 });
+
 
 
 
