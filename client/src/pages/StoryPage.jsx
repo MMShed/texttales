@@ -17,12 +17,17 @@ function StoryPage() {
     try {
 
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/stories/${id}`, 
-        {
-          headers: userId
-            ? { "x-user-id": userId }
-            : {}
-        });
+      const userId = localStorage.getItem("userId");
+
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/stories/${id}`,
+          {
+            headers: userId
+              ? { "x-user-id": userId }
+              : {}
+          }
+        );
+
 
 
       console.log("STORY FETCH STATUS:", res.status);

@@ -52,31 +52,30 @@ function Explore() {
               className="play_button"
               onClick={async () => {
                 try {
+                  const userId = localStorage.getItem("userId"); // ✅ DEFINE IT HERE
 
                   const res = await fetch(
                     `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
-                    
-                      {
-                        headers: userId
-                          ? { "x-user-id": userId }
-                          : {}
-                      });
-
+                    {
+                      headers: userId
+                        ? { "x-user-id": userId }
+                        : {}
+                    }
+                  );
 
                   console.log("CHECK RESPONSE STATUS:", res.status);
 
-
                   if (!res.ok) {
                     const data = await res.json();
+
                     console.log("CHECK RESPONSE DATA:", data);
 
                     if (data.error === "FREE_LIMIT_REACHED") {
                       alert("You've reached the free limit. Please log in.");
-                      return; // 🚨 STOP HERE (no navigation)
+                      return;
                     }
                   }
 
-                  // ✅ Only navigate if allowed
                   navigate(`/stories/${story._id}`);
 
                 } catch (err) {
