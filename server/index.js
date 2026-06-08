@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const Usage = require("./models/Usage");
 
+const crypto = require("crypto");
 
 const User = require("./models/User");
 
@@ -67,54 +68,47 @@ app.get("/stories", async (req, res) => {
 });
 
 
+
+const SECRET = process.env.ID_HASH_SECRET || "mysecret"; // add to env later
+
+function hashIdentifier(value) {
+  return crypto
+    .createHash("sha256")
+    .update(value + SECRET)
+    .digest("hex");
+}
+
 app.get("/stories/:id", async (req, res) => {
   try {
-    // ✅ Identify user
+    // ✅ Get user info
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
     const userId = req.headers["x-user-id"];
 
+    // ✅ FIX: properly detect logged-in users
     const isLoggedIn = userId && userId !== "null";
 
-
-    const id = isLoggedIn ? userId : ip;
-
-    // ✅ Check mode (Explore pre-check)
+    // ✅ Check mode (from Explore pre-check)
     const isCheckOnly = req.query.check === "true";
-
-    // ✅ Get existing usage from DB
-    let data = await Usage.findOne({ identifier: id });
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    // ✅ Reset if expired or doesn't exist
-    if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
-      data = await Usage.findOneAndUpdate(
-        { identifier: id },
-        {
-          identifier: id,
-          count: 0,
-          startTime: new Date()
-        },
-        { upsert: true, new: true }
-      );
-    }
-
-    // ✅ Apply limit ONLY for guests
+    // ✅ ONLY track guests
     if (!isLoggedIn) {
 
-      let data = await Usage.findOne({ identifier: ip });
+      // ✅ Hash the IP (privacy-safe)
+      const hashedId = hashIdentifier(ip);
 
-      const now = Date.now();
-      const ONE_DAY = 24 * 60 * 60 * 1000;
+      let data = await Usage.findOne({ identifier: hashedId });
 
+      // ✅ Reset window
       if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
         data = await Usage.findOneAndUpdate(
-          { identifier: ip },
+          { identifier: hashedId },
           {
-            identifier: ip,
+            identifier: hashedId,
             count: 0,
             startTime: new Date()
           },
@@ -122,20 +116,29 @@ app.get("/stories/:id", async (req, res) => {
         );
       }
 
+      console.log("Guest count:", data.count);
+
+      // ✅ LIMIT CHECK
       if (data.count >= 4) {
+        console.log("❌ BLOCKED");
+
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED"
         });
       }
 
+      // ✅ ONLY increment on real fetch (not pre-check)
       if (!isCheckOnly) {
         await Usage.updateOne(
-          { identifier: ip },
+          { identifier: hashedId },
           { $inc: { count: 1 } }
         );
+
+        console.log("✅ Incremented");
+      } else {
+        console.log("⚠️ Check only (no increment)");
       }
     }
-
 
     // ✅ Fetch story
     const story = await Story.findById(req.params.id);
