@@ -5,26 +5,62 @@
 
     padding: 1em;
 
-
     background-color: purple;
     color: white;
 }
 
+/* Button (e.g., logout) */
 .navigation button {
     background-color: transparent;
-    border-style: none;
+    border: none;
     color: white;
     font-size: 1.25rem;
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
 }
 
+.navigation button:hover {
+    opacity: 0.8;
+}
 
+/* Right side links */
 .navigation .right_bar {
     display: flex;
     gap: 1.5em;
 }
 
-.navigation .right_bar a{
+.navigation .right_bar a {
     font-size: 1.5rem;
     color: white;
     text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.navigation .right_bar a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+
+    .navigation {
+        flex-direction: column;      /* stack content */
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.75em;
+    }
+
+    .navigation .right_bar {
+        flex-wrap: wrap;             /* prevent overflow */
+        justify-content: center;
+        gap: 1em;                    /* reduce spacing */
+    }
+
+    .navigation .right_bar a {
+        font-size: 1.1rem;           /* smaller text */
+    }
+
+    .navigation button {
+        font-size: 1rem;             /* smaller button text */
+    }
 }

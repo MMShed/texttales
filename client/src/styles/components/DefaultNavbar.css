@@ -5,18 +5,37 @@
 
     padding: 1em;
 
-
     background-color: purple;
     color: white;
 }
 
+/* Right side links */
 .navigation .right_bar {
     display: flex;
     gap: 1.5em;
 }
 
-.navigation .right_bar a{
+.navigation .right_bar a {
     font-size: 1.5rem;
     color: white;
     text-decoration: none;
+}
+
+@media (max-width: 768px) {
+
+    .navigation {
+        flex-direction: column;         /* stack items vertically */
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .navigation .right_bar {
+        flex-wrap: wrap;               /* allow wrapping if needed */
+        justify-content: center;
+        gap: 1em;                      /* reduce spacing */
+    }
+
+    .navigation .right_bar a {
+        font-size: 1.1rem;             /* smaller text */
+    }
 }
