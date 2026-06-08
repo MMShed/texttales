@@ -74,7 +74,9 @@ app.get("/stories/:id", async (req, res) => {
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
     const userId = req.headers["x-user-id"];
-    const isLoggedIn = !!userId;
+
+    const isLoggedIn = userId && userId !== "null";
+
 
     const id = isLoggedIn ? userId : ip;
 

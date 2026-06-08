@@ -16,15 +16,14 @@ function StoryPage() {
   const fetchStory = async () => {
     try {
 
-      console.log("LOADING STORY:", id);
-      console.log("userId:", localStorage.getItem("userId"));
 
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/stories/${id}`, 
+        {
+          headers: userId
+            ? { "x-user-id": userId }
+            : {}
+        });
 
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/stories/${id}`, {
-        headers: {
-          "x-user-id": localStorage.getItem("userId")
-        }
-      });
 
       console.log("STORY FETCH STATUS:", res.status);
 

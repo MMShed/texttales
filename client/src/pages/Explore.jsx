@@ -52,17 +52,16 @@ function Explore() {
               className="play_button"
               onClick={async () => {
                 try {
-                  console.log("PLAY CLICKED", story._id);
-console.log("userId:", localStorage.getItem("userId"));
 
                   const res = await fetch(
                     `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
-                    {
-                      headers: {
-                        "x-user-id": localStorage.getItem("userId")
-                      }
-                    }
-                  );
+                    
+                      {
+                        headers: userId
+                          ? { "x-user-id": userId }
+                          : {}
+                      });
+
 
                   console.log("CHECK RESPONSE STATUS:", res.status);
 
