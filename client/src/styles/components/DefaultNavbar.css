@@ -10,7 +10,7 @@
 }
 
 
-.logo img {
+.left_bar img {
   max-height: 50px;   /* ✅ hard limit */
   width: auto;
   display: block
