@@ -84,8 +84,10 @@ function Explore() {
 
 
       {remaining !== null && (
-        <div className="limit_info">
-          <p>{remaining} stories remaining</p>
+        <div className="limit_banner">
+          <span className="limit_badge">
+            {remaining === 0 ? "🚫 Limit reached" : `🟢 ${remaining} stories left`}
+          </span>
           <p>Resets in {formatTime(timeLeft)}</p>
         </div>
       )}
