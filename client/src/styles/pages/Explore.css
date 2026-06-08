@@ -2,25 +2,11 @@
   padding: 20px;
 }
 
-/* ✅ title */
+/* title */
 .explore_title {
   text-align: center;
   font-size: 24px;
   margin-bottom: 20px;
-}
-
-/* ✅ filters */
-.filters {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.filter_choice a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
 }
 
 /* ✅ ✅ FLEX GRID */
