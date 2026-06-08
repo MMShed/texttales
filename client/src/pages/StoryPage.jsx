@@ -39,7 +39,7 @@ function StoryPage() {
 
       const data = await res.json();
       console.log("STORY DATA:", data)
-      setStory(data);
+      setStory(data.story);
     } catch (err) {
       console.error(err);
     }
