@@ -105,28 +105,37 @@ app.get("/stories/:id", async (req, res) => {
     // ✅ Apply limit ONLY for guests
     if (!isLoggedIn) {
 
-      console.log("Current count:", data.count);
+      let data = await Usage.findOne({ identifier: ip });
+
+      const now = Date.now();
+      const ONE_DAY = 24 * 60 * 60 * 1000;
+
+      if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
+        data = await Usage.findOneAndUpdate(
+          { identifier: ip },
+          {
+            identifier: ip,
+            count: 0,
+            startTime: new Date()
+          },
+          { upsert: true, returnDocument: "after" }
+        );
+      }
 
       if (data.count >= 4) {
-        console.log("❌ BLOCKING USER");
-
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED"
         });
       }
 
-      // ✅ ONLY increment when NOT in check mode
       if (!isCheckOnly) {
-        console.log("✅ Incrementing count");
-
         await Usage.updateOne(
-          { identifier: id },
+          { identifier: ip },
           { $inc: { count: 1 } }
         );
-      } else {
-        console.log("⚠️ CHECK MODE → NOT incrementing");
       }
     }
+
 
     // ✅ Fetch story
     const story = await Story.findById(req.params.id);
