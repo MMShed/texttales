@@ -14,20 +14,9 @@ import Register from "./pages/Register";
 import StoryPage from "./pages/StoryPage";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const checkLogin = async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
-        credentials: "include"
-      });
-
-      const data = await res.json();
-      setLoggedIn(data.loggedIn);
-    };
-
-    checkLogin();
-  }, []);
+  const [loggedIn, setLoggedIn] = useState(() => {
+    return !!localStorage.getItem("userId");
+  });
 
   return (
     <BrowserRouter>
