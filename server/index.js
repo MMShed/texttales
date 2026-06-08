@@ -66,13 +66,6 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
-    console.log("---- REQUEST HIT /stories/:id ----");
-
-console.log({
-  query: req.query,
-  headersUserId: req.headers["x-user-id"],
-  ip: req.ip
-});
 
 
 
@@ -85,18 +78,15 @@ console.log({
 
     const id = isLoggedIn ? userId : ip;
 
-    console.log({
-  isLoggedIn,
-  id
-});
+
 
     // ✅ Check mode (from Explore)
     const isCheckOnly = req.query.check === "true";
 
     // ✅ Get existing usage
     let data = freeUserLimits.get(id);
+    console.log("Memory Map contents:", Array.from(freeUserLimits.entries()));
 
-console.log("Current data BEFORE:", data);
 
 
     const now = Date.now();
@@ -112,10 +102,10 @@ console.log("Current data BEFORE:", data);
 
     // ✅ Apply limit ONLY for guests
     if (!isLoggedIn) {
-      console.log("Checking limit:", data?.count);
+
 
       if (data.count >= 4) {
-  console.log("❌ BLOCKING USER");
+
 
   return res.status(403).json({
     error: "FREE_LIMIT_REACHED"
@@ -124,14 +114,9 @@ console.log("Current data BEFORE:", data);
 
       // ✅ ONLY increment when NOT check mode
       if (!isCheckOnly) {
-  data.count += 1;
-
-  console.log("✅ Incrementing count →", data.count);
-
-  freeUserLimits.set(id, data);
-} else {
-  console.log("⚠️ CHECK MODE → NOT incrementing");
-}
+        data.count += 1;
+        freeUserLimits.set(id, data);
+      } 
     }
 
     // ✅ Fetch story
