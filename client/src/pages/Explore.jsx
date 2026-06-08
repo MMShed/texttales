@@ -89,6 +89,8 @@ function Explore() {
                   setRemaining(data.remaining);
                   setTimeLeft(data.timeLeft);
 
+                  console.log("CHECK DATA:", data)
+
 
                   if (!res.ok) {
                     if (data.error === "FREE_LIMIT_REACHED") {
