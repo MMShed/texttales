@@ -164,6 +164,54 @@ app.get("/stories/:id", async (req, res) => {
 
 
 
+app.get("/limit-info", async (req, res) => {
+  try {
+    const rawIP = req.headers["x-forwarded-for"] || req.ip;
+    const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
+
+    const userId = req.headers["x-user-id"];
+    const isLoggedIn = userId && userId !== "null";
+
+    const now = Date.now();
+    const ONE_DAY = 24 * 60 * 60 * 1000;
+
+    // ✅ Logged-in → unlimited
+    if (isLoggedIn) {
+      return res.json({
+        remaining: null,
+        timeLeft: null
+      });
+    }
+
+    const hashedId = hashIdentifier(ip);
+
+    let data = await Usage.findOne({ identifier: hashedId });
+
+    if (!data) {
+      data = await Usage.findOneAndUpdate(
+        { identifier: hashedId },
+        {
+          identifier: hashedId,
+          count: 0,
+          startTime: new Date()
+        },
+        { upsert: true, returnDocument: "after" }
+      );
+    }
+
+    const remaining = Math.max(0, 4 - data.count);
+    const timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
+
+    res.json({ remaining, timeLeft });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+
+
 //app.use(express.static(path.join(__dirname, "../client/dist")));
 
 mongoose.connect(process.env.MONGO_URI)

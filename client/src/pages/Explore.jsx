@@ -32,19 +32,38 @@ function Explore() {
     return `${hours}h ${minutes}m`;
   }
 
-  useEffect(() => {
-    const fetchStories = async () => {
-      try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
-        const data = await res.json();
-        setStories(data);
-      } catch (err) {
-        console.error("Error fetching stories:", err);
-      }
-    };
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          // ✅ Fetch stories
+          const storiesRes = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
+          const storiesData = await storiesRes.json();
+          setStories(storiesData);
 
-    fetchStories();
-  }, []);
+          // ✅ Fetch limit info
+          const userId = localStorage.getItem("userId");
+
+          const limitRes = await fetch(
+            `${import.meta.env.VITE_API_URL}/limit-info`,
+            {
+              headers: userId
+                ? { "x-user-id": userId }
+                : {}
+            }
+          );
+
+          const limitData = await limitRes.json();
+
+          setRemaining(limitData.remaining);
+          setTimeLeft(limitData.timeLeft);
+
+        } catch (err) {
+          console.error("Error fetching data:", err);
+        }
+      };
+
+      fetchData();
+    }, []);
 
   return (
     <div className="explore_page">
