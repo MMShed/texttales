@@ -45,6 +45,7 @@ function Login({setLoggedIn}) {
       }
 
       //  Success → go to explore
+      localStorage.setItem("userId", data.userId);
       setLoggedIn(true);   //  THIS IS THE FIX
       navigate("/explore");
 

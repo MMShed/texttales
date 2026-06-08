@@ -38,24 +38,6 @@ function Explore() {
     <div className="explore_page">
       <p className="explore_title">Explore Stories</p>
 
-      <div className="filters">
-        {filter_selections.map((f) => {
-          return (
-            <div key={f} className="filter_choice">
-              <a
-                href=""
-                onClick={(e) => {
-                  e.preventDefault();
-                  setFilter(f);
-                }}
-              >
-                {f}
-              </a>
-            </div>
-          );
-        })}
-      </div>
-
       <div className="story_container">
         {stories.map((story) => (
           <div key={story._id} className="story_card">
