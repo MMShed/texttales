@@ -15,11 +15,18 @@ function StoryPage() {
   useEffect(() => {
   const fetchStory = async () => {
     try {
+
+      console.log("LOADING STORY:", id);
+      console.log("userId:", localStorage.getItem("userId"));
+
+
       const res = await fetch(`${import.meta.env.VITE_API_URL}/stories/${id}`, {
         headers: {
           "x-user-id": localStorage.getItem("userId")
         }
       });
+
+      console.log("STORY FETCH STATUS:", res.status);
 
       if (!res.ok) {
         console.error("Failed to fetch story");
@@ -27,6 +34,7 @@ function StoryPage() {
       }
 
       const data = await res.json();
+      console.log("STORY DATA:", data)
       setStory(data);
     } catch (err) {
       console.error(err);

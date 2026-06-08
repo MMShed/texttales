@@ -66,6 +66,16 @@ app.get("/stories", async (req, res) => {
 
 app.get("/stories/:id", async (req, res) => {
   try {
+    console.log("---- REQUEST HIT /stories/:id ----");
+
+console.log({
+  query: req.query,
+  headersUserId: req.headers["x-user-id"],
+  ip: req.ip
+});
+
+
+
     // ✅ Identify user
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
@@ -75,11 +85,19 @@ app.get("/stories/:id", async (req, res) => {
 
     const id = isLoggedIn ? userId : ip;
 
+    console.log({
+  isLoggedIn,
+  id
+});
+
     // ✅ Check mode (from Explore)
     const isCheckOnly = req.query.check === "true";
 
     // ✅ Get existing usage
     let data = freeUserLimits.get(id);
+
+console.log("Current data BEFORE:", data);
+
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -94,17 +112,26 @@ app.get("/stories/:id", async (req, res) => {
 
     // ✅ Apply limit ONLY for guests
     if (!isLoggedIn) {
+      console.log("Checking limit:", data?.count);
+
       if (data.count >= 4) {
-        return res.status(403).json({
-          error: "FREE_LIMIT_REACHED"
-        });
-      }
+  console.log("❌ BLOCKING USER");
+
+  return res.status(403).json({
+    error: "FREE_LIMIT_REACHED"
+  });
+}
 
       // ✅ ONLY increment when NOT check mode
       if (!isCheckOnly) {
-        data.count += 1;
-        freeUserLimits.set(id, data);
-      }
+  data.count += 1;
+
+  console.log("✅ Incrementing count →", data.count);
+
+  freeUserLimits.set(id, data);
+} else {
+  console.log("⚠️ CHECK MODE → NOT incrementing");
+}
     }
 
     // ✅ Fetch story
