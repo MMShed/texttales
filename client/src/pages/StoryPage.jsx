@@ -101,6 +101,10 @@ function StoryPage() {
   return (
     <div className="chat-page">
 
+      <head>
+          <title>{story.title}</title>
+      </head>
+
       <h2 className="story-title">{story.title}</h2>
 
       {/*  HEADER */}

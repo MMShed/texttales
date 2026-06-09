@@ -79,6 +79,10 @@ function Explore() {
 
   return (
     <div className="explore_page">
+      <head>
+          <title>Explore</title>
+      </head>
+
       <p className="explore_title">Explore Stories</p>
 
       {remaining !== null && (

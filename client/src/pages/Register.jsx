@@ -58,6 +58,10 @@ function Register() {
   return (
     <div className="register_page">
 
+      <head>
+          <title>Sign Up</title>
+      </head>
+
       <h2 className="register-title">Sign Up</h2>
 
       <div className="register_form_container">

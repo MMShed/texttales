@@ -58,6 +58,10 @@ function Login({setLoggedIn}) {
   return (
     <div className="login_page">
 
+      <head>
+          <title>Login</title>
+      </head>
+
       <h2 className="login-title">Log In</h2>
 
       {/*  ERROR MESSAGE */}
