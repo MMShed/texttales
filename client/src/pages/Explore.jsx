@@ -104,7 +104,6 @@ function Explore() {
                 <p className="story_description">{story.description}</p>
               </div>
 
-              {/* ✅ CONDITIONAL BUTTON */}
               {story.ready ? (
                 <button
                   className="play_button"

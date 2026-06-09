@@ -79,7 +79,7 @@
   opacity: 1;
 }
 
-/* ✅ BUTTON */
+
 .play_button {
   position: absolute;
   bottom: 12px;
@@ -121,10 +121,10 @@
 }
 
 .coming_soon {
-  color: gray;
-  font-style: italic;
-  text-align: center;
-  margin-top: 0.5em;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* RESPONSIVE */
