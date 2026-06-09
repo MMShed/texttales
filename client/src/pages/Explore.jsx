@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import "../styles/pages/Explore.css";
 import { useNavigate } from "react-router-dom";
 
-import "../styles/pages/Explore.css"
-
 function Explore() {
   const navigate = useNavigate();
 
@@ -12,6 +10,9 @@ function Explore() {
 
   const [remaining, setRemaining] = useState(null);
   const [timeLeft, setTimeLeft] = useState(null);
+
+  // ✅ NEW: loading state
+  const [loading, setLoading] = useState(true);
 
   const filter_selections = [
     "All",
@@ -32,56 +33,53 @@ function Explore() {
     return `${hours}h ${minutes}m`;
   }
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          // ✅ Fetch stories
-          const storiesRes = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
-          const storiesData = await storiesRes.json();
-          setStories(storiesData);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true); // ✅ START loading
 
-          // ✅ Fetch limit info
-          const userId = localStorage.getItem("userId");
+        const storiesRes = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
+        const storiesData = await storiesRes.json();
+        setStories(storiesData);
 
-          const limitRes = await fetch(
-            `${import.meta.env.VITE_API_URL}/limit-info`,
-            {
-              headers: userId
-                ? { "x-user-id": userId }
-                : {}
-            }
-          );
+        const userId = localStorage.getItem("userId");
 
-          const limitData = await limitRes.json();
+        const limitRes = await fetch(
+          `${import.meta.env.VITE_API_URL}/limit-info`,
+          {
+            headers: userId ? { "x-user-id": userId } : {}
+          }
+        );
 
-          setRemaining(limitData.remaining);
-          setTimeLeft(limitData.timeLeft);
+        const limitData = await limitRes.json();
 
-        } catch (err) {
-          console.error("Error fetching data:", err);
-        }
-      };
+        setRemaining(limitData.remaining);
+        setTimeLeft(limitData.timeLeft);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      } finally {
+        setLoading(false); // ✅ END loading
+      }
+    };
 
-      fetchData();
-    }, []);
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setTimeLeft((prev) => {
-          if (!prev) return prev;       // don't touch null
-          if (prev <= 1000) return 0;   // stop at 0
-          return prev - 1000;           // subtract 1 second
-        });
-      }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (!prev) return prev;
+        if (prev <= 1000) return 0;
+        return prev - 1000;
+      });
+    }, 1000);
 
-      return () => clearInterval(interval);
-    }, []);
-
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="explore_page">
       <p className="explore_title">Explore Stories</p>
-
 
       {remaining !== null && (
         <div className="limit_banner">
@@ -92,61 +90,62 @@ function Explore() {
         </div>
       )}
 
-      <div className="story_container">
-        {stories.map((story) => (
-          <div key={story._id} className="story_card">
-            <div className="card_content">
-              <h3>{story.title}</h3>
+      {/* ✅ LOADING UI */}
+      {loading ? (
+        <div className="story_container">
+          <p>Loading stories...</p>
+        </div>
+      ) : (
+        <div className="story_container">
+          {stories.map((story) => (
+            <div key={story._id} className="story_card">
+              <div className="card_content">
+                <h3>{story.title}</h3>
+                <p className="story_description">{story.description}</p>
+              </div>
 
-              {/*  hidden description on hover */}
-              <p className="story_description">{story.description}</p>
+              {/* ✅ CONDITIONAL BUTTON */}
+              {story.ready ? (
+                <button
+                  className="play_button"
+                  onClick={async () => {
+                    try {
+                      const userId = localStorage.getItem("userId");
+
+                      const res = await fetch(
+                        `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
+                        {
+                          headers: userId ? { "x-user-id": userId } : {}
+                        }
+                      );
+
+                      const data = await res.json();
+
+                      setRemaining(data.remaining);
+                      setTimeLeft(data.timeLeft);
+
+                      if (!res.ok) {
+                        if (data.error === "FREE_LIMIT_REACHED") {
+                          alert("You've reached the free limit. Please log in.");
+                          return;
+                        }
+                      }
+
+                      navigate(`/stories/${story._id}`);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                >
+                  Play Story
+                </button>
+              ) : (
+                <p className="coming_soon">Coming soon</p>
+              )}
             </div>
-
-            <button
-              className="play_button"
-              onClick={async () => {
-                try {
-                  const userId = localStorage.getItem("userId"); // DEFINE IT HERE
-
-                  const res = await fetch(
-                    `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
-                    {
-                      headers: userId
-                        ? { "x-user-id": userId }
-                        : {}
-                    }
-                  );
-                  
-
-                  const data = await res.json();
-
-                  setRemaining(data.remaining);
-                  setTimeLeft(data.timeLeft);
-
-                  console.log("CHECK DATA:", data)
-
-
-                  if (!res.ok) {
-                    if (data.error === "FREE_LIMIT_REACHED") {
-                      alert("You've reached the free limit. Please log in.");
-                      return;
-                    }
-                  }
-
-                  navigate(`/stories/${story._id}`);
-
-                } catch (err) {
-                  console.error(err);
-                }
-              }}
-            >
-              Play Story
-            </button>
-
-
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

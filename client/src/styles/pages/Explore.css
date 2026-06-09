@@ -120,6 +120,13 @@
   font-weight: 600;
 }
 
+.coming_soon {
+  color: gray;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
 /* RESPONSIVE */
 
 /* Tablet → 2 per row */
