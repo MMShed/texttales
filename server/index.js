@@ -147,6 +147,8 @@ app.get("/stories/:id", async (req, res) => {
       });
     }
 
+    story.view_count += 1
+
     // ✅ ALWAYS send remaining/timeLeft
     res.json({
       story,

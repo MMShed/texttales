@@ -106,6 +106,11 @@ function Explore() {
               <div className="card_content">
                 <h3>{story.title}</h3>
                 <p className="story_description">{story.description}</p>
+
+                <p className="story_views">
+                  👁 {story.view_count || 0} views
+                </p>
+
               </div>
 
               {story.ready ? (
