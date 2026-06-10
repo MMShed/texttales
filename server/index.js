@@ -328,16 +328,20 @@ app.post("/forgot-password", async (req, res) => {
 
     console.log("🚀 Forgot password route hit");
 
-    await transporter.sendMail({
-      from: process.env.EMAIL,
-      to: email,
-      subject: "Password Reset",
-      text: `Click here to reset your password: ${resetLink}`
-    });
+
 
     console.log("✅ Email sent");
 
     res.json({ message: "If an account exists, a reset link has been sent." });
+
+    transporter.transporter.sendMail({
+      from: process.env.EMAIL,
+      to: email,
+      subject: "Password Reset",
+      text: `Click here to reset your password: ${resetLink}`
+    })
+    .then(() => console.log("✅ Email sent"))
+    .catch(err => console.error("❌ Email failed:", err));
 
   } catch (err) {
     console.error(err);
