@@ -11,7 +11,6 @@ function Explore() {
   const [remaining, setRemaining] = useState(null);
   const [timeLeft, setTimeLeft] = useState(null);
 
-  // ✅ NEW: loading state
   const [loading, setLoading] = useState(true);
 
   const filter_selections = [
@@ -36,7 +35,7 @@ function Explore() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true); // ✅ START loading
+        setLoading(true);
 
         const storiesRes = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
         const storiesData = await storiesRes.json();
@@ -55,10 +54,11 @@ function Explore() {
 
         setRemaining(limitData.remaining);
         setTimeLeft(limitData.timeLeft);
+
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
-        setLoading(false); // ✅ END loading
+        setLoading(false); 
       }
     };
 
@@ -97,7 +97,7 @@ function Explore() {
       {/* ✅ LOADING UI */}
       {loading ? (
         <div className="story_container">
-          <p>Loading stories...</p>
+          <p className="loading_message">Loading stories...</p>
         </div>
       ) : (
         <div className="story_container">

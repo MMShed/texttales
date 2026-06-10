@@ -43,6 +43,11 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.loading_message {
+  color: white;
+  font-size: 1.5rem;
+}
+
 
 /* ✅ hover */
 .story_card:hover {
