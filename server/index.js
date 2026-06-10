@@ -326,12 +326,16 @@ app.post("/forgot-password", async (req, res) => {
 
     const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
 
+    console.log("🚀 Forgot password route hit");
+
     await transporter.sendMail({
       from: process.env.EMAIL,
       to: email,
       subject: "Password Reset",
       text: `Click here to reset your password: ${resetLink}`
     });
+
+    console.log("✅ Email sent");
 
     res.json({ message: "If an account exists, a reset link has been sent." });
 
