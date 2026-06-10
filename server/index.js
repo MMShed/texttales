@@ -87,6 +87,7 @@ app.get("/stories/:id", async (req, res) => {
     const isLoggedIn = userId && userId !== "null";
 
     const isCheckOnly = req.query.check === "true";
+    const addView = req.query.addView === "true";
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -147,8 +148,13 @@ app.get("/stories/:id", async (req, res) => {
       });
     }
 
-    story.view_count += 1
-    await story.save(); // saves to database
+
+    if (addView)
+    {
+      story.view_count += 1
+      await story.save(); // saves to database
+    }
+    
 
     // ✅ ALWAYS send remaining/timeLeft
     res.json({
