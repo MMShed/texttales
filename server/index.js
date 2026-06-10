@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt"); //Switch to bcryptjs if things go downhill
 const mongoose = require("mongoose");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -364,7 +364,7 @@ app.post("/reset-password/:token", async (req, res) => {
     }
 
     // hash password (IMPORTANT)
-    const bcrypt = require("bcrypt");
+    //const bcrypt = require("bcrypt");
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
     user.password = hashedPassword;
