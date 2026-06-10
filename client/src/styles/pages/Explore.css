@@ -127,6 +127,12 @@
   justify-content: center;
 }
 
+.story_views {
+  font-size: 0.85rem;
+  color: gray;
+  margin-top: auto
+}
+
 /* RESPONSIVE */
 
 /* Tablet → 2 per row */

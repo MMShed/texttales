@@ -107,46 +107,48 @@ function Explore() {
                 <h3>{story.title}</h3>
                 <p className="story_description">{story.description}</p>
 
-                <p className="story_views">
-                  👁 {story.view_count || 0} views
-                </p>
-
               </div>
 
               {story.ready ? (
-                <button
-                  className="play_button"
-                  onClick={async () => {
-                    try {
-                      const userId = localStorage.getItem("userId");
+                <div>
+                  <button
+                    className="play_button"
+                    onClick={async () => {
+                      try {
+                        const userId = localStorage.getItem("userId");
 
-                      const res = await fetch(
-                        `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
-                        {
-                          headers: userId ? { "x-user-id": userId } : {}
+                        const res = await fetch(
+                          `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
+                          {
+                            headers: userId ? { "x-user-id": userId } : {}
+                          }
+                        );
+
+                        const data = await res.json();
+
+                        setRemaining(data.remaining);
+                        setTimeLeft(data.timeLeft);
+
+                        if (!res.ok) {
+                          if (data.error === "FREE_LIMIT_REACHED") {
+                            alert("You've reached the free limit. Please log in.");
+                            return;
+                          }
                         }
-                      );
 
-                      const data = await res.json();
-
-                      setRemaining(data.remaining);
-                      setTimeLeft(data.timeLeft);
-
-                      if (!res.ok) {
-                        if (data.error === "FREE_LIMIT_REACHED") {
-                          alert("You've reached the free limit. Please log in.");
-                          return;
-                        }
+                        navigate(`/stories/${story._id}`);
+                      } catch (err) {
+                        console.error(err);
                       }
+                    }}
+                  >
+                    Play Story
+                  </button>
 
-                      navigate(`/stories/${story._id}`);
-                    } catch (err) {
-                      console.error(err);
-                    }
-                  }}
-                >
-                  Play Story
-                </button>
+                  <p className="story_views">
+                    👁 {story.view_count || 0} views
+                  </p>
+                </div>
               ) : (
                 <p className="coming_soon">Coming soon</p>
               )}
