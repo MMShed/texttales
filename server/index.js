@@ -139,20 +139,19 @@ app.get("/stories/:id", async (req, res) => {
     }
 
     // ✅ Fetch story
-    const story = await Story.findById(req.params.id);
+    
+    let story;
 
-    if (!story) {
-      return res.status(404).json({
-        error: "Story not found"
-      });
+    if (!isCheckOnly) {
+      story = await Story.findByIdAndUpdate(
+        req.params.id,
+        { $inc: { view_count: 1 } },
+        { new: true }
+      );
+    } else {
+      story = await Story.findById(req.params.id);
     }
 
-
-    
-      if (!isCheckOnly) {
-        story.view_count += 1;
-        await story.save();
-      }
 
     
 
