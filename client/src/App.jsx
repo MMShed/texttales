@@ -13,6 +13,10 @@ import Explore from "./pages/Explore";
 import Register from "./pages/Register";
 import StoryPage from "./pages/StoryPage";
 
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(() => {
     return !!localStorage.getItem("userId");
@@ -38,6 +42,8 @@ function App() {
             <Route path="/explore" element={<Explore />} />
             <Route path="/register" element={<Register />} />
             <Route path="/stories/:id" element={<StoryPage />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
           </Routes>
         </main>
 

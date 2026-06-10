@@ -102,6 +102,10 @@ function Login({setLoggedIn}) {
             <Link to="/register">Sign up</Link>
           </p>
 
+          <p className="forgot_password_link">
+            <Link to="/forgot-password">Forgot your password?</Link>
+          </p>
+
         </form>
 
       </div>

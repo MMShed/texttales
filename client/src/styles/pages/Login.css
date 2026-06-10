@@ -74,6 +74,21 @@
     background-color: darkblue;
 }
 
+.forgot_password_link {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.forgot_password_link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot_password_link a:hover {
+  text-decoration: underline;
+}
+
+
 /* ✅ ERROR */
 .error-text {
     color: red;
