@@ -4,7 +4,9 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const nodemailer = require('nodemailer')
+
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const Usage = require("./models/Usage");
 
@@ -309,8 +311,6 @@ app.post("/login", async (req, res) => {
 
 app.post("/forgot-password", async (req, res) => {
   try {
-    console.log("🚀 Route hit");
-
     const { email } = req.body;
 
     const user = await User.findOne({ email });
@@ -331,27 +331,24 @@ app.post("/forgot-password", async (req, res) => {
 
     console.log("🔗 RESET LINK:", resetLink);
 
-    //SEND RESPONSE FIRST
+    // respond immediately
     res.json({
       message: "If an account exists, a reset link has been sent."
     });
 
-    //EMAIL IN BACKGROUND (NO await)
-    transporter.sendMail({
-      from: process.env.EMAIL,
+    // send email in background
+    sgMail.send({
       to: email,
+      from: process.env.EMAIL,
       subject: "Password Reset",
-      text: `Click here to reset your password: ${resetLink}`
+      text: `Click here to reset your password: ${resetLink}`,
     })
-    .then(() => console.log("✅ Email sent"))
-    .catch(err => console.error("❌ Email error:", err));
+    .then(() => console.log("✅ Email sent via SendGrid"))
+    .catch(err => console.error("❌ SendGrid error:", err));
 
   } catch (err) {
-    console.error("❌ SERVER ERROR:", err);
-
-    res.status(500).json({
-      error: "SERVER_ERROR"
-    });
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
   }
 });
 
