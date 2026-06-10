@@ -37,15 +37,6 @@ app.use(express.json());
 const session = require("express-session");
 
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-
 app.use(session({
   name: "connect.sid",   
   secret: process.env.SESSION_SECRET,
