@@ -110,7 +110,7 @@ function Explore() {
               </div>
 
               {story.ready ? (
-                <div>
+                <div className="story_card_bottom_content">
                   <button
                     className="play_button"
                     onClick={async () => {
@@ -145,9 +145,9 @@ function Explore() {
                     Play Story
                   </button>
 
-                  <p className="story_views">
+                  <div className="story_views">
                     👁 {story.view_count || 0} views
-                  </p>
+                  </div>
                 </div>
               ) : (
                 <p className="coming_soon">Coming soon</p>
