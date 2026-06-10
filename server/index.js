@@ -309,43 +309,47 @@ app.post("/login", async (req, res) => {
 
 app.post("/forgot-password", async (req, res) => {
   try {
+    console.log("🚀 Route hit");
+
     const { email } = req.body;
 
     const user = await User.findOne({ email });
 
-    // Don't reveal if user exists
     if (!user) {
-      return res.json({ message: "If an account exists, a reset link has been sent." });
+      return res.json({
+        message: "If an account exists, a reset link has been sent."
+      });
     }
 
     const token = crypto.randomBytes(32).toString("hex");
 
     user.resetToken = token;
-    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
+    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15;
     await user.save();
 
     const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
 
-    console.log("🚀 Forgot password route hit");
+    //SEND RESPONSE FIRST
+    res.json({
+      message: "If an account exists, a reset link has been sent."
+    });
 
-
-
-    console.log("✅ Email sent");
-
-    res.json({ message: "If an account exists, a reset link has been sent." });
-
-    transporter.transporter.sendMail({
+    //EMAIL IN BACKGROUND (NO await)
+    transporter.sendMail({
       from: process.env.EMAIL,
       to: email,
       subject: "Password Reset",
       text: `Click here to reset your password: ${resetLink}`
     })
     .then(() => console.log("✅ Email sent"))
-    .catch(err => console.error("❌ Email failed:", err));
+    .catch(err => console.error("❌ Email error:", err));
 
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "SERVER_ERROR" });
+    console.error("❌ SERVER ERROR:", err);
+
+    res.status(500).json({
+      error: "SERVER_ERROR"
+    });
   }
 });
 
