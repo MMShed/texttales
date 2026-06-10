@@ -272,6 +272,7 @@ app.post("/register", async (req, res) => {
 
 
 
+
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -283,22 +284,23 @@ app.post("/login", async (req, res) => {
     });
   }
 
-  if (user.password !== password) {
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
     return res.status(400).json({
       error: "INVALID_PASSWORD"
     });
   }
 
-  // Success
+
   req.session.user = user._id;
 
-  
   res.json({
     message: "Login successful",
     userId: user._id
   });
-
 });
+
 
 app.post("/forgot-password", async (req, res) => {
   try {
