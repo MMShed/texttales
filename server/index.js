@@ -313,7 +313,7 @@ app.post("/forgot-password", async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    //Don't reveal if user exists
+    // Don't reveal if user exists
     if (!user) {
       return res.json({ message: "If an account exists, a reset link has been sent." });
     }
