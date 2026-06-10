@@ -329,6 +329,8 @@ app.post("/forgot-password", async (req, res) => {
 
     const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
 
+    console.log("🔗 RESET LINK:", resetLink);
+
     //SEND RESPONSE FIRST
     res.json({
       message: "If an account exists, a reset link has been sent."
