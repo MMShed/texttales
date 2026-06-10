@@ -344,7 +344,11 @@ app.post("/forgot-password", async (req, res) => {
 });
 
 app.post("/reset-password/:token", async (req, res) => {
+  console.log('reset password route hit!')
+
   try {
+    console.log("📦 Body:", req.body);
+
     const { token } = req.params;
     const { newPassword } = req.body;
 
