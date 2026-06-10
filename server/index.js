@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const bcrypt = require("bcrypt"); //Switch to bcryptjs if things go downhill
+const bcrypt = require("bcryptjs"); //Switch to bcryptjs if things go downhill
 const mongoose = require("mongoose");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
