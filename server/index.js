@@ -148,6 +148,7 @@ app.get("/stories/:id", async (req, res) => {
     }
 
     story.view_count += 1
+    await story.save(); // saves to database
 
     // ✅ ALWAYS send remaining/timeLeft
     res.json({
