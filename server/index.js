@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer')
 
 const Usage = require("./models/Usage");
 
@@ -94,13 +95,13 @@ app.get("/stories/:id", async (req, res) => {
     let remaining = null;
     let timeLeft = null;
 
-    // ✅ ONLY track guests
+    //  ONLY track guests
     if (!isLoggedIn) {
       const hashedId = hashIdentifier(ip);
 
       let data = await Usage.findOne({ identifier: hashedId });
 
-      // ✅ Reset window
+      //  Reset window
       if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
         data = await Usage.findOneAndUpdate(
           { identifier: hashedId },
@@ -113,11 +114,11 @@ app.get("/stories/:id", async (req, res) => {
         );
       }
 
-      // ✅ NOW compute remaining/timeLeft (after data exists)
+      //  NOW compute remaining/timeLeft (after data exists)
       remaining = Math.max(0, 4 - data.count);
       timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
 
-      // ✅ LIMIT CHECK
+      //  LIMIT CHECK
       if (data.count >= 4) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED",
@@ -126,19 +127,19 @@ app.get("/stories/:id", async (req, res) => {
         });
       }
 
-      // ✅ Increment only on real fetch
+      //  Increment only on real fetch
       if (!isCheckOnly) {
         await Usage.updateOne(
           { identifier: hashedId },
           { $inc: { count: 1 } }
         );
 
-        // ✅ update remaining AFTER increment
+        //  update remaining AFTER increment
         remaining = Math.max(0, remaining - 1);
       }
     }
 
-    // ✅ Fetch story
+    //  Fetch story
     
     let story;
 
@@ -155,7 +156,7 @@ app.get("/stories/:id", async (req, res) => {
 
     
 
-    // ✅ ALWAYS send remaining/timeLeft
+    //  ALWAYS send remaining/timeLeft
     res.json({
       story,
       remaining,
@@ -183,7 +184,7 @@ app.get("/limit-info", async (req, res) => {
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
 
-    // ✅ Logged-in → unlimited
+    //Logged-in -> unlimited
     if (isLoggedIn) {
       return res.json({
         remaining: null,
@@ -298,10 +299,79 @@ app.post("/login", async (req, res) => {
 
 });
 
+app.post("/forgot-password", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    //Don't reveal if user exists
+    if (!user) {
+      return res.json({ message: "If an account exists, a reset link has been sent." });
+    }
+
+    const token = crypto.randomBytes(32).toString("hex");
+
+    user.resetToken = token;
+    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
+    await user.save();
+
+    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+
+    await transporter.sendMail({
+      from: process.env.EMAIL,
+      to: email,
+      subject: "Password Reset",
+      text: `Click here to reset your password: ${resetLink}`
+    });
+
+    res.json({ message: "If an account exists, a reset link has been sent." });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.post("/reset-password/:token", async (req, res) => {
+  try {
+    const { token } = req.params;
+    const { newPassword } = req.body;
+
+    const user = await User.findOne({
+      resetToken: token,
+      resetTokenExpiry: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      return res.status(400).json({
+        error: "Invalid or expired token"
+      });
+    }
+
+    // hash password (IMPORTANT)
+    const bcrypt = require("bcrypt");
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    user.password = hashedPassword;
+    user.resetToken = undefined;
+    user.resetTokenExpiry = undefined;
+
+    await user.save();
+
+    res.json({ message: "Password reset successful" });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+``
+
 
 
 app.post("/logout", (req, res) => {
-  req.session.user = null; // ✅ remove login only
+  req.session.user = null; //  remove login only
   res.json({ message: "Logged out" });
 });
 
