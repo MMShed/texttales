@@ -118,7 +118,7 @@ function Explore() {
                         const userId = localStorage.getItem("userId");
 
                         const res = await fetch(
-                          `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true&add_view=true`,
+                          `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
                           {
                             headers: userId ? { "x-user-id": userId } : {}
                           }
