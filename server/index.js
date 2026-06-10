@@ -330,11 +330,77 @@ app.post("/forgot-password", async (req, res) => {
     });
 
     // send email in background
-    sgMail.send({
+    
+sgMail.send({
       to: email,
-      from: process.env.EMAIL,
-      subject: "Password Reset",
-      text: `Click here to reset your password: ${resetLink}`,
+      from: process.env.EMAIL, // must be verified
+      subject: "Reset your TextTales password",
+
+      // ✅ fallback text (important for spam filtering)
+      text: `Reset your password here: ${resetLink}`,
+
+      // ✅ YOUR STYLED EMAIL
+      html: `
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif;">
+  <tr>
+    <td align="center">
+
+      <!-- HEADER -->
+      <table width="600" cellpadding="0" cellspacing="0" style="background-color: #000; text-align: center;">
+        <tr>
+          <td style="padding: 30px;">
+            <h1 style="color: #ffffff; margin: 0; font-size: 36px; letter-spacing: 2px;">
+              Text Tales
+            </h1>
+          </td>
+        </tr>
+      </table>
+
+      <!-- BODY -->
+      <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #2a004f, #00008b); color: #ffffff;">
+        <tr>
+          <td style="padding: 40px;">
+
+            <h2 style="margin-top: 0;">Password Reset Requested</h2>
+
+            <p>
+              You requested a password reset for a TextTales account associated with this email.
+            </p>
+
+            <p>
+              Click the button below to continue:
+            </p>
+
+            <!-- BUTTON -->
+            <table cellpadding="0" cellspacing="0" border="0" style="margin: 20px 0;">
+              <tr>
+                <td align="center" style="background-color: #22c55e; border-radius: 6px;">
+                  <a href="${resetLink}" style="color: #ffffff; text-decoration: none; padding: 12px 24px; display: inline-block; font-weight: bold;">
+                    Reset Password
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <p>
+              If you did not request a password reset, you can ignore this email completely.
+            </p>
+
+            <br/>
+
+            <p style="margin-top: 30px;">
+              Stay Creepy,<br/>
+              <strong>TextTales</strong>
+            </p>
+
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+`
     })
     .then(() => console.log("✅ Email sent via SendGrid"))
     .catch(err => console.error("❌ SendGrid error:", err));
