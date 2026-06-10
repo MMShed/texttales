@@ -30,11 +30,19 @@ app.use(cors({
 
 app.use(express.json());
 
-const freeUserLimits = new Map();
-
 
 
 const session = require("express-session");
+
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
 
 app.use(session({
   name: "connect.sid",   
@@ -366,7 +374,7 @@ app.post("/reset-password/:token", async (req, res) => {
     res.status(500).json({ error: "SERVER_ERROR" });
   }
 });
-``
+
 
 
 
