@@ -11,44 +11,47 @@ function StoryPage() {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
 
-  //  fetch story
+  // ✅ NEW: dynamic contact name
+  const [currentContactName, setCurrentContactName] = useState("");
+
+  // fetch story
   useEffect(() => {
-  const fetchStory = async () => {
-    try {
-
-
-      const userId = localStorage.getItem("userId");
+    const fetchStory = async () => {
+      try {
+        const userId = localStorage.getItem("userId");
 
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/stories/${id}`,
           {
-            headers: userId
-              ? { "x-user-id": userId }
-              : {}
+            headers: userId ? { "x-user-id": userId } : {}
           }
         );
 
+        console.log("STORY FETCH STATUS:", res.status);
 
+        if (!res.ok) {
+          console.error("Failed to fetch story");
+          return;
+        }
 
-      console.log("STORY FETCH STATUS:", res.status);
+        const data = await res.json();
+        console.log("STORY DATA:", data);
 
-      if (!res.ok) {
-        console.error("Failed to fetch story");
-        return;
+        setStory(data.story);
+
+        // ✅ initialize contact name
+        setCurrentContactName(
+          data.story.contact_name || "Unknown"
+        );
+      } catch (err) {
+        console.error(err);
       }
+    };
 
-      const data = await res.json();
-      console.log("STORY DATA:", data)
-      setStory(data.story);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    fetchStory();
+  }, [id]);
 
-  fetchStory();
-}, [id]);
-
-  //  start story
+  // start story
   useEffect(() => {
     if (story && story.nodes.length > 0) {
       setMessages([story.nodes[0]]);
@@ -56,41 +59,58 @@ function StoryPage() {
   }, [story]);
 
   const goToNext = (nextId, playerText = null) => {
-  const nextNode = story.nodes.find(
-    (node) => node.nodeId === nextId
-  );
+    const nextNode = story.nodes.find(
+      (node) => node.nodeId === nextId
+    );
 
-  if (!nextNode) return;
+    if (!nextNode) return;
 
-  //  add player message instantly (for choices)
-  if (playerText) {
-    setMessages((prev) => [
-      ...prev,
-      {
-        nodeId: "player-" + Date.now(),
-        speaker: "You",
-        text: playerText,
-        isPlayer: true
+    // ✅ HANDLE COMMAND: new_contact
+    if (nextNode.command === "new_contact") {
+      setCurrentContactName(
+        nextNode.contact_name || "Unknown"
+      );
+
+      setMessages([]); // clear chat
+
+      // continue story automatically
+      if (nextNode.nextNodeId) {
+        setTimeout(() => {
+          goToNext(nextNode.nextNodeId);
+        }, 300);
       }
-    ]);
-  }
 
-  const isNextPlayerMessage =
-    nextNode.speaker === "You";
+      return;
+    }
 
-  //   ONLY show typing if next is NPC
-  if (!isNextPlayerMessage && !nextNode.narrator_text) {
-    setIsTyping(true);
+    // add player message instantly
+    if (playerText) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          nodeId: "player-" + Date.now(),
+          speaker: "You",
+          text: playerText,
+          isPlayer: true
+        }
+      ]);
+    }
 
-    setTimeout(() => {
-      setIsTyping(false);
+    const isNextPlayerMessage =
+      nextNode.speaker === "You";
+
+    // show typing only for NPC text messages
+    if (!isNextPlayerMessage && !nextNode.narrator_text) {
+      setIsTyping(true);
+
+      setTimeout(() => {
+        setIsTyping(false);
+        setMessages((prev) => [...prev, nextNode]);
+      }, 1000);
+    } else {
       setMessages((prev) => [...prev, nextNode]);
-    }, 1000);
-  } else {
-    //  INSTANT for player or narrator
-    setMessages((prev) => [...prev, nextNode]);
-  }
-};
+    }
+  };
 
   if (!story || messages.length === 0) {
     return <div>Loading...</div>;
@@ -100,24 +120,22 @@ function StoryPage() {
 
   return (
     <div className="chat-page">
-
       <head>
-          <title>{story.title}</title>
+        <title>{story.title}</title>
       </head>
 
       <h2 className="story-title">{story.title}</h2>
 
-      {/*  HEADER */}
+      {/* HEADER */}
       <div className="chat-header">
         <div className="avatar"></div>
-        
-          <h3 className="chat-name">
-            {story.contact_name || "Unknown"}
-          </h3>
 
+        <h3 className="chat-name">
+          {currentContactName || "Unknown"}
+        </h3>
       </div>
 
-      {/*  CHAT */}
+      {/* CHAT */}
       <div className="chat-container">
         {messages.map((node, index) => {
           const previous = messages[index - 1];
@@ -126,7 +144,6 @@ function StoryPage() {
             node.speaker &&
             (!previous || previous.speaker !== node.speaker);
 
-          //   FIXED LOGIC (MOST IMPORTANT PART)
           const isPlayerMessage =
             node.speaker === "You" || node.isPlayer;
 
@@ -141,14 +158,14 @@ function StoryPage() {
                   : "npc"
               }`}
             >
-              {/*  NARRATOR */}
+              {/* NARRATOR */}
               {node.narrator_text ? (
                 <div className="narrator-text">
                   {node.narrator_text}
                 </div>
               ) : (
                 <>
-                  {/*  only show name for NPC */}
+                  {/* show name only for NPC */}
                   {!isPlayerMessage && showName && (
                     <h4 className="speaker-name">
                       {node.speaker}
@@ -164,7 +181,7 @@ function StoryPage() {
           );
         })}
 
-        {/*  Typing animation */}
+        {/* Typing animation */}
         {isTyping && (
           <div className="message-container npc">
             <div className="bubble typing">
@@ -176,10 +193,9 @@ function StoryPage() {
         )}
       </div>
 
-      {/*  CHOICES */}
+      {/* CHOICES */}
       <div className="choices">
-        {currentNode.choices &&
-        currentNode.choices.length > 0 ? (
+        {currentNode.choices && currentNode.choices.length > 0 ? (
           currentNode.choices.map((choice) => (
             <button
               key={choice.nextNodeId}
@@ -187,21 +203,19 @@ function StoryPage() {
               onClick={() =>
                 goToNext(choice.nextNodeId, choice.playerText)
               }
-              disabled={isTyping} //  same fix
+              disabled={isTyping}
             >
               {choice.text}
-          </button>
-
+            </button>
           ))
         ) : currentNode.nextNodeId ? (
           <button
             className="choice-btn"
             onClick={() => goToNext(currentNode.nextNodeId)}
-            disabled={isTyping}  //  KEY FIX
+            disabled={isTyping}
           >
             Next
-        </button>
-
+          </button>
         ) : (
           <button
             className="end-btn"
@@ -211,7 +225,6 @@ function StoryPage() {
           </button>
         )}
       </div>
-
     </div>
   );
 }
