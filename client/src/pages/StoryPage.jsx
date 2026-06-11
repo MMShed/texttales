@@ -195,7 +195,7 @@ function StoryPage() {
 
       {/* CHOICES */}
       <div className="choices">
-        {currentNode.choices && currentNode.choices.length > 0 ? (
+        {isTyping ? null : currentNode.choices && currentNode.choices.length > 0 ? (
           currentNode.choices.map((choice) => (
             <button
               key={choice.nextNodeId}
@@ -203,7 +203,6 @@ function StoryPage() {
               onClick={() =>
                 goToNext(choice.nextNodeId, choice.playerText)
               }
-              disabled={isTyping}
             >
               {choice.text}
             </button>
@@ -212,7 +211,6 @@ function StoryPage() {
           <button
             className="choice-btn"
             onClick={() => goToNext(currentNode.nextNodeId)}
-            disabled={isTyping}
           >
             Next
           </button>
