@@ -19,14 +19,26 @@ const cors = require("cors");
 
 const Story = require("./models/Story");
 
+const cloudinary = require("cloudinary").v2;
+
+// configure cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
 const app = express();
 
 app.set("trust proxy", 1);
 
 
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: [
+    "http://localhost:5173",
+    "https://texttales.vercel.app/"
+  ],
+  credentials:true
 }));
 
 
@@ -41,7 +53,7 @@ app.use(session({
   name: "connect.sid",   
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false, // setback to true if needed
 
   cookie: {
     secure: true,
@@ -86,7 +98,16 @@ app.get("/stories/:id", async (req, res) => {
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
     const userId = req.headers["x-user-id"];
-    const isLoggedIn = userId && userId !== "null";
+
+    let isLoggedIn = false;
+
+    if (userId && userId !== "null") {
+      const userExists = await User.exists({ _id: userId });
+
+      if (userExists) {
+        isLoggedIn = true;
+      }
+    }
 
     const isCheckOnly = req.query.check === "true";
 
@@ -154,6 +175,44 @@ app.get("/stories/:id", async (req, res) => {
       story = await Story.findById(req.params.id);
     }
 
+    
+if (story && story.nodes) {
+  const plainStory = story.toObject();
+
+  const updatedNodes = plainStory.nodes.map(node => {
+    if (!node.imagePublicId) return node;
+
+    let imageUrl = null;
+
+    
+    if (isLoggedIn) {
+      imageUrl = cloudinary.utils.private_download_url(
+        node.imagePublicId,
+        node.imageFormat,
+        {
+          type: "upload",
+          resource_type: "image",
+          expires_at: Math.floor(Date.now() / 1000) + 300
+        }
+      );
+    } else {
+      imageUrl = "https://picsum.photos/800/500";
+    }
+
+
+    return {
+      ...node,
+      imageUrl
+    };
+  });
+
+  story = {
+    ...plainStory,
+    nodes: updatedNodes
+  };
+}
+
+
 
     
 
@@ -180,7 +239,16 @@ app.get("/limit-info", async (req, res) => {
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
     const userId = req.headers["x-user-id"];
-    const isLoggedIn = userId && userId !== "null";
+
+    let isLoggedIn = false;
+
+    if (userId && userId !== "null") {
+      const userExists = await User.exists({ _id: userId });
+
+      if (userExists) {
+        isLoggedIn = true;
+      }
+    }
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -453,9 +521,17 @@ app.post("/reset-password/:token", async (req, res) => {
 
 
 app.post("/logout", (req, res) => {
-  req.session.user = null; //  remove login only
-  res.json({ message: "Logged out" });
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).json({ error: "Logout failed" });
+    }
+
+    res.clearCookie("connect.sid"); // remove cookie from browser
+
+    res.json({ message: "Logged out" });
+  });
 });
+
 
 
 

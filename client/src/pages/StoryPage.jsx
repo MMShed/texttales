@@ -172,9 +172,27 @@ function StoryPage() {
                     </h4>
                   )}
 
-                  <div className="bubble">
-                    {node.text}
-                  </div>
+                  
+                  {node.imageUrl && (
+                      <div className="bubble image-bubble">
+                        <div className="image-wrapper">
+                          <img src={node.imageUrl} className="story-image" />
+
+                          {!localStorage.getItem("userId") && (
+                            <div className="image-overlay">
+                              🔒 Create an account to view images
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {node.text && (
+                      <div className="bubble">
+                        {node.text}
+                      </div>
+                    )}
+
                 </>
               )}
             </div>
