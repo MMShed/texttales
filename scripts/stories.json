@@ -1,0 +1,1424 @@
+{
+  "stories": [
+    {
+      "id": "story_1",
+      "title": "Example Story",
+      "description": "This is a test story",
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "Jason",
+          "text": "Hello?",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "Amanda",
+          "text": "Hi",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "command": "new_contact",
+          "contact_name": "Max",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "Max",
+          "text": "I see you found this!",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "narrator_text": "They all hate each other",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "Max",
+          "text": "And who are you?",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "Max",
+          "text": "what?"
+        }
+      ]
+    },
+    {
+      "id": "story_2",
+      "title": "Possession",
+      "description": "When Ash visits his grandmother, he has to fight to survive an evil twisted version of her.",
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "Ash",
+          "text": "Should I stay?",
+          "choices": [
+            {
+              "text": "Stay",
+              "nextNodeId": "node_3"
+            },
+            {
+              "text": "Go",
+              "nextNodeId": "node_4"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "Ashaz",
+          "text": "I'm going home!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "Ashaz",
+          "text": "Nah, I'm staying!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_5",
+          "narrator_text": "The end?"
+        }
+      ]
+    },
+    {
+      "id": "story_3",
+      "title": "Runner",
+      "description": "no",
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "You",
+          "text": "Hello",
+          "choices": [
+            {
+              "text": "Run",
+              "nextNodeId": "node_3"
+            },
+            {
+              "text": "Hide",
+              "nextNodeId": "node_5"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "Max",
+          "text": "Why are you running?",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "You",
+          "text": "Because you stink!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "You",
+          "text": "Go away!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_6",
+          "narrator_text": "the end"
+        }
+      ]
+    },
+    {
+      "id": "story_4",
+      "title": "The Sidewalk Game",
+      "description": "What do you think of when you hear the term 'Sidewalk Game'? Hopscotch? Well, it should've been the case. Unfortunately for Ash and Zara, it is a different story.",
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "Zara",
+          "text": "Yo bro! I'm outside your house right now",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "You",
+          "text": "Right now? Zara it is 1:00 AM! Why are you even out this late?",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "speaker": "Zara",
+          "text": "I just came back from Donaldson. Semester break has just begun for me!",
+          "nextNodeId": "node_3"
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "You",
+          "text": "You came back, just now? This late?",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "Zara",
+          "text": "Yup!",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "Zara",
+          "text": "Anyway, I didn't really expect you to reply to me immediately, so why are you up?",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "You",
+          "text": "Oh, I just submitted my final project of this semester. I'm just playing this random horror game I found, though it is missing the 'horror' aspect.",
+          "nextNodeId": "node_7"
+        },
+        {
+          "nodeId": "node_7",
+          "speaker": "Zara",
+          "text": "What is it about?",
+          "nextNodeId": "node_8"
+        },
+        {
+          "nodeId": "node_8",
+          "speaker": "You",
+          "text": "The player is tasked to collect 8 random pages in a forest while escaping some tall humanoid figure that's trying to kill them.",
+          "nextNodeId": "node_9"
+        },
+        {
+          "nodeId": "node_9",
+          "speaker": "Zara",
+          "text": "Slenderman?",
+          "nextNodeId": "node_10"
+        },
+        {
+          "nodeId": "node_10",
+          "speaker": "You",
+          "text": "Slenderman.",
+          "nextNodeId": "node_11"
+        },
+        {
+          "nodeId": "node_11",
+          "speaker": "You",
+          "text": "But honestly, I'm bored. I'm not tired enough to fall asleep.",
+          "nextNodeId": "node_12"
+        },
+        {
+          "nodeId": "node_12",
+          "speaker": "Zara",
+          "text": "I can't sleep either. I drank like 4 cups of coffee today.",
+          "nextNodeId": "node_13"
+        },
+        {
+          "nodeId": "node_13",
+          "speaker": "You",
+          "text": "What? Why?",
+          "nextNodeId": "node_14"
+        },
+        {
+          "nodeId": "node_14",
+          "speaker": "Zara",
+          "text": "Idk.",
+          "nextNodeId": "node_15"
+        },
+        {
+          "nodeId": "node_15",
+          "speaker": "Zara",
+          "text": "Hey, I have an idea.",
+          "nextNodeId": "node_16"
+        },
+        {
+          "nodeId": "node_16",
+          "speaker": "Zara",
+          "text": "But first of all, do you believe in rituals?",
+          "nextNodeId": "node_17"
+        },
+        {
+          "nodeId": "node_17",
+          "speaker": "You",
+          "text": "What do you mean? Like, the elevator game? The staircase game?",
+          "nextNodeId": "node_18"
+        },
+        {
+          "nodeId": "node_18",
+          "speaker": "Zara",
+          "text": "Yes!",
+          "nextNodeId": "node_19"
+        },
+        {
+          "nodeId": "node_19",
+          "speaker": "You",
+          "text": "Then no. I don't believe in those stories.",
+          "nextNodeId": "node_20"
+        },
+        {
+          "nodeId": "node_20",
+          "speaker": "You",
+          "text": "They sound as bogus as the Sadit Jordan and Adriana Smith case.",
+          "nextNodeId": "node_21"
+        },
+        {
+          "nodeId": "node_21",
+          "speaker": "Zara",
+          "text": "I agree with you.",
+          "nextNodeId": "node_22"
+        },
+        {
+          "nodeId": "node_22",
+          "speaker": "Zara",
+          "text": "That's why I propose we play 'The Sidewalk Game'",
+          "nextNodeId": "node_23"
+        },
+        {
+          "nodeId": "node_23",
+          "speaker": "You",
+          "text": "Okay, now these things are just being made up. 'The Sidewalk Game'???",
+          "nextNodeId": "node_24"
+        },
+        {
+          "nodeId": "node_24",
+          "speaker": "You",
+          "text": "What even is that? And how do we play it?",
+          "nextNodeId": "node_25"
+        },
+        {
+          "nodeId": "node_25",
+          "speaker": "Zara",
+          "text": "I'm glad you asked! (I was going to tell you anyway)",
+          "nextNodeId": "node_26"
+        },
+        {
+          "nodeId": "node_26",
+          "speaker": "Zara",
+          "text": "For this game to work, 2 players are needed. This will only work if the players play this game in the times 12:00 AM - 4:30 AM.",
+          "nextNodeId": "node_27"
+        },
+        {
+          "nodeId": "node_27",
+          "speaker": "Zara",
+          "text": "First, both players need to have an object - ideally something that means a lot to them.",
+          "nextNodeId": "node_28"
+        },
+        {
+          "nodeId": "node_28",
+          "speaker": "Zara",
+          "text": "Then, the 2 players must be on the opposing sidewalks of the main road. One of the players must be further down the road than the other person.",
+          "nextNodeId": "node_29"
+        },
+        {
+          "nodeId": "node_29",
+          "speaker": "Zara",
+          "text": "To start, both players must say the phrase 'The sidewalk I walk on, the sidewalk I stay on, the sidewalk I move on'. Stupid, I know.",
+          "nextNodeId": "node_30"
+        },
+        {
+          "nodeId": "node_30",
+          "speaker": "Zara",
+          "text": "Then both players must step forward exactly 41 times. Ideally, after the 41 steps, both players should be beside the other player's starting point, but instead still on their own sidewalk.",
+          "nextNodeId": "node_31"
+        },
+        {
+          "nodeId": "node_31",
+          "speaker": "Zara",
+          "text": "The players must then place their selected object on the sidewalk with their right hand.",
+          "nextNodeId": "node_32"
+        },
+        {
+          "nodeId": "node_32",
+          "speaker": "Zara",
+          "text": "Finally, the players must walk back to their original starting points. HOWEVER, and this is the most important part, the players have to face down, and to NEVER look behind them as they walk back. If the ritual is successful, both players will see the other player's object at their original starting point.",
+          "nextNodeId": "node_33"
+        },
+        {
+          "nodeId": "node_33",
+          "speaker": "Zara",
+          "text": "Any questions or comments?",
+          "nextNodeId": "node_34"
+        },
+        {
+          "nodeId": "node_34",
+          "speaker": "You",
+          "text": "I have a comment - THIS IS PURE STUPIDITY! Please tell me, who would actually believe in such buffoonery like this?",
+          "nextNodeId": "node_35"
+        },
+        {
+          "nodeId": "node_35",
+          "speaker": "Zara",
+          "text": "I don't believe it either, trust me, which is why I say we play it anyway, just for the game.",
+          "nextNodeId": "node_36"
+        },
+        {
+          "nodeId": "node_36",
+          "speaker": "You",
+          "text": "Alright, fine. I guess I'll use my teddy bear plush my childhood friend gave to me before he moved away.",
+          "nextNodeId": "node_37"
+        },
+        {
+          "nodeId": "node_37",
+          "speaker": "Zara",
+          "text": "aww",
+          "nextNodeId": "node_38"
+        },
+        {
+          "nodeId": "node_38",
+          "speaker": "You",
+          "text": "Shut up",
+          "nextNodeId": "node_39"
+        },
+        {
+          "nodeId": "node_39",
+          "speaker": "You",
+          "text": "What about you? What object are you going to use?",
+          "nextNodeId": "node_40"
+        },
+        {
+          "nodeId": "node_40",
+          "speaker": "Zara",
+          "text": "The bracelet Emily gave me before moving to Australia.",
+          "nextNodeId": "node_41"
+        },
+        {
+          "nodeId": "node_41",
+          "speaker": "You",
+          "text": "I have not heard of her name in a while. Are you still in contact with her? If so, tell her I said 'hi'.",
+          "nextNodeId": "node_42"
+        },
+        {
+          "nodeId": "node_42",
+          "speaker": "Zara",
+          "text": "Thankfully yes, we're both still in contact. I'll send her your message once I get home.",
+          "nextNodeId": "node_43"
+        },
+        {
+          "nodeId": "node_43",
+          "speaker": "Zara",
+          "text": "Now, enough chit chat. Let's get this game on the road.",
+          "nextNodeId": "node_44"
+        },
+        {
+          "nodeId": "node_44",
+          "speaker": "Zara",
+          "text": "Well, on the sidewalk.",
+          "nextNodeId": "node_45"
+        },
+        {
+          "nodeId": "node_45",
+          "speaker": "You",
+          "text": "You are sooo funny. You should be a comedian, ya know?",
+          "nextNodeId": "node_46"
+        },
+        {
+          "nodeId": "node_46",
+          "speaker": "Zara",
+          "text": "Thank you.",
+          "nextNodeId": "node_47"
+        },
+        {
+          "nodeId": "node_47",
+          "speaker": "Zara",
+          "text": "I just realized, your parents' cars aren't in the driveway?",
+          "nextNodeId": "node_48"
+        },
+        {
+          "nodeId": "node_48",
+          "speaker": "You",
+          "text": "They went out of the country because my mom is opening a new location of her franchise in Jordan.",
+          "nextNodeId": "node_49"
+        },
+        {
+          "nodeId": "node_49",
+          "speaker": "Zara",
+          "text": "Why didn't you go with them?",
+          "nextNodeId": "node_50"
+        },
+        {
+          "nodeId": "node_50",
+          "speaker": "You",
+          "text": "My mother was opening the new location during my finals week, so I couldn't really go. They'll be back in like, 4 days.",
+          "nextNodeId": "node_51"
+        },
+        {
+          "nodeId": "node_51",
+          "speaker": "Zara",
+          "text": "Alright! Maybe you should throw a party or something once we finish this game.",
+          "nextNodeId": "node_52"
+        },
+        {
+          "nodeId": "node_52",
+          "speaker": "You",
+          "text": "Maybe I will. Anyway, I'm coming out of the house now.",
+          "nextNodeId": "node_53"
+        },
+        {
+          "nodeId": "node_53",
+          "speaker": "Zara",
+          "text": "I see you!",
+          "nextNodeId": "node_54"
+        },
+        {
+          "nodeId": "node_54",
+          "speaker": "You",
+          "text": "I see you too, though you are on the other sidewalk, so we're gonna have to text to communicate.",
+          "nextNodeId": "node_55"
+        },
+        {
+          "nodeId": "node_55",
+          "speaker": "Zara",
+          "text": "Fine by me - your voice is kind of annoying anyway XD",
+          "nextNodeId": "node_56"
+        },
+        {
+          "nodeId": "node_56",
+          "speaker": "You",
+          "text": "Hey!",
+          "nextNodeId": "node_57"
+        },
+        {
+          "nodeId": "node_57",
+          "speaker": "Zara",
+          "text": "I'm just kidding! Or am I?",
+          "nextNodeId": "node_58"
+        },
+        {
+          "nodeId": "node_58",
+          "speaker": "You",
+          "text": "Zara",
+          "nextNodeId": "node_59"
+        },
+        {
+          "nodeId": "node_59",
+          "speaker": "Zara",
+          "text": "Anyway, I guess I'll be the one to be at the lower end of the road.",
+          "nextNodeId": "node_60"
+        },
+        {
+          "nodeId": "node_60",
+          "narrator_text": "41 steps later...",
+          "nextNodeId": "node_61"
+        },
+        {
+          "nodeId": "node_61",
+          "speaker": "Zara",
+          "text": "Alright, I made it!",
+          "nextNodeId": "node_62"
+        },
+        {
+          "nodeId": "node_62",
+          "speaker": "You",
+          "text": "I didn't think 41 steps would be much, but wow! You went so far, I can't see you anymore even with these street lights!",
+          "nextNodeId": "node_63"
+        },
+        {
+          "nodeId": "node_63",
+          "speaker": "Zara",
+          "text": "Good thing we're texting right now, huh?",
+          "nextNodeId": "node_64"
+        },
+        {
+          "nodeId": "node_64",
+          "speaker": "You",
+          "text": "For sure. Anyway, you ready to start?",
+          "nextNodeId": "node_65"
+        },
+        {
+          "nodeId": "node_65",
+          "speaker": "Zara",
+          "text": "Yup, let's start!",
+          "nextNodeId": "node_66"
+        },
+        {
+          "nodeId": "node_66",
+          "narrator_text": "They both say the starting line.",
+          "nextNodeId": "node_67"
+        },
+        {
+          "nodeId": "node_67",
+          "speaker": "You",
+          "text": "Alright, I just said the line. You?",
+          "nextNodeId": "node_68"
+        },
+        {
+          "nodeId": "node_68",
+          "speaker": "Zara",
+          "text": "Yes. Let's start counting!",
+          "nextNodeId": "node_69"
+        },
+        {
+          "nodeId": "node_69",
+          "narrator_text": "41 steps later...",
+          "nextNodeId": "node_70"
+        },
+        {
+          "nodeId": "node_70",
+          "speaker": "Zara",
+          "text": "Just made it to 41 steps.",
+          "nextNodeId": "node_71"
+        },
+        {
+          "nodeId": "node_71",
+          "speaker": "You",
+          "text": "Same. I just placed my item down.",
+          "nextNodeId": "node_72"
+        },
+        {
+          "nodeId": "node_72",
+          "speaker": "Zara",
+          "text": "Same. Now remember, once you turn around, do not look back no matter what. Keep your head down, and",
+          "nextNodeId": "node_73"
+        },
+        {
+          "nodeId": "node_73",
+          "speaker": "Zara",
+          "text": "And I should've told you this earlier, but other versions of this legend tells you to stop moving if you feel breathing down your neck. So do just that. Got it?",
+          "nextNodeId": "node_74"
+        },
+        {
+          "nodeId": "node_74",
+          "speaker": "Zara",
+          "text": "Ash...?",
+          "nextNodeId": "node_75"
+        },
+        {
+          "nodeId": "node_75",
+          "speaker": "Zara",
+          "text": "Ash you there, man?",
+          "nextNodeId": "node_76"
+        },
+        {
+          "nodeId": "node_76",
+          "speaker": "Zara",
+          "text": "Okay, you know what, I'm going to start walking back to my original position. Please text me when you return to your starting spot.",
+          "nextNodeId": "node_77"
+        },
+        {
+          "nodeId": "node_77",
+          "speaker": "You",
+          "text": "Zara",
+          "nextNodeId": "node_78"
+        },
+        {
+          "nodeId": "node_78",
+          "speaker": "You",
+          "text": "You texted me at the perfect time - I felt breathing right down my neck as soon as I took 3 steps forward.",
+          "nextNodeId": "node_79"
+        },
+        {
+          "nodeId": "node_79",
+          "speaker": "You",
+          "text": "I'm returning back to my starting spot now - 38 steps now. Let me know when you get back.",
+          "nextNodeId": "node_80"
+        },
+        {
+          "nodeId": "node_80",
+          "speaker": "Zara",
+          "text": "Ash... what do you see on your sidewalk?",
+          "nextNodeId": "node_81"
+        },
+        {
+          "nodeId": "node_81",
+          "speaker": "Ash",
+          "text": "What do you mean? I'm not there yet",
+          "nextNodeId": "node_82"
+        },
+        {
+          "nodeId": "node_82",
+          "speaker": "You",
+          "text": "I just have a few more steps until I",
+          "nextNodeId": "node_83"
+        },
+        {
+          "nodeId": "node_83",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_84"
+        },
+        {
+          "nodeId": "node_84",
+          "speaker": "You",
+          "text": "Did you place your bracelet on my driveway?",
+          "nextNodeId": "node_85"
+        },
+        {
+          "nodeId": "node_85",
+          "speaker": "Zara",
+          "text": "No",
+          "nextNodeId": "node_86"
+        },
+        {
+          "nodeId": "node_86",
+          "speaker": "Zara",
+          "text": "I'm also going to assume you didn't place your teddy bear at my starting point?",
+          "nextNodeId": "node_87"
+        },
+        {
+          "nodeId": "node_87",
+          "speaker": "You",
+          "text": "No",
+          "nextNodeId": "node_88"
+        },
+        {
+          "nodeId": "node_88",
+          "speaker": "You",
+          "text": "So what do the legends say? What happens if the ritual works?",
+          "nextNodeId": "node_89"
+        },
+        {
+          "nodeId": "node_89",
+          "speaker": "Zara",
+          "text": "Well, if it works, apparently we get taken to an exact reiplica of our world, except the players would be the only humans there.",
+          "nextNodeId": "node_90"
+        },
+        {
+          "nodeId": "node_90",
+          "speaker": "You",
+          "text": "THat's just complete nonsense. You're telling me that by simply saying some simple words, placing an object, and coming back is enough to take you to a different dimension?",
+          "nextNodeId": "node_91"
+        },
+        {
+          "nodeId": "node_91",
+          "speaker": "Zara",
+          "text": "Well it seems like it. Notice how no cars are driving by now?",
+          "nextNodeId": "node_92"
+        },
+        {
+          "nodeId": "node_92",
+          "speaker": "Zara",
+          "text": "And before you give me the 'oh because it's like 1:30 in the morning' excuse, remember that even around this time you'd see a car drive by.",
+          "nextNodeId": "node_93"
+        },
+        {
+          "nodeId": "node_93",
+          "speaker": "You",
+          "text": "Ig we'll just wait it out for some time, to see if any car drives by.",
+          "nextNodeId": "node_94"
+        },
+        {
+          "nodeId": "node_94",
+          "speaker": "Zara",
+          "text": "And another piece of evidence to prove my point - you know the wings store that's near your house? You were near there when you reached 41 steps from your starting point.",
+          "nextNodeId": "node_95"
+        },
+        {
+          "nodeId": "node_95",
+          "speaker": "You",
+          "text": "Yeah?",
+          "nextNodeId": "node_96"
+        },
+        {
+          "nodeId": "node_96",
+          "speaker": "Zara",
+          "text": "It's usually the only store open around this hour. The lights are on, but where's the man who usually works the shift around this hour? I don't see him at the counter like usual.",
+          "nextNodeId": "node_97"
+        },
+        {
+          "nodeId": "node_97",
+          "speaker": "You",
+          "text": "Oh, you mean Yusuf? He probably went into the kitchen to prepare an order he likely received over the phone.",
+          "nextNodeId": "node_98"
+        },
+        {
+          "nodeId": "node_98",
+          "speaker": "Zara",
+          "text": "I just went in. I rang the bell a couple times. No one's showing up.",
+          "nextNodeId": "node_99"
+        },
+        {
+          "nodeId": "node_99",
+          "speaker": "You",
+          "text": "Just be patient, He'll proobably be out in a minute.",
+          "nextNodeId": "node_100"
+        },
+        {
+          "nodeId": "node_100",
+          "speaker": "Zara",
+          "text": "Yeah uhmm, I'm actually not concerned about that anymore.",
+          "nextNodeId": "node_101"
+        },
+        {
+          "nodeId": "node_101",
+          "speaker": "You",
+          "text": "Oh he's out? See? I told you he was just working.",
+          "nextNodeId": "node_102"
+        },
+        {
+          "nodeId": "node_102",
+          "speaker": "You",
+          "text": "Don't order without me! I could really go for some fries and a veggie burger",
+          "nextNodeId": "node_103"
+        },
+        {
+          "nodeId": "node_103",
+          "speaker": "Zara",
+          "text": "That's not why I'm not concerned anymore.",
+          "nextNodeId": "node_104"
+        },
+        {
+          "nodeId": "node_104",
+          "speaker": "Zara",
+          "text": "I'm looking at the TV right now. It's on the news channel. But, there's no news reporters on the screen, like at all. It's just the background where the anchors usually sit to give news.",
+          "nextNodeId": "node_105"
+        },
+        {
+          "nodeId": "node_105",
+          "speaker": "Zara",
+          "text": "And now I'm also looking at the traffic cameras - there's no cars, on the highways like at all.",
+          "nextNodeId": "node_106"
+        },
+        {
+          "nodeId": "node_106",
+          "speaker": "You",
+          "text": "What?",
+          "nextNodeId": "node_107"
+        },
+        {
+          "nodeId": "node_107",
+          "speaker": "Zara",
+          "text": "Ash, tell me. Did you hear a single car drive by?",
+          "nextNodeId": "node_108"
+        },
+        {
+          "nodeId": "node_108",
+          "speaker": "You",
+          "text": "Well, no.",
+          "nextNodeId": "node_109"
+        },
+        {
+          "nodeId": "node_109",
+          "speaker": "You",
+          "text": "That means",
+          "nextNodeId": "node_110"
+        },
+        {
+          "nodeId": "node_110",
+          "speaker": "Zara",
+          "text": "The ritual worked! We're the only humans in this dimension.",
+          "nextNodeId": "node_111"
+        },
+        {
+          "nodeId": "node_111",
+          "speaker": "You",
+          "text": "Okay, I believe the game now.",
+          "nextNodeId": "node_112"
+        },
+        {
+          "nodeId": "node_112",
+          "speaker": "You",
+          "text": "Idk about you, but I don't want to be here anymore.",
+          "nextNodeId": "node_113"
+        },
+        {
+          "nodeId": "node_113",
+          "speaker": "Zara",
+          "text": "Neither do I.",
+          "nextNodeId": "node_114"
+        },
+        {
+          "nodeId": "node_114",
+          "speaker": "Zara",
+          "text": "Okay, the good news is, Emily told me everything about this game. I'm just going to scroll back through our chats for a bit to find out how to return to our world.",
+          "nextNodeId": "node_115"
+        },
+        {
+          "nodeId": "node_115",
+          "speaker": "You",
+          "text": "Emily was the one who told you about this game?",
+          "nextNodeId": "node_116"
+        },
+        {
+          "nodeId": "node_116",
+          "speaker": "Zara",
+          "text": "I'm busy, getting the info back, so don't expect a reply from me for a few minutes.",
+          "nextNodeId": "node_117"
+        },
+        {
+          "nodeId": "node_117",
+          "speaker": "You",
+          "text": "Alright, I'm gonna go explore for a bit.",
+          "nextNodeId": "node_118"
+        },
+        {
+          "nodeId": "node_118",
+          "narrator_text": "5 minutes later...",
+          "nextNodeId": "node_119"
+        },
+        {
+          "nodeId": "node_119",
+          "speaker": "Zara",
+          "text": "Okay! I got it!",
+          "nextNodeId": "node_120"
+        },
+        {
+          "nodeId": "node_120",
+          "speaker": "Zara",
+          "text": "Basically, we have to again be on opposing sidewalks. Only this time, we have to be on the sidewalk where the other person's object or example, I have to be on the sidewalk where your teddy bear currently is, and you have to be on the sidewalk where my bracelet is.",
+          "nextNodeId": "node_121"
+        },
+        {
+          "nodeId": "node_121",
+          "narrator_text": "Ash and Zara return to their respective sidewalks",
+          "nextNodeId": "node_122"
+        },
+        {
+          "nodeId": "node_122",
+          "speaker": "Zara",
+          "text": "Now, instead of walking this time, we have to run. We have to run 41 steps from our objects, turn around, and run 41 steps back. If we are back in our world, the objects that are meaningful to us should be back at the point we start.",
+          "nextNodeId": "node_123"
+        },
+        {
+          "nodeId": "node_123",
+          "speaker": "Zara",
+          "text": "THis time, we don't have to worry about anybody behind us.",
+          "nextNodeId": "node_124"
+        },
+        {
+          "nodeId": "node_124",
+          "speaker": "You",
+          "text": "Well that's a relief. Alright, I'm running now!",
+          "nextNodeId": "node_125"
+        },
+        {
+          "nodeId": "node_125",
+          "speaker": "Zara",
+          "text": "Same!",
+          "nextNodeId": "node_126"
+        },
+        {
+          "nodeId": "node_126",
+          "speaker": "You",
+          "text": "I can't wait to see cars move in the neighborhood again!",
+          "nextNodeId": "node_127"
+        },
+        {
+          "nodeId": "node_127",
+          "speaker": "Zara",
+          "text": "I just want to see other humans again.",
+          "nextNodeId": "node_128"
+        },
+        {
+          "nodeId": "node_128",
+          "speaker": "You",
+          "text": "I'm gonna say hi to Yusuf once we get back, and get the largest order of fries ever known to mankind!",
+          "nextNodeId": "node_129"
+        },
+        {
+          "nodeId": "node_129",
+          "speaker": "Zara",
+          "text": "...",
+          "nextNodeId": "node_130"
+        },
+        {
+          "nodeId": "node_130",
+          "speaker": "You",
+          "text": "Zara?",
+          "nextNodeId": "node_131"
+        },
+        {
+          "nodeId": "node_131",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_132"
+        },
+        {
+          "nodeId": "node_132",
+          "speaker": "You",
+          "text": "I came back to my starting point, but instead of seeing my teddy bear, there's blood on your bracelet now.",
+          "nextNodeId": "node_133"
+        },
+        {
+          "nodeId": "node_133",
+          "speaker": "Zara",
+          "text": "And there's blood on your teddy bear.",
+          "nextNodeId": "node_134"
+        },
+        {
+          "nodeId": "node_134",
+          "speaker": "You",
+          "text": "Did we screw up the ritual?",
+          "nextNodeId": "node_135"
+        },
+        {
+          "nodeId": "node_135",
+          "speaker": "Zara",
+          "text": "Okay, let's retrace our steps",
+          "nextNodeId": "node_136"
+        },
+        {
+          "nodeId": "node_136",
+          "speaker": "Zara",
+          "text": "We both started at opposing sidewalks",
+          "nextNodeId": "node_137"
+        },
+        {
+          "nodeId": "node_137",
+          "speaker": "Zara",
+          "text": "We both said the statement 'The sidewalk I walk on, the sidewalk I stay on, the sidewalk I move on'",
+          "nextNodeId": "node_138"
+        },
+        {
+          "nodeId": "node_138",
+          "speaker": "Zara",
+          "text": "We both walked exactly 41 steps in opposing directions, and placed our objects with our right hands",
+          "nextNodeId": "node_139"
+        },
+        {
+          "nodeId": "node_139",
+          "speaker": "You",
+          "text": "Wait, stop! You said 'right' hand ...?",
+          "nextNodeId": "node_140"
+        },
+        {
+          "nodeId": "node_140",
+          "speaker": "Zara",
+          "text": "yeah?",
+          "nextNodeId": "node_141"
+        },
+        {
+          "nodeId": "node_141",
+          "speaker": "Zara",
+          "text": "...",
+          "nextNodeId": "node_142"
+        },
+        {
+          "nodeId": "node_142",
+          "speaker": "Zara",
+          "text": "Don't tell me you-",
+          "nextNodeId": "node_143"
+        },
+        {
+          "nodeId": "node_143",
+          "speaker": "You",
+          "text": "I placed it with my left hand!",
+          "nextNodeId": "node_144"
+        },
+        {
+          "nodeId": "node_144",
+          "speaker": "Zara",
+          "text": "ASH!",
+          "nextNodeId": "node_145"
+        },
+        {
+          "nodeId": "node_145",
+          "speaker": "You",
+          "text": "I'm sorry! I was focused on making 41 steps, I forgot about the hand rule.",
+          "nextNodeId": "node_146"
+        },
+        {
+          "nodeId": "node_146",
+          "speaker": "You",
+          "text": "Zara ... I see something",
+          "nextNodeId": "node_147"
+        },
+        {
+          "nodeId": "node_147",
+          "speaker": "Zara",
+          "text": "What do you see?",
+          "nextNodeId": "node_148"
+        },
+        {
+          "nodeId": "node_148",
+          "speaker": "You",
+          "text": "Zara, did you change sidewalks?",
+          "nextNodeId": "node_149"
+        },
+        {
+          "nodeId": "node_149",
+          "speaker": "Zara",
+          "text": "No? Why?",
+          "nextNodeId": "node_150"
+        },
+        {
+          "nodeId": "node_150",
+          "speaker": "You",
+          "text": "I see, you.",
+          "nextNodeId": "node_151"
+        },
+        {
+          "nodeId": "node_151",
+          "speaker": "You",
+          "text": "Standing on the same sidewalk as I, staring at me.",
+          "nextNodeId": "node_152"
+        },
+        {
+          "nodeId": "node_152",
+          "speaker": "You",
+          "text": "But you look, creepy. You don't have any eyes. You're covered in blood, and you look more pale than usual.",
+          "nextNodeId": "node_153"
+        },
+        {
+          "nodeId": "node_153",
+          "speaker": "Zara",
+          "text": "Ash, run.",
+          "nextNodeId": "node_154"
+        },
+        {
+          "nodeId": "node_154",
+          "speaker": "Zara",
+          "text": "THAT'S NOT ME",
+          "nextNodeId": "node_155"
+        },
+        {
+          "nodeId": "node_155",
+          "speaker": "You",
+          "text": "I'M RUNNING FOR MY LIFE! IDK WHERE I'M GOING",
+          "nextNodeId": "node_156"
+        },
+        {
+          "nodeId": "node_156",
+          "speaker": "You",
+          "text": "I just got another glance at your clone. Her mouth is completely sewn shut.",
+          "nextNodeId": "node_157"
+        },
+        {
+          "nodeId": "node_157",
+          "speaker": "Zara",
+          "text": "wait, what?",
+          "nextNodeId": "node_158"
+        },
+        {
+          "nodeId": "node_158",
+          "command": "new_contact",
+          "contact_name": "Emily",
+          "nextNodeId": "node_159"
+        },
+        {
+          "nodeId": "node_159",
+          "speaker": "Emily",
+          "text": "Hey Zara!",
+          "nextNodeId": "node_160"
+        },
+        {
+          "nodeId": "node_160",
+          "speaker": "You",
+          "text": "Emily, hi! I haven't heard from you in a while. How have you been?",
+          "nextNodeId": "node_161"
+        },
+        {
+          "nodeId": "node_161",
+          "speaker": "Emily",
+          "text": "I've been doing great! This new job was soooo worth the move. I get to enjoy a beautiful sunset after I finish my shift, and I get paid enough to actually afford necessities.",
+          "nextNodeId": "node_162"
+        },
+        {
+          "nodeId": "node_162",
+          "speaker": "Emily",
+          "text": "We should plan a time for you to visit me.",
+          "nextNodeId": "node_163"
+        },
+        {
+          "nodeId": "node_163",
+          "speaker": "You",
+          "text": "I would love to. I wish I can plan right now, but university has gotten me on a chokehold. I would love to move to Jordan.",
+          "nextNodeId": "node_164"
+        },
+        {
+          "nodeId": "node_164",
+          "speaker": "Emily",
+          "text": "Oh yeah! I've been diving deep into urban legends recently. I found out there's a game called 'The Sidewalk Game'",
+          "nextNodeId": "node_165"
+        },
+        {
+          "nodeId": "node_165",
+          "speaker": "You",
+          "text": "Sounds silly, yet interesting. Tell me more about it!",
+          "nextNodeId": "node_166"
+        },
+        {
+          "nodeId": "node_166",
+          "speaker": "Emily",
+          "text": "So the way it works is there needs to be 2 players. This game only works between 12 AM - 4:30 AM in whatever timezone they're in. Both players need to select an object that holds meaning to them. To start the game, both players need to be on the opposing sidewalks of the same road, and one must be further down the street than the other player, 41 steps. Once the other player is at the distance, both players start the game by saying 'The sidewalk I walk on, the sidewalk I stay on, the sidewalk I move on', and then count exactly 41 steps from their starting points.",
+          "nextNodeId": "node_167"
+        },
+        {
+          "nodeId": "node_167",
+          "speaker": "Emily",
+          "text": "Once they reach 41 steps, the players place down their selected objects with ideally their right hand as it gives the players a better chance to leave the game than if they did it with their left hand.",
+          "nextNodeId": "node_168"
+        },
+        {
+          "nodeId": "node_168",
+          "speaker": "Emily",
+          "text": "Now, this is the most important part: After you place down the item, you must say 'This is the care I own, and am willing to share' BEFORE you turn around.",
+          "nextNodeId": "node_169"
+        },
+        {
+          "nodeId": "node_169",
+          "speaker": "Emily",
+          "text": "After you turn around, DO NOT LOOK BACK. You must count exactly 41 spots from your current spot and try to walk back to your starting point. If at any point you feel breathing down your neck, STOP. Do not move at all! Do not look back either, no matter how scared or curious you are! The breathing will eventually go away.",
+          "nextNodeId": "node_170"
+        },
+        {
+          "nodeId": "node_170",
+          "speaker": "Emily",
+          "text": "Once it does, continue where you left off and keep moving to your spawn point.",
+          "nextNodeId": "node_171"
+        },
+        {
+          "nodeId": "node_171",
+          "speaker": "Emily",
+          "text": "If you've done the ritual correctly, your partner's object should be at the spot where you started from.",
+          "nextNodeId": "node_172"
+        },
+        {
+          "nodeId": "node_172",
+          "speaker": "Emily",
+          "text": "The ritual being a success means the players are in an alternate world, where they are the only normal humans. Key word, normal.",
+          "nextNodeId": "node_173"
+        },
+        {
+          "nodeId": "node_173",
+          "speaker": "Emily",
+          "text": "Once the players reach the world, they will only see themselves. No other humans anywhere, no matter, how hard you try.",
+          "nextNodeId": "node_174"
+        },
+        {
+          "nodeId": "node_174",
+          "speaker": "Emily",
+          "text": "They'll be safe for now.",
+          "nextNodeId": "node_175"
+        },
+        {
+          "nodeId": "node_175",
+          "speaker": "Emily",
+          "text": "It's the ritual they have to do afterwards that's risky, because the way the players did the ritual to take them to the world is what affects the possibility of the players successfully returning to the original world.",
+          "nextNodeId": "node_176"
+        },
+        {
+          "nodeId": "node_176",
+          "speaker": "Emily",
+          "text": "To attempt to bring themselves back to the original world, the players must return to the sidewalks where they started from, and run 41 steps away from the object and then run 41 steps back to the object's position.",
+          "nextNodeId": "node_177"
+        },
+        {
+          "nodeId": "node_177",
+          "speaker": "Emily",
+          "text": "If the ritual was successful, the objects the players originally selected will be right in front of them. If not, the objects will not switch, and there will be blood present.",
+          "nextNodeId": "node_178"
+        },
+        {
+          "nodeId": "node_178",
+          "speaker": "Emily",
+          "text": "If the latter happens, it's too late. A disfigured humanoid clone of the player will chase them down with the intention to kill. The ways thures will be disfigured will depend on the mistakes the respective player made in the original.",
+          "nextNodeId": "node_179"
+        },
+        {
+          "nodeId": "node_179",
+          "speaker": "Emily",
+          "text": "For example, let player A be someone who forgot to say one of the lines during the first ritual. Their clone from the other world in result will have their mouth sewn shut.",
+          "nextNodeId": "node_180"
+        },
+        {
+          "nodeId": "node_180",
+          "speaker": "Emily",
+          "text": "And once that clone kills you, your consciousness will transfer to that very clone. Your memories from the other world will be erased, and that clone will take consciousness in your body in the original world.",
+          "nextNodeId": "node_181"
+        },
+        {
+          "nodeId": "node_181",
+          "speaker": "You",
+          "text": "WHat?",
+          "nextNodeId": "node_182"
+        },
+        {
+          "nodeId": "node_182",
+          "speaker": "Emily",
+          "text": "The reason why these clones want to kill is to escape their world, and live in the original world.",
+          "nextNodeId": "node_183"
+        },
+        {
+          "nodeId": "node_183",
+          "speaker": "Emily",
+          "text": "So, if you mess up the second ritual, it's game over for you.",
+          "nextNodeId": "node_184"
+        },
+        {
+          "nodeId": "node_184",
+          "command": "new_contact",
+          "contact_name": "Ash",
+          "nextNodeId": "node_185"
+        },
+        {
+          "nodeId": "node_185",
+          "speaker": "You",
+          "text": "ASH? Are you there???",
+          "nextNodeId": "node_186"
+        },
+        {
+          "nodeId": "node_186",
+          "speaker": "You",
+          "text": "ASH?",
+          "nextNodeId": "node_187"
+        },
+        {
+          "nodeId": "node_187",
+          "speaker": "You",
+          "text": "Ash, I see you!",
+          "nextNodeId": "node_188"
+        },
+        {
+          "nodeId": "node_188",
+          "speaker": "You",
+          "text": "Ash? I see the phone in your hand going off. Why aren't you answering me?",
+          "nextNodeId": "node_189"
+        },
+        {
+          "nodeId": "node_189",
+          "speaker": "You",
+          "text": "... you're not Ash...",
+          "nextNodeId": "node_190"
+        },
+        {
+          "nodeId": "node_190",
+          "speaker": "You",
+          "text": "Your eyes are missing...",
+          "nextNodeId": "node_191"
+        },
+        {
+          "nodeId": "node_191",
+          "speaker": "Ash",
+          "text": "Look behind you.",
+          "nextNodeId": "node_192"
+        },
+        {
+          "nodeId": "node_192",
+          "narrator_text": "Zara faces eye to eye with herself",
+          "choices": []
+        }
+      ]
+    },
+    {
+      "id": "story_5",
+      "title": "Roommate",
+      "description": "Grant moves into his dorm, ready to start his first year of college. What he isn't excited for, was that he was sharing a dorm with 3 other roommates. What makes his story even worse is that one of them has a dark secret.",
+      "nodes": []
+    },
+    {
+      "id": "story_6",
+      "title": "Night Shift",
+      "description": "Desperate, Jayne decides to take the night shift at her local cafe. Coffees, pastries, and less customers? What could go wrong?",
+      "nodes": []
+    },
+    {
+      "id": "story_7",
+      "title": "Possession",
+      "description": "When Omar notices that his mother has been acting off recently, he realizes he has a long battle to fight.",
+      "nodes": []
+    },
+    {
+      "id": "story_8",
+      "title": "Doppelganger",
+      "description": "Sofia always thought she had a normal family. That was, until a certain somebody texted her.",
+      "nodes": []
+    },
+    {
+      "id": "story_9",
+      "title": "Babysitting",
+      "description": "Kate has always babysat the Greenspoon's child. This time, Kate is not aware of what she was about to face.",
+      "nodes": []
+    },
+    {
+      "id": "story_10",
+      "title": "What's wrong with my future?",
+      "description": "Justin woke up from a weird dream, only to later realize that it was not a dream.",
+      "nodes": []
+    },
+    {
+      "id": "story_11",
+      "title": "Can't sleep",
+      "description": "Shayne has been suffering from insomnia. His days are only about to get worse.",
+      "nodes": []
+    },
+    {
+      "id": "story_12",
+      "title": "Ex-friend",
+      "description": "Many times, friendships come to an end. Many times, it's a painful ending with anger. For Pedro, anger would've been a way better ending than whatever he has to deal with it.",
+      "nodes": []
+    },
+    {
+      "id": "story_13",
+      "title": "They found his body",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_14",
+      "title": "The Mannequin",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_15",
+      "title": "Floor 21",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_16",
+      "title": "The Graduation Tapes",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_17",
+      "title": "The Man With The White Sweater",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_18",
+      "title": "Room 314",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_19",
+      "title": "Infection Arosen",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_20",
+      "title": "She Can See You",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_21",
+      "title": "The Midnight Patient",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_22",
+      "title": "Special Delivery",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_23",
+      "title": "There's an extra!",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_24",
+      "title": "The Ghost Under Tunnel 21",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_25",
+      "title": "Late Night Swim",
+      "description": "...",
+      "nodes": []
+    },
+    {
+      "id": "story_26",
+      "title": "The Woman In The Wheel Chair",
+      "description": "...",
+      "nodes": []
+    }
+  ]
+}
