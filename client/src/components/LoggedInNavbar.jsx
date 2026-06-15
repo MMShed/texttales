@@ -15,8 +15,6 @@ function LoggedInNavbar({ setLoggedIn }) {
         const text = await res.text();
         console.log(text);
 
-        localStorage.removeItem("userId")
-
         setLoggedIn(false);  
         navigate("/login");
     };
