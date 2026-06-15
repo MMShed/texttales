@@ -41,14 +41,13 @@ function Explore() {
         const storiesData = await storiesRes.json();
         setStories(storiesData);
 
-        const userId = localStorage.getItem("userId");
-
         const limitRes = await fetch(
           `${import.meta.env.VITE_API_URL}/limit-info`,
           {
-            headers: userId ? { "x-user-id": userId } : {}
+            credentials: "include"
           }
         );
+
 
         const limitData = await limitRes.json();
 
@@ -115,14 +114,14 @@ function Explore() {
                     className="play_button"
                     onClick={async () => {
                       try {
-                        const userId = localStorage.getItem("userId");
-
+                        
                         const res = await fetch(
                           `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
                           {
-                            headers: userId ? { "x-user-id": userId } : {}
+                            credentials: "include"
                           }
                         );
+
 
                         const data = await res.json();
 

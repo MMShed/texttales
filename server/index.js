@@ -15,11 +15,29 @@ const crypto = require("crypto");
 const User = require("./models/User");
 
 const cookieParser = require("cookie-parser");
+
+const app = express();
+
+
 const cors = require("cors");
+
+app.use(cors({
+  origin: 
+  [
+    "http://localhost:5173",           // dev
+    "https://texttales.vercel.app"      // production
+  ],
+
+  credentials: true
+}));
+
+
 
 const Story = require("./models/Story");
 
 const cloudinary = require("cloudinary").v2;
+
+const session = require("express-session");
 
 // configure cloudinary
 cloudinary.config({
@@ -28,40 +46,27 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const app = express();
+const isProd = process.env.NODE_ENV === "production";
 
-app.set("trust proxy", 1);
+app.set("trust proxy", 1); // required for Render / Vercel
 
+app.use(session({
+  name: "connect.sid",
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
 
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://texttales.vercel.app/"
-  ],
-  credentials:true
+  cookie: {
+    secure: isProd,                       // HTTPS only in production
+    httpOnly: true,                       // protects against XSS
+    sameSite: isProd ? "none" : "lax",    // cross-origin vs localhost
+    maxAge: 24 * 60 * 60 * 1000          // 24 hours
+  }
 }));
+
 
 
 app.use(express.json());
-
-
-
-const session = require("express-session");
-
-
-app.use(session({
-  name: "connect.sid",   
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false, // setback to true if needed
-
-  cookie: {
-    secure: true,
-    httpOnly: true,
-    sameSite: "none",   
-    maxAge: 24 * 60 * 60 * 1000
-  }
-}));
 
 
 
@@ -97,17 +102,10 @@ app.get("/stories/:id", async (req, res) => {
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
-    const userId = req.headers["x-user-id"];
+    
+    const userId = req.session.userId;
+    const isLoggedIn = !!userId;
 
-    let isLoggedIn = false;
-
-    if (userId && userId !== "null") {
-      const userExists = await User.exists({ _id: userId });
-
-      if (userExists) {
-        isLoggedIn = true;
-      }
-    }
 
     const isCheckOnly = req.query.check === "true";
 
@@ -235,20 +233,16 @@ if (story && story.nodes) {
 
 app.get("/limit-info", async (req, res) => {
   try {
+    console.log("LIMIT SESSION:", req.session);
+    console.log("SESSION USER ID:", req.session.userId);
+    
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
-    const userId = req.headers["x-user-id"];
+    
+    const userId = req.session.userId;
+    const isLoggedIn = !!userId;
 
-    let isLoggedIn = false;
-
-    if (userId && userId !== "null") {
-      const userExists = await User.exists({ _id: userId });
-
-      if (userExists) {
-        isLoggedIn = true;
-      }
-    }
 
     const now = Date.now();
     const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -361,7 +355,9 @@ app.post("/login", async (req, res) => {
   }
 
 
-  req.session.user = user._id;
+  req.session.userId = user._id;
+
+  console.log("AFTER LOGIN SESSION:", req.session);
 
   res.json({
     message: "Login successful",
@@ -404,10 +400,10 @@ sgMail.send({
       from: process.env.EMAIL, // must be verified
       subject: "Reset your TextTales password",
 
-      // ✅ fallback text (important for spam filtering)
+      //  fallback text (important for spam filtering)
       text: `Reset your password here: ${resetLink}`,
 
-      // ✅ YOUR STYLED EMAIL
+      //  YOUR STYLED EMAIL
       html: `
 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif;">
   <tr>
@@ -470,7 +466,7 @@ sgMail.send({
 </table>
 `
     })
-    .then(() => console.log("✅ Email sent via SendGrid"))
+    .then(() => console.log(" Email sent via SendGrid"))
     .catch(err => console.error("❌ SendGrid error:", err));
 
   } catch (err) {
@@ -542,12 +538,14 @@ app.get("/profile", auth, (req, res) => {
 });
 
 
-// Root route
-/*
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-}); 
-*/
+app.get("/me", (req, res) => {
+  if (req.session.userId) {
+    res.json({ loggedIn: true, userId: req.session.userId });
+  } else {
+    res.json({ loggedIn: false });
+  }
+});
+
 
 app.get("/", (req, res) => {
   res.send("Backend is running ")

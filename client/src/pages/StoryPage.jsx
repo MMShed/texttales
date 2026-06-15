@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function StoryPage() {
+  const [loggedIn, setLoggedIn] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -14,18 +15,31 @@ function StoryPage() {
   // ✅ NEW: dynamic contact name
   const [currentContactName, setCurrentContactName] = useState("");
 
+  useEffect(() => {
+  const checkLogin = async () => {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
+      credentials: "include"
+    });
+
+    const data = await res.json();
+    setLoggedIn(data.loggedIn);
+  };
+
+  checkLogin();
+}, []);
+
   // fetch story
   useEffect(() => {
     const fetchStory = async () => {
       try {
-        const userId = localStorage.getItem("userId");
-
+        
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/stories/${id}`,
           {
-            headers: userId ? { "x-user-id": userId } : {}
+            credentials: "include"
           }
         );
+
 
         console.log("STORY FETCH STATUS:", res.status);
 
@@ -178,7 +192,7 @@ function StoryPage() {
                         <div className="image-wrapper">
                           <img src={node.imageUrl} className="story-image" />
 
-                          {!localStorage.getItem("userId") && (
+                          {!loggedIn && (
                             <div className="image-overlay">
                               🔒 Create an account to view images
                             </div>
