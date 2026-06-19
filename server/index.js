@@ -538,6 +538,12 @@ app.get("/profile", auth, (req, res) => {
 });
 
 
+app.get("/ping", (req, res) => {
+  res.status(200).send("OK");
+});
+
+
+
 app.get("/me", (req, res) => {
   if (req.session.userId) {
     res.json({ loggedIn: true, userId: req.session.userId });
