@@ -346,7 +346,7 @@ app.post("/register", async (req, res) => {
   try {
       const msg = {
         to: email,
-        from: "your-email@yourdomain.com", 
+        from: process.env.EMAIL, 
         subject: "Welcome to TextTales 🎉",
 
         text: `
