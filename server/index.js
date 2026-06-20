@@ -99,6 +99,8 @@ function hashIdentifier(value) {
 
 app.get("/stories/:id", async (req, res) => {
   try {
+    const GUEST_LIMIT = 2
+
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
@@ -139,7 +141,7 @@ app.get("/stories/:id", async (req, res) => {
       timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
 
       //  LIMIT CHECK
-      if (data.count >= 4) {
+      if (data.count >= GUEST_LIMIT) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED",
           remaining,
