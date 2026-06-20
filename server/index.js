@@ -329,6 +329,90 @@ app.post("/register", async (req, res) => {
 
   await newUser.save();
 
+
+  try {
+      const msg = {
+        to: email,
+        from: "your-email@yourdomain.com", 
+        subject: "Welcome to TextTales 🎉",
+
+        text: `
+          Welcome to TextTales!
+
+          Your account has been created successfully.
+
+          Start exploring:
+          https://texttales.vercel.app/explore
+
+          Stay Creepy,
+          TextTales
+        `,
+
+        html: `
+        <div style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#111;">
+          
+          <!-- HEADER -->
+          <div style="background-color:black; padding:20px; text-align:center;">
+            <h1 style="color:white; margin:0;">Text Tales</h1>
+          </div>
+
+          <!-- BODY -->
+          <div style="background-color:#2d0b63; padding:30px; color:white;">
+
+            <h2 style="margin-top:0;">Welcome to TextTales 🎉</h2>
+
+            <p>Hi ${name || "there"},</p>
+
+            <p>
+              Your account has been successfully created, and you’re ready to start exploring interactive stories.
+            </p>
+
+            <p>With your account, you can:</p>
+
+            <ul style="padding-left:20px;">
+              <li>Access unlimited stories</li>
+              <li>Unlock hidden images and exclusive content</li>
+              <li>Continue your story progress anytime</li>
+            </ul>
+
+            <p>Click below to begin your journey:</p>
+
+            <!-- BUTTON -->
+            <a href="https://texttales.vercel.app/explore"
+              style="display:inline-block; padding:12px 20px; background-color:#22c55e; color:white; text-decoration:none; border-radius:6px; font-weight:bold; margin-top:10px;">
+              Start Reading
+            </a>
+
+            <br/><br/>
+
+            <p>Your next story is waiting.</p>
+
+            <br/>
+
+            <hr style="border:1px solid rgba(255,255,255,0.2);" />
+
+            <p>
+              Stay Creepy,<br/>
+              <strong>TextTales</strong>
+            </p>
+
+            <p style="font-size:12px; opacity:0.7; margin-top:20px;">
+              You’re receiving this email because you created an account on TextTales.
+            </p>
+
+          </div>
+
+        </div>
+        `
+      };
+
+      await sgMail.send(msg);
+
+    } catch (err) {
+      console.error("SendGrid Error:", err);
+    }
+
+
   res.json({ message: "User created" });
 });
 
@@ -479,7 +563,6 @@ app.post("/reset-password/:token", async (req, res) => {
   console.log('reset password route hit!')
 
   try {
-    console.log("📦 Body:", req.body);
 
     const { token } = req.params;
     const { newPassword } = req.body;

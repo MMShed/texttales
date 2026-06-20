@@ -1,5 +1,6 @@
 import json
 import os
+import pyperclip
 
 FILE_NAME = "stories.json"
 
@@ -12,6 +13,14 @@ def load_data():
     with open(FILE_NAME, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def copy_story_to_clipboard(story, pretty=True):
+    if pretty:
+        json_str = json.dumps(story, indent=2, ensure_ascii=False)
+    else:
+        json_str = json.dumps(story, ensure_ascii=False)
+
+    pyperclip.copy(json_str)
+    print("✅ Story copied to clipboard!\n")
 
 # ===== SAVE FILE =====
 def save_data(data):
@@ -109,6 +118,17 @@ def edit_story(data):
             break
 
         if not line:
+            continue
+
+        # ✅ ===== COPY STORY TO CLIPBOARD =====
+        if line.lower().startswith("/copy"):
+            parts = line.split()
+
+            if len(parts) > 1 and parts[1] == "raw":
+                copy_story_to_clipboard(story, pretty=False)
+            else:
+                copy_story_to_clipboard(story, pretty=True)
+
             continue
 
 

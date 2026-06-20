@@ -13,6 +13,7 @@ function DefaultNavbar ()
 
             <nav className="right_bar">
                 <Link to="/">Home</Link>
+                <Link to="/privacypolicy">Privacy Policy</Link>
                 <Link to="/explore">Explore</Link>
                 <Link to="/login">Login</Link>
             </nav>

@@ -27,13 +27,13 @@ function LoggedInNavbar({ setLoggedIn }) {
 
             <nav className="right_bar">
                 <Link to="/explore">Explore</Link>
-
+                <Link to="/privacypolicy">Privacy Policy</Link>
+                <Link to="/account">Account</Link>
                 
                 <button onClick={handleLogout} className="logout-link">
                     Log Out
                 </button>
 
-                <Link to="/account">Account</Link>
             </nav>
         </nav>
     );

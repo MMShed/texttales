@@ -41,7 +41,6 @@ function StoryPage() {
         );
 
 
-        console.log("STORY FETCH STATUS:", res.status);
 
         if (!res.ok) {
           console.error("Failed to fetch story");
@@ -49,7 +48,6 @@ function StoryPage() {
         }
 
         const data = await res.json();
-        console.log("STORY DATA:", data);
 
         setStory(data.story);
 

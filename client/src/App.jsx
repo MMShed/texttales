@@ -12,15 +12,27 @@ import Login from "./pages/Login";
 import Explore from "./pages/Explore";
 import Register from "./pages/Register";
 import StoryPage from "./pages/StoryPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy"
 
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(() => {
-    return !!localStorage.getItem("userId");
-  });
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/me`, {
+      credentials: "include"
+    })
+      .then(res => res.json())
+      .then(data => {
+        setLoggedIn(data.loggedIn);
+      })
+      .catch(() => {
+        setLoggedIn(false);
+      });
+  }, []);
 
   return (
     <BrowserRouter>
@@ -44,10 +56,10 @@ function App() {
             <Route path="/stories/:id" element={<StoryPage />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           </Routes>
         </main>
 
-        {/*  Footer stays fixed visually */}
         <div className="footer">
           <DefaultFooter />
         </div>
