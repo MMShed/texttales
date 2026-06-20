@@ -312,7 +312,7 @@ function auth(req, res, next) {
 
 
 app.post("/register", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, confirmPassword } = req.body;
 
   const existingUser = await User.findOne({ email });
 
@@ -321,6 +321,14 @@ app.post("/register", async (req, res) => {
       error: "EMAIL_EXISTS"
     });
   }
+
+
+  if (password !== confirmPassword) {
+    return res.status(400).json({
+      error: "PASSWORDS_DO_NOT_MATCH"
+    });
+  }
+
 
   const newUser = new User({
     email,

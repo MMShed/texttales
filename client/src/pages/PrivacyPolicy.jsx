@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
             us at:
           </p>
           <p>
-            <strong>your-email@example.com</strong>
+            <strong>texttalesapp@gmail.com</strong>
           </p>
         </div>
 

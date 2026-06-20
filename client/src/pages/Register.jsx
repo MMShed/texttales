@@ -29,7 +29,8 @@ function Register() {
           },
           body: JSON.stringify({
             email,
-            password
+            password,
+            confirmPassword
           })
         }
       );
@@ -40,8 +41,12 @@ function Register() {
       if (!res.ok) {
         if (data.error === "EMAIL_EXISTS") {
           setError("This email is already in use.");
-        } else {
-          setError("Something went wrong. Please try again.");
+        } else if (data.error === "PASSWORDS_DO_NOT_MATCH") {
+          setError("The password and confirm passwords are not matching.");
+        }
+        else 
+        {
+          setError("Something went wrong. Please try again later.")
         }
         return;
       }
