@@ -10,16 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 24
 
-      - name: Install dependencies
-        run: npm install
+      # Frontend
+      - name: Install frontend dependencies
+        run: |
+          cd client
+          npm install
 
-      - name: Build project
-        run: npm run build
+      - name: Build frontend
+        run: |
+          cd client
+          npm run build
+
+      # Backend
+      - name: Install backend dependencies
+        run: |
+          cd server
+          npm install
