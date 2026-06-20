@@ -1292,31 +1292,4014 @@
       "id": "story_5",
       "title": "Roommate",
       "description": "Grant moves into his dorm, ready to start his first year of college. What he isn't excited for, was that he was sharing a dorm with 3 other roommates. What makes his story even worse is that one of them has a dark secret.",
-      "nodes": []
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "You",
+          "text": "I finally moved into my dorm!",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "Shadid",
+          "text": "How is it?",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "speaker": "Grant",
+          "text": "Surprisingly larger than I expected. Not by much, but I'm satisfied!",
+          "nextNodeId": "node_3"
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "Shadid",
+          "text": "That's great! I heard you're having roommates?",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "You",
+          "text": "Yeah, 4 excluding me.",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "Shadid",
+          "text": "What? Dude I feel sorry for you. 2 roommates are already annoying enough (speaking from experience here), but 4?",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "You",
+          "text": "A small price to pay for living in a slightly bigger than conventional dormitory. I'd say it's worth it.",
+          "nextNodeId": "node_7"
+        },
+        {
+          "nodeId": "node_7",
+          "speaker": "You",
+          "text": "Well, speaking of roommates, have you actually met them?",
+          "nextNodeId": "node_8"
+        },
+        {
+          "nodeId": "node_8",
+          "speaker": "You",
+          "text": "Only 3 out of the 4, but only because the 4th isn'th here yet. He's actually supposed to come today.",
+          "nextNodeId": "node_9"
+        },
+        {
+          "nodeId": "node_9",
+          "speaker": "Shadid",
+          "text": "Oh that's cool! What are your roommates like?",
+          "nextNodeId": "node_10"
+        },
+        {
+          "nodeId": "node_10",
+          "speaker": "You",
+          "text": "Well, they all seem really nice.",
+          "nextNodeId": "node_11"
+        },
+        {
+          "nodeId": "node_11",
+          "speaker": "You",
+          "text": "I keep hearing horror stories of irresponsible roommates on the internet.",
+          "nextNodeId": "node_12"
+        },
+        {
+          "nodeId": "node_12",
+          "speaker": "You",
+          "text": "But Alex (one of the roommates) literally offered to order some takeout for all of us, on him.",
+          "nextNodeId": "node_13"
+        },
+        {
+          "nodeId": "node_13",
+          "speaker": "You",
+          "text": "The others seemed really chill. We all had a conversation about what we wanted to do in life.",
+          "nextNodeId": "node_14"
+        },
+        {
+          "nodeId": "node_14",
+          "speaker": "Shadid",
+          "text": "Man I wish I had your roommates. I only live with one, and that guy refuses to clean up after himself.",
+          "nextNodeId": "node_15"
+        },
+        {
+          "nodeId": "node_15",
+          "speaker": "You",
+          "text": "lolololol!",
+          "nextNodeId": "node_16"
+        },
+        {
+          "nodeId": "node_16",
+          "speaker": "You",
+          "text": "Oh! The 4th roommate just got here. I'll ttyl!",
+          "nextNodeId": "node_17"
+        },
+        {
+          "nodeId": "node_17",
+          "speaker": "Shadid",
+          "text": "Alright, later!",
+          "nextNodeId": "node_18"
+        },
+        {
+          "nodeId": "node_18",
+          "narrator_text": "30 minutes later",
+          "nextNodeId": "node_19"
+        },
+        {
+          "nodeId": "node_19",
+          "speaker": "You",
+          "text": "Hey",
+          "nextNodeId": "node_20"
+        },
+        {
+          "nodeId": "node_20",
+          "speaker": "Shadid",
+          "text": "So ... how is your 4th roommate?",
+          "nextNodeId": "node_21"
+        },
+        {
+          "nodeId": "node_21",
+          "speaker": "You",
+          "text": "I don't want to be mean, but he seems cold",
+          "nextNodeId": "node_22"
+        },
+        {
+          "nodeId": "node_22",
+          "speaker": "Shadid",
+          "text": "Is your dorm cold or something?",
+          "nextNodeId": "node_23"
+        },
+        {
+          "nodeId": "node_23",
+          "speaker": "You",
+          "text": "No dumbo! It's literally 25 degrees celsius outside right now!",
+          "nextNodeId": "node_24"
+        },
+        {
+          "nodeId": "node_24",
+          "speaker": "You",
+          "text": "I mean't cold, as in, he seems like an emotionally cold person. Didn't talk much. We all tried to introduce ourselves. He just gave his name, David, and then just went to his room.",
+          "nextNodeId": "node_25"
+        },
+        {
+          "nodeId": "node_25",
+          "speaker": "Shadid",
+          "text": "Maybe he's just anxious? It is very likely his first year of living outside the comfort of his home, just like yours.",
+          "nextNodeId": "node_26"
+        },
+        {
+          "nodeId": "node_26",
+          "speaker": "You",
+          "text": "Maybe, but, and I don't want to be too judgy, but his eyes seemed dull. Not as in a 'I miss home' mood, but rather empty, like a void.",
+          "nextNodeId": "node_27"
+        },
+        {
+          "nodeId": "node_27",
+          "speaker": "Shadid",
+          "text": "Just give him some time. Maybe he'll warm up to you guys eventually.",
+          "nextNodeId": "node_28"
+        },
+        {
+          "nodeId": "node_28",
+          "speaker": "You",
+          "text": "Maybe. Anyway, I should probably get some sleep now. Classes are going to start tomorrow for me.",
+          "nextNodeId": "node_29"
+        },
+        {
+          "nodeId": "node_29",
+          "speaker": "Shadid",
+          "text": "Alright man, take care! Good night.",
+          "nextNodeId": "node_30"
+        },
+        {
+          "nodeId": "node_30",
+          "narrator_text": "Tuesday 6:30 PM",
+          "nextNodeId": "node_31"
+        },
+        {
+          "nodeId": "node_31",
+          "speaker": "Shadid",
+          "text": "So how was your first day of university?",
+          "nextNodeId": "node_32"
+        },
+        {
+          "nodeId": "node_32",
+          "speaker": "You",
+          "text": "Intimidaing. So many people in one lecture room.",
+          "nextNodeId": "node_33"
+        },
+        {
+          "nodeId": "node_33",
+          "speaker": "Shadid",
+          "text": "Well, people typically drop out after the 3rd semester. If you make it til then (which, let's be honest. you will), the lectures will be less crowded",
+          "nextNodeId": "node_34"
+        },
+        {
+          "nodeId": "node_34",
+          "speaker": "You",
+          "text": "I also haven't really seen David today this morning. I've seen everybody else, though.",
+          "nextNodeId": "node_35"
+        },
+        {
+          "nodeId": "node_35",
+          "speaker": "You",
+          "text": "Maybe he left earlier than usual.",
+          "nextNodeId": "node_36"
+        },
+        {
+          "nodeId": "node_36",
+          "speaker": "Shadid",
+          "text": "Maybe. Anyway, you wanna hop on Minecraft bedwars around 8:00 ?",
+          "nextNodeId": "node_37"
+        },
+        {
+          "nodeId": "node_37",
+          "speaker": "You",
+          "text": "Sure!",
+          "nextNodeId": "node_38"
+        },
+        {
+          "nodeId": "node_38",
+          "speaker": "You",
+          "text": "Oh, David just came home.",
+          "nextNodeId": "node_39"
+        },
+        {
+          "nodeId": "node_39",
+          "speaker": "You",
+          "text": "And he bought a pizza for all of us!",
+          "nextNodeId": "node_40"
+        },
+        {
+          "nodeId": "node_40",
+          "speaker": "Shadid",
+          "text": "Okay now you're really ticking me off here. Why are you getting awesome roommates, while mine still behaves like a toddler?",
+          "nextNodeId": "node_41"
+        },
+        {
+          "nodeId": "node_41",
+          "speaker": "You",
+          "text": "Sucks to be you. Anyway, I'm going to consume my pizza.",
+          "nextNodeId": "node_42"
+        },
+        {
+          "nodeId": "node_42",
+          "speaker": "Shadid",
+          "text": "'My'? Like, he bought a pizza for all of you guys INDIVIDUALLY?",
+          "nextNodeId": "node_43"
+        },
+        {
+          "nodeId": "node_43",
+          "speaker": "You",
+          "text": "Yup! Turns out he works at the local pizza store near us. He's allowed to make and take as many free pizzas as he wishes, so each of us get our own WHOLE pizza.",
+          "nextNodeId": "node_44"
+        },
+        {
+          "nodeId": "node_44",
+          "speaker": "Shadid",
+          "text": "Can we trade roommates?",
+          "nextNodeId": "node_45"
+        },
+        {
+          "nodeId": "node_45",
+          "speaker": "You",
+          "text": "Nope! Have fun with yours!",
+          "nextNodeId": "node_46"
+        },
+        {
+          "nodeId": "node_46",
+          "speaker": "Shadid",
+          "text": "I hate you.",
+          "nextNodeId": "node_47"
+        },
+        {
+          "nodeId": "node_47",
+          "narrator_text": "Wednesday 2:30 AM",
+          "nextNodeId": "node_48"
+        },
+        {
+          "nodeId": "node_48",
+          "speaker": "You",
+          "text": "SHADID!",
+          "nextNodeId": "node_49"
+        },
+        {
+          "nodeId": "node_49",
+          "speaker": "YOU",
+          "text": "C'MON BRO, PLEASE TELL ME YOU'RE THERE!",
+          "nextNodeId": "node_50"
+        },
+        {
+          "nodeId": "node_50",
+          "speaker": "Shadid",
+          "text": "I was just about to drift away to sleep, man!",
+          "nextNodeId": "node_51"
+        },
+        {
+          "nodeId": "node_51",
+          "speaker": "Shadid",
+          "text": "I spent the last 4 hours trying to sleep, and just when I was about to dream, your text woke me up. What could you possibly need at almost 3 in the morning?",
+          "nextNodeId": "node_52"
+        },
+        {
+          "nodeId": "node_52",
+          "speaker": "You",
+          "text": "I woke up 5 minutes ago to use my restroom.",
+          "nextNodeId": "node_53"
+        },
+        {
+          "nodeId": "node_53",
+          "speaker": "You",
+          "text": "I go into the dorm lounge. Right as I step outside, I see someone staring at me at the end of the hallway.",
+          "nextNodeId": "node_54"
+        },
+        {
+          "nodeId": "node_54",
+          "speaker": "You",
+          "text": "I couldn't see who it was, so I walked up to that person.",
+          "nextNodeId": "node_55"
+        },
+        {
+          "nodeId": "node_55",
+          "speaker": "You",
+          "text": "As soon as I got close enough, I immediately realized it was David.",
+          "nextNodeId": "node_56"
+        },
+        {
+          "nodeId": "node_56",
+          "speaker": "You",
+          "text": "I tried to ask why he was just up and standing, but he didn't respond.",
+          "nextNodeId": "node_57"
+        },
+        {
+          "nodeId": "node_57",
+          "speaker": "You",
+          "text": "Idk why, but I felt colder the closer I approached him.",
+          "nextNodeId": "node_58"
+        },
+        {
+          "nodeId": "node_58",
+          "speaker": "Shadid",
+          "text": "Grant, there's a good chance he may have been SLEEPwalking.",
+          "nextNodeId": "node_59"
+        },
+        {
+          "nodeId": "node_59",
+          "speaker": "You",
+          "text": "But his eyes were open!",
+          "nextNodeId": "node_60"
+        },
+        {
+          "nodeId": "node_60",
+          "speaker": "Shadid",
+          "text": "More people sleepwalk with their eyes open than closed.",
+          "nextNodeId": "node_61"
+        },
+        {
+          "nodeId": "node_61",
+          "speaker": "Shadid",
+          "text": "Just don't try to wake him up. He'll eventually return to his bed.",
+          "nextNodeId": "node_62"
+        },
+        {
+          "nodeId": "node_62",
+          "speaker": "Shadid",
+          "text": "Now, can I please go back to sleep?",
+          "nextNodeId": "node_63"
+        },
+        {
+          "nodeId": "node_63",
+          "speaker": "You",
+          "text": "Yes, sorry for waking you up.",
+          "nextNodeId": "node_64"
+        },
+        {
+          "nodeId": "node_64",
+          "speaker": "7",
+          "text": "45 PM",
+          "nextNodeId": "node_65"
+        },
+        {
+          "nodeId": "node_65",
+          "speaker": "Shadid",
+          "text": "How did your second day of classes go?",
+          "nextNodeId": "node_66"
+        },
+        {
+          "nodeId": "node_66",
+          "speaker": "You",
+          "text": "Our class sizes already dropped down by 25%",
+          "nextNodeId": "node_67"
+        },
+        {
+          "nodeId": "node_67",
+          "speaker": "Shadid",
+          "text": "ALREADY? Typically it takes weeks for the class attendance to drop significantly, but dang. Not even 1 week and people are already dropping out.",
+          "nextNodeId": "node_68"
+        },
+        {
+          "nodeId": "node_68",
+          "speaker": "You",
+          "text": "Yeah, electrical engineering does that for you.",
+          "nextNodeId": "node_69"
+        },
+        {
+          "nodeId": "node_69",
+          "speaker": "Shadid",
+          "text": "Speaking of majors, do you know what majors your roommates are completing?",
+          "nextNodeId": "node_70"
+        },
+        {
+          "nodeId": "node_70",
+          "speaker": "You",
+          "text": "Well, Alex is doing neuroscience, Zareef is doing computer science, and Ivan is studying chemistry.",
+          "nextNodeId": "node_71"
+        },
+        {
+          "nodeId": "node_71",
+          "speaker": "Shadid",
+          "text": "What about David? Did you not ask him about his major?",
+          "nextNodeId": "node_72"
+        },
+        {
+          "nodeId": "node_72",
+          "speaker": "You",
+          "text": "Oh I did. He's actually taking physics.",
+          "nextNodeId": "node_73"
+        },
+        {
+          "nodeId": "node_73",
+          "speaker": "Shadid",
+          "text": "Sounds fun. A bunch of puzzles to be solved, just like mathematics.",
+          "nextNodeId": "node_74"
+        },
+        {
+          "nodeId": "node_74",
+          "speaker": "Shadid",
+          "text": "Speaking of David. did you ask him about last night?",
+          "nextNodeId": "node_75"
+        },
+        {
+          "nodeId": "node_75",
+          "speaker": "You",
+          "text": "I did. He told me he had a dream about riding a horse that travels 200 km/h. That's the only thing he remembers though. Nothing about sleepwalking.",
+          "nextNodeId": "node_76"
+        },
+        {
+          "nodeId": "node_76",
+          "speaker": "Shadid",
+          "text": "Are you going to tell him about it?",
+          "nextNodeId": "node_77"
+        },
+        {
+          "nodeId": "node_77",
+          "speaker": "You",
+          "text": "Nah. Too much effort.",
+          "nextNodeId": "node_78"
+        },
+        {
+          "nodeId": "node_78",
+          "speaker": "You",
+          "text": "Anyway, I gotta dip now. I got a concert to attend.",
+          "nextNodeId": "node_79"
+        },
+        {
+          "nodeId": "node_79",
+          "speaker": "Shadid",
+          "text": "Alright man, I'll ttyl!",
+          "nextNodeId": "node_80"
+        },
+        {
+          "nodeId": "node_80",
+          "narrator_text": "Thursday 7:30 AM",
+          "nextNodeId": "node_81"
+        },
+        {
+          "nodeId": "node_81",
+          "speaker": "You",
+          "text": "I did not get much sleep at all last night.",
+          "nextNodeId": "node_82"
+        },
+        {
+          "nodeId": "node_82",
+          "speaker": "Shadid",
+          "text": "Insomnia?",
+          "nextNodeId": "node_83"
+        },
+        {
+          "nodeId": "node_83",
+          "speaker": "You",
+          "text": "No. It's because of David.",
+          "nextNodeId": "node_84"
+        },
+        {
+          "nodeId": "node_84",
+          "speaker": "Shadid",
+          "text": "What did he do this time?",
+          "nextNodeId": "node_85"
+        },
+        {
+          "nodeId": "node_85",
+          "speaker": "You",
+          "text": "He kept humming right outside my door. Well, I think that's what he's been doing.",
+          "nextNodeId": "node_86"
+        },
+        {
+          "nodeId": "node_86",
+          "speaker": "Shadid",
+          "text": "What do you mean you think?",
+          "nextNodeId": "node_87"
+        },
+        {
+          "nodeId": "node_87",
+          "speaker": "You",
+          "text": "I tried to tell him to stop humming, but he wouldn't. I went out of my room to confront him, but I didn't find him there. I thought he ran off or something, but that couldn't be the case because the floor outside my door is very creaky. I would've heard him run off if that were the case.",
+          "nextNodeId": "node_88"
+        },
+        {
+          "nodeId": "node_88",
+          "speaker": "Shadid",
+          "text": "That's odd. You sure you're not hallucinating or something?",
+          "nextNodeId": "node_89"
+        },
+        {
+          "nodeId": "node_89",
+          "speaker": "You",
+          "text": "Confident. Anyway, I'm gonna go to classes now. Peace!",
+          "nextNodeId": "node_90"
+        },
+        {
+          "nodeId": "node_90",
+          "narrator_text": "6:30 PM",
+          "nextNodeId": "node_91"
+        },
+        {
+          "nodeId": "node_91",
+          "speaker": "You",
+          "text": "Normally, you're the one asking this question. But today's going to be different.",
+          "nextNodeId": "node_92"
+        },
+        {
+          "nodeId": "node_92",
+          "speaker": "You",
+          "text": "How was your day today?",
+          "nextNodeId": "node_93"
+        },
+        {
+          "nodeId": "node_93",
+          "speaker": "Shadid",
+          "text": "I actually didn't have any classes today, so I just worked out, played Uncharted, and cooked some spaghetti.",
+          "nextNodeId": "node_94"
+        },
+        {
+          "nodeId": "node_94",
+          "speaker": "You",
+          "text": "You and your simple schedule.",
+          "nextNodeId": "node_95"
+        },
+        {
+          "nodeId": "node_95",
+          "speaker": "Shadid",
+          "text": "How about you?",
+          "nextNodeId": "node_96"
+        },
+        {
+          "nodeId": "node_96",
+          "speaker": "You",
+          "text": "Well, I can't help but notice that our dorm feels a bit colder. Also, Ivan isn't here right now.",
+          "nextNodeId": "node_97"
+        },
+        {
+          "nodeId": "node_97",
+          "speaker": "Shadid",
+          "text": "Maybe he's staying on campus late tonight?",
+          "nextNodeId": "node_98"
+        },
+        {
+          "nodeId": "node_98",
+          "speaker": "You",
+          "text": "Maybe, but the weird part was I didn't see him this morning. David hasn't seen him either, and he's usually the one out of all of us who wakes up the earliest.",
+          "nextNodeId": "node_99"
+        },
+        {
+          "nodeId": "node_99",
+          "speaker": "Shadid",
+          "text": "Maybe he had to do something before classes, so he woke up before David?",
+          "nextNodeId": "node_100"
+        },
+        {
+          "nodeId": "node_100",
+          "speaker": "You",
+          "text": "Maybe. But on the other hand, David is finally becoming more social.",
+          "nextNodeId": "node_101"
+        },
+        {
+          "nodeId": "node_101",
+          "speaker": "You",
+          "text": "Now he's the guy who starts the conversations at dinner.",
+          "nextNodeId": "node_102"
+        },
+        {
+          "nodeId": "node_102",
+          "speaker": "You",
+          "text": "He told us about how he grew up in a barn with a single father. He is also really interested in gardening, so hopefully he can one day bringps.",
+          "nextNodeId": "node_103"
+        },
+        {
+          "nodeId": "node_103",
+          "speaker": "Shadid",
+          "text": "Hey, save me some of those crops, yeah?",
+          "nextNodeId": "node_104"
+        },
+        {
+          "nodeId": "node_104",
+          "speaker": "You",
+          "text": "For sure!",
+          "nextNodeId": "node_105"
+        },
+        {
+          "nodeId": "node_105",
+          "speaker": "Shadid",
+          "text": "Alright, I need to run some errands now, so I'll talk to you later.",
+          "nextNodeId": "node_106"
+        },
+        {
+          "nodeId": "node_106",
+          "speaker": "You",
+          "text": "Alright, later!",
+          "nextNodeId": "node_107"
+        },
+        {
+          "nodeId": "node_107",
+          "narrator_text": "Friday 11:30 AM",
+          "nextNodeId": "node_108"
+        },
+        {
+          "nodeId": "node_108",
+          "speaker": "You",
+          "text": "Shadid!",
+          "nextNodeId": "node_109"
+        },
+        {
+          "nodeId": "node_109",
+          "speaker": "Shadid",
+          "text": "Yo. I'm in the middle of a lecture right now. Shouldn't you be in class right now?",
+          "nextNodeId": "node_110"
+        },
+        {
+          "nodeId": "node_110",
+          "speaker": "You",
+          "text": "My only class of the today ended 30 minutes ago, so I'm supposed to be chilling right now.",
+          "nextNodeId": "node_111"
+        },
+        {
+          "nodeId": "node_111",
+          "speaker": "Shadid",
+          "text": "'supposed' ?",
+          "nextNodeId": "node_112"
+        },
+        {
+          "nodeId": "node_112",
+          "speaker": "You",
+          "text": "Before I left for classes this morning, I went to wish my other roommates a good morning.",
+          "nextNodeId": "node_113"
+        },
+        {
+          "nodeId": "node_113",
+          "speaker": "You",
+          "text": "But none of them were here.",
+          "nextNodeId": "node_114"
+        },
+        {
+          "nodeId": "node_114",
+          "speaker": "Shadid",
+          "text": "So you're scared because you didn't see your roommates this morning who probably already left for classes?",
+          "nextNodeId": "node_115"
+        },
+        {
+          "nodeId": "node_115",
+          "speaker": "You",
+          "text": "Well, Ivan still hasn't returned. And don't you think it's kind of awkward how I didn't see any of my other roommates? Surely I'd have seen at least one before I left.",
+          "nextNodeId": "node_116"
+        },
+        {
+          "nodeId": "node_116",
+          "speaker": "Shadid",
+          "text": "Idk about the others, but perhaps Ivan went to a different town for something and may have forgotten to tell you?",
+          "nextNodeId": "node_117"
+        },
+        {
+          "nodeId": "node_117",
+          "speaker": "You",
+          "text": "I feel like he'd have given us a heads up first.",
+          "nextNodeId": "node_118"
+        },
+        {
+          "nodeId": "node_118",
+          "speaker": "You",
+          "text": "I should also tell you that while I was trying to sleep last night, I heard what I believe were some muffled screams.",
+          "nextNodeId": "node_119"
+        },
+        {
+          "nodeId": "node_119",
+          "speaker": "Shadid",
+          "text": "You probably just imagined that.",
+          "nextNodeId": "node_120"
+        },
+        {
+          "nodeId": "node_120",
+          "speaker": "You",
+          "text": "Idk dude. Hearing muffled screams and then finding not a single one of my roommates here sounds very skeptical.",
+          "nextNodeId": "node_121"
+        },
+        {
+          "nodeId": "node_121",
+          "speaker": "Shadid",
+          "text": "Maybe go on a hike or something. I'm confident at least one of them will show up by the time you return.",
+          "nextNodeId": "node_122"
+        },
+        {
+          "nodeId": "node_122",
+          "speaker": "You",
+          "text": "Yeah maybe I'll do just that.",
+          "nextNodeId": "node_123"
+        },
+        {
+          "nodeId": "node_123",
+          "speaker": "Shadid",
+          "text": "Be sure to send me some photos of the nature, yeah?",
+          "nextNodeId": "node_124"
+        },
+        {
+          "nodeId": "node_124",
+          "speaker": "You",
+          "text": "I shall. Anyway, I'm going to let you get back to your lecture.",
+          "nextNodeId": "node_125"
+        },
+        {
+          "nodeId": "node_125",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_126"
+        },
+        {
+          "nodeId": "node_126",
+          "speaker": "Shadid",
+          "text": "Grant?",
+          "nextNodeId": "node_127"
+        },
+        {
+          "nodeId": "node_127",
+          "speaker": "You",
+          "text": "I skipped over something when I checked Alex's room: His backpack is still here.",
+          "nextNodeId": "node_128"
+        },
+        {
+          "nodeId": "node_128",
+          "speaker": "Shadid",
+          "text": "What?",
+          "nextNodeId": "node_129"
+        },
+        {
+          "nodeId": "node_129",
+          "speaker": "You",
+          "text": "Hold on, Ivan's and Zareef's backpacks are here too!",
+          "nextNodeId": "node_130"
+        },
+        {
+          "nodeId": "node_130",
+          "speaker": "Shadid",
+          "text": "In Alex's room?",
+          "nextNodeId": "node_131"
+        },
+        {
+          "nodeId": "node_131",
+          "speaker": "You",
+          "text": "No, in each of their own room's.",
+          "nextNodeId": "node_132"
+        },
+        {
+          "nodeId": "node_132",
+          "speaker": "Shadid",
+          "text": "So then I guess they don't have classes today?",
+          "nextNodeId": "node_133"
+        },
+        {
+          "nodeId": "node_133",
+          "speaker": "Shadid",
+          "text": "Or maybe they just came home and then went out again to do something?",
+          "nextNodeId": "node_134"
+        },
+        {
+          "nodeId": "node_134",
+          "speaker": "You",
+          "text": "They would've told me otherwise. Something's not adding up.",
+          "nextNodeId": "node_135"
+        },
+        {
+          "nodeId": "node_135",
+          "speaker": "You",
+          "text": "I have a feeling about something, but I need to do something.",
+          "nextNodeId": "node_136"
+        },
+        {
+          "nodeId": "node_136",
+          "speaker": "Shadid",
+          "text": "And that is?",
+          "choices": [
+            {
+              "text": "Investigate David's Room",
+              "nextNodeId": "node_139"
+            },
+            {
+              "text": "Go On A Hike",
+              "nextNodeId": "node_161"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_139",
+          "speaker": "You",
+          "text": "I'm going to check David's room. Maybe his bag is there.",
+          "nextNodeId": "node_140"
+        },
+        {
+          "nodeId": "node_140",
+          "speaker": "You",
+          "text": "Alright, I just entered his room",
+          "nextNodeId": "node_141"
+        },
+        {
+          "nodeId": "node_141",
+          "speaker": "Shadid",
+          "text": "Well, is his bag there?",
+          "nextNodeId": "node_142"
+        },
+        {
+          "nodeId": "node_142",
+          "speaker": "You",
+          "text": "No, actually. His bag isn't here.",
+          "nextNodeId": "node_143"
+        },
+        {
+          "nodeId": "node_143",
+          "speaker": "Shadid",
+          "text": "Okay, so we can then conclude that David went to a lecture or something.",
+          "nextNodeId": "node_144"
+        },
+        {
+          "nodeId": "node_144",
+          "speaker": "Shadid",
+          "text": "As for the others, idk.",
+          "nextNodeId": "node_145"
+        },
+        {
+          "nodeId": "node_145",
+          "speaker": "You",
+          "text": "Alright, I'm just going to leave the dorm now and go on that much-needed hike.",
+          "nextNodeId": "node_146"
+        },
+        {
+          "nodeId": "node_146",
+          "speaker": "You",
+          "text": "Huh, that's odd.",
+          "nextNodeId": "node_147"
+        },
+        {
+          "nodeId": "node_147",
+          "speaker": "Shadid",
+          "text": "What's up?",
+          "nextNodeId": "node_148"
+        },
+        {
+          "nodeId": "node_148",
+          "speaker": "You",
+          "text": "There's a book right behind his bookshelf. It's one of those shelves that are completely hollow, so it must've fallen out by accident.",
+          "nextNodeId": "node_149"
+        },
+        {
+          "nodeId": "node_149",
+          "speaker": "You",
+          "text": "I'm going to put it back on the shelf.",
+          "nextNodeId": "node_150"
+        },
+        {
+          "nodeId": "node_150",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_151"
+        },
+        {
+          "nodeId": "node_151",
+          "speaker": "You",
+          "text": "Shadid",
+          "nextNodeId": "node_152"
+        },
+        {
+          "nodeId": "node_152",
+          "speaker": "Shadid",
+          "text": "I've been here. You can just tell me what's going on.",
+          "nextNodeId": "node_153"
+        },
+        {
+          "nodeId": "node_153",
+          "speaker": "You",
+          "text": "<send image>",
+          "nextNodeId": "node_154"
+        },
+        {
+          "nodeId": "node_154",
+          "speaker": "You",
+          "text": "<send image>",
+          "nextNodeId": "node_155"
+        },
+        {
+          "nodeId": "node_155",
+          "speaker": "You",
+          "text": "send <image>",
+          "nextNodeId": "node_156"
+        },
+        {
+          "nodeId": "node_156",
+          "speaker": "You",
+          "text": "send <image>",
+          "nextNodeId": "node_157"
+        },
+        {
+          "nodeId": "node_157",
+          "speaker": "Shadid",
+          "text": "What the hell?",
+          "nextNodeId": "node_158"
+        },
+        {
+          "nodeId": "node_158",
+          "speaker": "Shadid",
+          "text": "BRO GET OUT OF THERE. YOU NEED TO CALL THE COPS!",
+          "nextNodeId": "node_159"
+        },
+        {
+          "nodeId": "node_159",
+          "narrator_text": "The front door opens.",
+          "nextNodeId": "node_160"
+        },
+        {
+          "nodeId": "node_160",
+          "speaker": "You",
+          "text": "HE JUST ENTERED THE DORM. I CAN'T LEAVE OR HE'S GOING TO KNOW THAT I SNOOPED IN HIS ROOM!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_161",
+          "speaker": "You",
+          "text": "You know what, I'm going to think about this later. I'm going to go on a hike.",
+          "nextNodeId": "node_162"
+        },
+        {
+          "nodeId": "node_162",
+          "speaker": "Shadid",
+          "text": "That's the spirit! Now please let me focus on my lecture.",
+          "nextNodeId": "node_163"
+        },
+        {
+          "nodeId": "node_163",
+          "speaker": "You",
+          "text": "I will. Later!",
+          "nextNodeId": "node_164"
+        },
+        {
+          "nodeId": "node_164",
+          "narrator_text": "12:30 PM",
+          "nextNodeId": "node_165"
+        },
+        {
+          "nodeId": "node_165",
+          "speaker": "You",
+          "text": "You were right, Shadid. I really needed this hike.",
+          "nextNodeId": "node_166"
+        },
+        {
+          "nodeId": "node_166",
+          "speaker": "Shadid",
+          "text": "Told ya! Any cool rivers you're about to walk by?",
+          "nextNodeId": "node_167"
+        },
+        {
+          "nodeId": "node_167",
+          "speaker": "You",
+          "text": "Just half a kilometer away. I'll probably stop there to have my lunch.",
+          "nextNodeId": "node_168"
+        },
+        {
+          "nodeId": "node_168",
+          "speaker": "Shadid",
+          "text": "Which is ...?",
+          "nextNodeId": "node_169"
+        },
+        {
+          "nodeId": "node_169",
+          "speaker": "You",
+          "text": "Pasta with ground chicken, and parmesan sauce. And also a cup of yogurt with frozen blueberries.",
+          "nextNodeId": "node_170"
+        },
+        {
+          "nodeId": "node_170",
+          "speaker": "Shadi",
+          "text": "Okay, I see you healthy guy!",
+          "nextNodeId": "node_171"
+        },
+        {
+          "nodeId": "node_171",
+          "command": "new_contact",
+          "contact_name": "Ivan",
+          "nextNodeId": "node_172"
+        },
+        {
+          "nodeId": "node_172",
+          "speaker": "Ivan",
+          "text": "Shadid?",
+          "nextNodeId": "node_173"
+        },
+        {
+          "nodeId": "node_173",
+          "command": "new_contact",
+          "contact_name": "Zareef",
+          "nextNodeId": "node_174"
+        },
+        {
+          "nodeId": "node_174",
+          "speaker": "Zareef",
+          "text": "Yo bro, where are you?",
+          "nextNodeId": "node_175"
+        },
+        {
+          "nodeId": "node_175",
+          "speaker": "You",
+          "text": "I could ask you the same thing! I haven't seen you this morning.",
+          "nextNodeId": "node_176"
+        },
+        {
+          "nodeId": "node_176",
+          "speaker": "Zareef",
+          "text": "my bad. I had to attend an event.",
+          "nextNodeId": "node_177"
+        },
+        {
+          "nodeId": "node_177",
+          "speaker": "Zareef",
+          "text": "Now, where are you?",
+          "nextNodeId": "node_178"
+        },
+        {
+          "nodeId": "node_178",
+          "speaker": "You",
+          "text": "I'm on a hike. Why?",
+          "nextNodeId": "node_179"
+        },
+        {
+          "nodeId": "node_179",
+          "speaker": "Zareef",
+          "text": "Just curious. Anyway dude, I got some free food from the event. I'll have some ready on the table for you when you get back.",
+          "nextNodeId": "node_180"
+        },
+        {
+          "nodeId": "node_180",
+          "speaker": "You",
+          "text": "Ooh, exciting! What'd you bring?",
+          "nextNodeId": "node_181"
+        },
+        {
+          "nodeId": "node_181",
+          "speaker": "Zareef",
+          "text": "Chicken kebab wraps, with extra garlic sauce and hummus on the side.",
+          "nextNodeId": "node_182"
+        },
+        {
+          "nodeId": "node_182",
+          "speaker": "You",
+          "text": "YO THAT SOUNDS SO GOOD. YOU KNOW WHAT, I'M COMING BACK RIGHT NOW!",
+          "nextNodeId": "node_183"
+        },
+        {
+          "nodeId": "node_183",
+          "speaker": "Zareef",
+          "text": "Alright! I'm just gonna heat it up now since it's kind of cold.",
+          "nextNodeId": "node_184"
+        },
+        {
+          "nodeId": "node_184",
+          "command": "new_contact",
+          "contact_name": "Ivan",
+          "nextNodeId": "node_185"
+        },
+        {
+          "nodeId": "node_185",
+          "speaker": "Ivan",
+          "text": "grant",
+          "nextNodeId": "node_186"
+        },
+        {
+          "nodeId": "node_186",
+          "speaker": "You",
+          "text": "Ivan! Where have you been for the past 2 days?",
+          "nextNodeId": "node_187"
+        },
+        {
+          "nodeId": "node_187",
+          "speaker": "Ivan",
+          "text": "Dude I got kidnapped.",
+          "nextNodeId": "node_188"
+        },
+        {
+          "nodeId": "node_188",
+          "speaker": "Ivan",
+          "text": "Not just me, Alex and Zareef too.",
+          "nextNodeId": "node_189"
+        },
+        {
+          "nodeId": "node_189",
+          "speaker": "You",
+          "text": "Zareef?",
+          "nextNodeId": "node_190"
+        },
+        {
+          "nodeId": "node_190",
+          "speaker": "Ivan",
+          "text": "Yeah, Zareef.",
+          "nextNodeId": "node_191"
+        },
+        {
+          "nodeId": "node_191",
+          "speaker": "You",
+          "text": "But I was just talking to him! He said he just came back from an event and had some food ready for me.",
+          "nextNodeId": "node_192"
+        },
+        {
+          "nodeId": "node_192",
+          "speaker": "Ivan",
+          "text": "Grant, that's NOT ZAREEF",
+          "nextNodeId": "node_193"
+        },
+        {
+          "nodeId": "node_193",
+          "speaker": "Ivan",
+          "text": "THAT'S DAVID!",
+          "nextNodeId": "node_194"
+        },
+        {
+          "nodeId": "node_194",
+          "speaker": "You",
+          "text": "what???",
+          "nextNodeId": "node_195"
+        },
+        {
+          "nodeId": "node_195",
+          "speaker": "Ivan",
+          "text": "Yesterday, he kidnapped me and kept me in some barn, which was why you didn't see me since then.",
+          "nextNodeId": "node_196"
+        },
+        {
+          "nodeId": "node_196",
+          "speaker": "Ivan",
+          "text": "Today, he brought both Alex and Zareef over. Now he' coming for you!",
+          "nextNodeId": "node_197"
+        },
+        {
+          "nodeId": "node_197",
+          "speaker": "Ivan",
+          "text": "Whatever you do, DO NOT GO BACK TO THE DORM.",
+          "nextNodeId": "node_198"
+        },
+        {
+          "nodeId": "node_198",
+          "speaker": "You",
+          "text": "Hang on, how do I know you're not pranking me?",
+          "nextNodeId": "node_199"
+        },
+        {
+          "nodeId": "node_199",
+          "command": "new_contact",
+          "contact_name": "Monica",
+          "nextNodeId": "node_200"
+        },
+        {
+          "nodeId": "node_200",
+          "speaker": "Monica",
+          "text": "Hello, Grant?",
+          "nextNodeId": "node_201"
+        },
+        {
+          "nodeId": "node_201",
+          "speaker": "You",
+          "text": "Hi Monica, what's up!",
+          "nextNodeId": "node_202"
+        },
+        {
+          "nodeId": "node_202",
+          "speaker": "Monica",
+          "text": "Have you heard from Grant since yesterday?",
+          "nextNodeId": "node_203"
+        },
+        {
+          "nodeId": "node_203",
+          "speaker": "Monica",
+          "text": "We tried to call him last night, but he didn't pick up. We tried to call him again this morning, but no answer. It's not like Ivan to avoid picking up calls from his family.",
+          "nextNodeId": "node_204"
+        },
+        {
+          "nodeId": "node_204",
+          "speaker": "You",
+          "text": "I haven't actually. I thought he might've gone back to you guys because of some type of family emergency, so I assumed he just forgot to let me know.",
+          "nextNodeId": "node_205"
+        },
+        {
+          "nodeId": "node_205",
+          "speaker": "You",
+          "text": "I'll try to look for him over here. Meanwhile, you should file a missing person's report.",
+          "nextNodeId": "node_206"
+        },
+        {
+          "nodeId": "node_206",
+          "speaker": "Monica",
+          "text": "Okay, thank you! We're so worried!",
+          "nextNodeId": "node_207"
+        },
+        {
+          "nodeId": "node_207",
+          "speaker": "You",
+          "text": "I am too. But hopefully we'll find him.",
+          "nextNodeId": "node_208"
+        },
+        {
+          "nodeId": "node_208",
+          "speaker": "Monica",
+          "text": "Alright, I'm gonna ask his other roommates if they've seen him before I file the report.",
+          "nextNodeId": "node_209"
+        },
+        {
+          "nodeId": "node_209",
+          "speaker": "You",
+          "text": "Okay, Monica, I haven't been completely honest with you.",
+          "nextNodeId": "node_210"
+        },
+        {
+          "nodeId": "node_210",
+          "speaker": "You",
+          "text": "It is true that I haven't seen Ivan since yesterday. The truth is, one of our roommates kidnapped him.",
+          "nextNodeId": "node_211"
+        },
+        {
+          "nodeId": "node_211",
+          "speaker": "Monica",
+          "text": "WHAT?",
+          "nextNodeId": "node_212"
+        },
+        {
+          "nodeId": "node_212",
+          "speaker": "You",
+          "text": "and he kidnapped my other roommates today. He's coming for me next!",
+          "nextNodeId": "node_213"
+        },
+        {
+          "nodeId": "node_213",
+          "speaker": "Monica",
+          "text": "Okay okay hold on right there - why didn't you just tell me everything from the beginning?",
+          "nextNodeId": "node_214"
+        },
+        {
+          "nodeId": "node_214",
+          "speaker": "You",
+          "text": "Because right before you texted me, I got a text from Ivan",
+          "nextNodeId": "node_215"
+        },
+        {
+          "nodeId": "node_215",
+          "speaker": "You",
+          "text": "He told me that he and my other roommates were kidnapped by David.",
+          "nextNodeId": "node_216"
+        },
+        {
+          "nodeId": "node_216",
+          "speaker": "You",
+          "text": "They're currently in some barn.",
+          "nextNodeId": "node_217"
+        },
+        {
+          "nodeId": "node_217",
+          "speaker": "You",
+          "text": "Ivan warned me not to go back to the dorm because David is apparently waiting for me.",
+          "nextNodeId": "node_218"
+        },
+        {
+          "nodeId": "node_218",
+          "speaker": "You",
+          "text": "I wasn't sure if he was playing some sick joke or not until you told me you haven't heard from him.",
+          "nextNodeId": "node_219"
+        },
+        {
+          "nodeId": "node_219",
+          "speaker": "You",
+          "text": "I wanted to wait for more of your text messages before I told you the truth.",
+          "nextNodeId": "node_220"
+        },
+        {
+          "nodeId": "node_220",
+          "speaker": "Monica",
+          "text": "I see. Okay, so what are you going to do now?",
+          "nextNodeId": "node_221"
+        },
+        {
+          "nodeId": "node_221",
+          "speaker": "You",
+          "text": "Let me just...",
+          "nextNodeId": "node_222"
+        },
+        {
+          "nodeId": "node_222",
+          "command": "new_contact",
+          "contact_name": "Ivan,Monica,Shadid,You",
+          "nextNodeId": "node_223"
+        },
+        {
+          "nodeId": "node_223",
+          "speaker": "Shadid",
+          "text": "Huh? Grant why'd you add me to this group?",
+          "nextNodeId": "node_224"
+        },
+        {
+          "nodeId": "node_224",
+          "speaker": "You",
+          "text": "I'll explain later, but Ivan, I believe you.",
+          "nextNodeId": "node_225"
+        },
+        {
+          "nodeId": "node_225",
+          "speaker": "Monica",
+          "text": "Ivan?",
+          "nextNodeId": "node_226"
+        },
+        {
+          "nodeId": "node_226",
+          "speaker": "Ivan",
+          "text": "Monica!",
+          "nextNodeId": "node_227"
+        },
+        {
+          "nodeId": "node_227",
+          "speaker": "Monica",
+          "text": "Is it true? You've been kidnapped?",
+          "nextNodeId": "node_228"
+        },
+        {
+          "nodeId": "node_228",
+          "speaker": "Ivan",
+          "text": "Yeah, by David!",
+          "nextNodeId": "node_229"
+        },
+        {
+          "nodeId": "node_229",
+          "speaker": "Shadid",
+          "text": "WAIT OKAY HANG ON. SOMEONE LET ME KNOW WHAT'S GOING ON!",
+          "nextNodeId": "node_230"
+        },
+        {
+          "nodeId": "node_230",
+          "speaker": "You",
+          "text": "Long story short, David kidnapped most of my roommates and placed them in some barn. Now, he's returned and is waiting for me next at the dorm.",
+          "nextNodeId": "node_231"
+        },
+        {
+          "nodeId": "node_231",
+          "speaker": "Shadid",
+          "text": "So that hike really did save you.",
+          "nextNodeId": "node_232"
+        },
+        {
+          "nodeId": "node_232",
+          "speaker": "Monica",
+          "text": "Wait, Ivan, how are you texting us if you got kidnapped?",
+          "nextNodeId": "node_233"
+        },
+        {
+          "nodeId": "node_233",
+          "speaker": "Ivan",
+          "text": "I had my phone in my pockets when David came after me.",
+          "nextNodeId": "node_234"
+        },
+        {
+          "nodeId": "node_234",
+          "speaker": "Ivan",
+          "text": "I usually sleep with jeans on, so I'm guessing David didn't really suspect I'd have my phone with me.",
+          "nextNodeId": "node_235"
+        },
+        {
+          "nodeId": "node_235",
+          "speaker": "Shadid",
+          "text": "I'm sorry, you sleep with jeans on? Grant what are your roommates?",
+          "nextNodeId": "node_236"
+        },
+        {
+          "nodeId": "node_236",
+          "speaker": "Monica",
+          "text": "Now's not the time for such comments.",
+          "nextNodeId": "node_237"
+        },
+        {
+          "nodeId": "node_237",
+          "speaker": "Shadid",
+          "text": "Sorry.",
+          "nextNodeId": "node_238"
+        },
+        {
+          "nodeId": "node_238",
+          "speaker": "You",
+          "text": "Grant, do you know where you are, specifically?",
+          "nextNodeId": "node_239"
+        },
+        {
+          "nodeId": "node_239",
+          "speaker": "Ivan",
+          "text": "I might have an idea. But just to confirm, we're going to look around together.",
+          "nextNodeId": "node_240"
+        },
+        {
+          "nodeId": "node_240",
+          "speaker": "Shadid",
+          "text": "I might have an idea too, actually.",
+          "nextNodeId": "node_241"
+        },
+        {
+          "nodeId": "node_241",
+          "speaker": "Shadid",
+          "text": "Grant, remember when you told me about David's backstory? Which town did he grow up in? Did he mention that?",
+          "nextNodeId": "node_242"
+        },
+        {
+          "nodeId": "node_242",
+          "speaker": "You",
+          "text": "He said he grew up in Shadowroove.",
+          "nextNodeId": "node_243"
+        },
+        {
+          "nodeId": "node_243",
+          "speaker": "Shadid",
+          "text": "Okay, I'm just gonna conduct some quick searches.",
+          "nextNodeId": "node_244"
+        },
+        {
+          "nodeId": "node_244",
+          "speaker": "Monica",
+          "text": "Grant, do you know David's full name?",
+          "nextNodeId": "node_245"
+        },
+        {
+          "nodeId": "node_245",
+          "speaker": "You",
+          "text": "He said his last name is Rosskick, but if he was smart, that's probably a fake name. His name probably isn't even David either.",
+          "nextNodeId": "node_246"
+        },
+        {
+          "nodeId": "node_246",
+          "speaker": "You",
+          "text": "Anyway, you guys look into whatever you can/ I'm gonna try to stall 'Zareef'.",
+          "nextNodeId": "node_247"
+        },
+        {
+          "nodeId": "node_247",
+          "command": "new_contact",
+          "contact_name": "Zareef",
+          "nextNodeId": "node_248"
+        },
+        {
+          "nodeId": "node_248",
+          "speaker": "You",
+          "text": "Hey Zareef, what was the event that you attended earlier?",
+          "nextNodeId": "node_249"
+        },
+        {
+          "nodeId": "node_249",
+          "speaker": "Zareef",
+          "text": "There was an intro meeting for the astrophysics organization today.",
+          "nextNodeId": "node_250"
+        },
+        {
+          "nodeId": "node_250",
+          "speaker": "You",
+          "text": "mmm, that sounds fascinating.",
+          "nextNodeId": "node_251"
+        },
+        {
+          "nodeId": "node_251",
+          "speaker": "You",
+          "text": "Okay, I'm going to walk back now.",
+          "nextNodeId": "node_252"
+        },
+        {
+          "nodeId": "node_252",
+          "speaker": "Zareef",
+          "text": "You okay?",
+          "nextNodeId": "node_253"
+        },
+        {
+          "nodeId": "node_253",
+          "speaker": "You",
+          "text": "WHat?",
+          "nextNodeId": "node_254"
+        },
+        {
+          "nodeId": "node_254",
+          "speaker": "Zareef",
+          "text": "You seem less excited. Before you went silent, you seemed soo ecstatic to eat the food I've brought.",
+          "nextNodeId": "node_255"
+        },
+        {
+          "nodeId": "node_255",
+          "speaker": "You",
+          "text": "Oh I still am! I'm just tired right now because of all the hiking.",
+          "nextNodeId": "node_256"
+        },
+        {
+          "nodeId": "node_256",
+          "speaker": "You",
+          "text": "Just leave the food on the table, I'll be back in around 30 minutes.",
+          "nextNodeId": "node_257"
+        },
+        {
+          "nodeId": "node_257",
+          "speaker": "Zareef",
+          "text": "30 minutes??",
+          "nextNodeId": "node_258"
+        },
+        {
+          "nodeId": "node_258",
+          "speaker": "You",
+          "text": "I've walked quite far",
+          "nextNodeId": "node_259"
+        },
+        {
+          "nodeId": "node_259",
+          "command": "new_contact",
+          "contact_name": "Rescue Operation",
+          "nextNodeId": "node_260"
+        },
+        {
+          "nodeId": "node_260",
+          "speaker": "You",
+          "text": "Alright I'm ba",
+          "nextNodeId": "node_261"
+        },
+        {
+          "nodeId": "node_261",
+          "speaker": "You",
+          "text": "Who changed the name?",
+          "nextNodeId": "node_262"
+        },
+        {
+          "nodeId": "node_262",
+          "speaker": "Monica",
+          "text": "I think you already know who",
+          "nextNodeId": "node_263"
+        },
+        {
+          "nodeId": "node_263",
+          "speaker": "You",
+          "text": "wow, anyway. I told David I'd be back in 30 minutes. Did you guys find anything?",
+          "nextNodeId": "node_264"
+        },
+        {
+          "nodeId": "node_264",
+          "speaker": "Ivan",
+          "text": "All of us feel stronger now.",
+          "nextNodeId": "node_265"
+        },
+        {
+          "nodeId": "node_265",
+          "speaker": "Monica",
+          "text": "That's great to hear.",
+          "nextNodeId": "node_266"
+        },
+        {
+          "nodeId": "node_266",
+          "speaker": "Ivan",
+          "text": "We just opened the barn door. There's sunlight!",
+          "nextNodeId": "node_267"
+        },
+        {
+          "nodeId": "node_267",
+          "speaker": "Shadid",
+          "text": "Let's go! But still be careful - he might have some affiliates or something.",
+          "nextNodeId": "node_268"
+        },
+        {
+          "nodeId": "node_268",
+          "speaker": "Shadid",
+          "text": "In the meantime, can you guys describe what you see? I'm currently looking at a barn on Google Maps. I strongly believe it's the same barn you guys were placed in.",
+          "nextNodeId": "node_269"
+        },
+        {
+          "nodeId": "node_269",
+          "speaker": "Ivan",
+          "text": "There's a lot of wheat growing in front of us. Just a few hundred meters down the road that's connected to the barn is a gray 1-story house.",
+          "nextNodeId": "node_270"
+        },
+        {
+          "nodeId": "node_270",
+          "speaker": "Shadid",
+          "text": "Is there a sign nearby that says 'Welcome to Shadowroove'",
+          "nextNodeId": "node_271"
+        },
+        {
+          "nodeId": "node_271",
+          "speaker": "Ivan",
+          "text": "No, I don't see",
+          "nextNodeId": "node_272"
+        },
+        {
+          "nodeId": "node_272",
+          "speaker": "Ivan",
+          "text": "WAIT NVM I DO!",
+          "nextNodeId": "node_273"
+        },
+        {
+          "nodeId": "node_273",
+          "speaker": "Shadid",
+          "text": "OH MY GOODNESS I FOUND Y'ALL!",
+          "nextNodeId": "node_274"
+        },
+        {
+          "nodeId": "node_274",
+          "speaker": "You",
+          "text": "Now's not the time to celebrate. Monica, can you call emeregency services and send them to rescue Ivan and the others?",
+          "nextNodeId": "node_275"
+        },
+        {
+          "nodeId": "node_275",
+          "speaker": "Monica",
+          "text": "Already on it!",
+          "nextNodeId": "node_276"
+        },
+        {
+          "nodeId": "node_276",
+          "speaker": "Shadid",
+          "text": "I already called the cops to your dorm, Grant. They said they'll be there in 10 minutes.",
+          "nextNodeId": "node_277"
+        },
+        {
+          "nodeId": "node_277",
+          "speaker": "You",
+          "text": "Alright cool!",
+          "nextNodeId": "node_278"
+        },
+        {
+          "nodeId": "node_278",
+          "speaker": "You",
+          "text": "I'm going to stall David a little more.",
+          "nextNodeId": "node_279"
+        },
+        {
+          "nodeId": "node_279",
+          "command": "new_contact",
+          "contact_name": "Zareef",
+          "nextNodeId": "node_280"
+        },
+        {
+          "nodeId": "node_280",
+          "speaker": "You",
+          "text": "Actually Zareef, I changed my mind. You can just go ahead and store the food in the fridge. I'll heat it up for later.",
+          "nextNodeId": "node_281"
+        },
+        {
+          "nodeId": "node_281",
+          "speaker": "Zareef",
+          "text": "Very well then.",
+          "nextNodeId": "node_282"
+        },
+        {
+          "nodeId": "node_282",
+          "speaker": "Zareef",
+          "text": "How are you enjoying the Thomasgrove river?",
+          "nextNodeId": "node_283"
+        },
+        {
+          "nodeId": "node_283",
+          "speaker": "You",
+          "text": "It's actually kind of beautiful",
+          "nextNodeId": "node_284"
+        },
+        {
+          "nodeId": "node_284",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_285"
+        },
+        {
+          "nodeId": "node_285",
+          "speaker": "You",
+          "text": "Zareef, how did you know I was at the Thomasgrove river, specifically?",
+          "nextNodeId": "node_286"
+        },
+        {
+          "nodeId": "node_286",
+          "speaker": "Zareef",
+          "text": "Cut the nonsense, Grant. I know you know it's me.",
+          "nextNodeId": "node_287"
+        },
+        {
+          "nodeId": "node_287",
+          "speaker": "You",
+          "text": "What did you to the others?",
+          "nextNodeId": "node_288"
+        },
+        {
+          "nodeId": "node_288",
+          "speaker": "Zareef",
+          "text": "Oh nothing. Just preparing them for a little, sacrifice.",
+          "nextNodeId": "node_289"
+        },
+        {
+          "nodeId": "node_289",
+          "speaker": "You",
+          "text": "SACRIFICE?",
+          "nextNodeId": "node_290"
+        },
+        {
+          "nodeId": "node_290",
+          "speaker": "Zareef",
+          "text": "Yes. Had you've been in the dorm, I would've won!",
+          "nextNodeId": "node_291"
+        },
+        {
+          "nodeId": "node_291",
+          "speaker": "Zareef",
+          "text": "But it's no problem - you're in my line of sight anyway.",
+          "nextNodeId": "node_292"
+        },
+        {
+          "nodeId": "node_292",
+          "narrator_text": "You hear some leaves rustling behind you. You immediately try to run out of the trail. You were successful. Then you proceeded to run back to the dorm, where the cops have been waiting. Foolishly for David, he was right behind you with a knife when the cops saw him. He was immediately tackled down and arrested on the spot. David Rosskick (real last name being Groovecutter) was arrested for kidnapping Ivan Slandi, Alex Morashell, and and Zareef Sujood, attemptedmurder and attempted kidnapping of Grant Miller. He has since been sentenced to life in prison. All of his kidnapping victims were found and rescued from his family barn located in Shadowgroove.",
+          "choices": [
+            {
+              "text": "Hide in the closet",
+              "nextNodeId": "node_295"
+            },
+            {
+              "text": "Confront Him",
+              "nextNodeId": "node_297"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_295",
+          "speaker": "You",
+          "text": "I'm hiding in his closet.",
+          "nextNodeId": "node_296"
+        },
+        {
+          "nodeId": "node_296",
+          "narrator_text": "Bad move! David walks into the room, and hears you in the closet. You lost - try again.",
+          "choices": []
+        },
+        {
+          "nodeId": "node_297",
+          "speaker": "You",
+          "text": "I'm going to confront him.",
+          "nextNodeId": "node_298"
+        },
+        {
+          "nodeId": "node_298",
+          "speaker": "Shadid",
+          "text": "Dude don't!",
+          "nextNodeId": "node_299"
+        },
+        {
+          "nodeId": "node_299",
+          "narrator_text": "Before you could even open your mouth, David suffocates you with a plastic bag. When you wake up, you notice him performing the ritual.",
+          "nextNodeId": "node_300"
+        },
+        {
+          "nodeId": "node_300",
+          "narrator_text": "You lose! - try again.",
+          "choices": []
+        }
+      ]
     },
     {
       "id": "story_6",
       "title": "Night Shift",
       "description": "Desperate, Jayne decides to take the night shift at her local cafe. Coffees, pastries, and less customers? What could go wrong?",
-      "nodes": []
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "Manager",
+          "text": "Welcome to your first shift at the cafe, Jane. We're glad to have you on board!",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "You",
+          "text": "Thank you for this opportunity!",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "speaker": "Manager",
+          "text": "No, thank you! It is understandably hard to get someone to work on the night shift.",
+          "nextNodeId": "node_3"
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "Manager",
+          "text": "Now, here is some information about your job.",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "Manager",
+          "text": "Your shifts start from 11 PM - 7 AM from Monday to Friday.",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "Manager",
+          "text": "Because you are on the night shift, you are allowed to be on your phone during the job, as long as you're serving the customers.",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "Manager",
+          "text": "You have the coffee machine. If you ever run out of coffee grounds, you can get some more from the back of the store. You won't have to open the coffee filter every time after each use as the machine has a little monitor indicating how much grounds are left.",
+          "nextNodeId": "node_7"
+        },
+        {
+          "nodeId": "node_7",
+          "speaker": "Manager",
+          "text": "As for the desserts, you're only responsible for baking the cookies. Everything else, like the cake, brownies, and muffins, you don't have to bake them, since you're new to this kind of job. Remember to put oven mittens on before you put or take anything out of the oven.",
+          "nextNodeId": "node_8"
+        },
+        {
+          "nodeId": "node_8",
+          "speaker": "Manager",
+          "text": "Once again, you can find the cookie dough in back beside the coffee grounds.",
+          "nextNodeId": "node_9"
+        },
+        {
+          "nodeId": "node_9",
+          "speaker": "Manager",
+          "text": "And one more thing, you're going to experience some 'unusual' customers during these night shifts.",
+          "nextNodeId": "node_10"
+        },
+        {
+          "nodeId": "node_10",
+          "speaker": "Manager",
+          "text": "It's important that you give them exactly what they want.",
+          "nextNodeId": "node_11"
+        },
+        {
+          "nodeId": "node_11",
+          "speaker": "Manager",
+          "text": "The good news is, with the phone you're currently receiving these instructions on, these 'customers' will text their order. They will be expecting their whole order to be ready by the time they walk in.",
+          "nextNodeId": "node_12"
+        },
+        {
+          "nodeId": "node_12",
+          "speaker": "Manager",
+          "text": "Just give what they request, and you'll be good for the shift. Good luck, and text me if you need anything!",
+          "nextNodeId": "node_13"
+        },
+        {
+          "nodeId": "node_13",
+          "command": "new_contact",
+          "contact_name": "Raiyan",
+          "nextNodeId": "node_14"
+        },
+        {
+          "nodeId": "node_14",
+          "speaker": "Raiyan",
+          "text": "Hey, how's your first shift going?",
+          "nextNodeId": "node_15"
+        },
+        {
+          "nodeId": "node_15",
+          "speaker": "You",
+          "text": "It's actually kind of peaceful. Barely any customers around this time, and I get double the pay of the day shift workers.",
+          "nextNodeId": "node_16"
+        },
+        {
+          "nodeId": "node_16",
+          "speaker": "You",
+          "text": "This was also the only job I was able to get during these times, but I'm grateful.",
+          "nextNodeId": "node_17"
+        },
+        {
+          "nodeId": "node_17",
+          "speaker": "Raiyan",
+          "text": "Cool!",
+          "nextNodeId": "node_18"
+        },
+        {
+          "nodeId": "node_18",
+          "speaker": "You",
+          "text": "Anyway, why are you up around this time?",
+          "nextNodeId": "node_19"
+        },
+        {
+          "nodeId": "node_19",
+          "speaker": "Raiyan",
+          "text": "Group project.",
+          "nextNodeId": "node_20"
+        },
+        {
+          "nodeId": "node_20",
+          "speaker": "You",
+          "text": "Did you finally get a group where you're not the only one putting in work?",
+          "nextNodeId": "node_21"
+        },
+        {
+          "nodeId": "node_21",
+          "speaker": "Raiyan",
+          "text": "If I did, I would've been sleeping right now.",
+          "nextNodeId": "node_22"
+        },
+        {
+          "nodeId": "node_22",
+          "speaker": "You",
+          "text": "Dang, that's tough.",
+          "nextNodeId": "node_23"
+        },
+        {
+          "nodeId": "node_23",
+          "speaker": "You",
+          "text": "Oh! First customer of the shift. I'll ttyl!",
+          "nextNodeId": "node_24"
+        },
+        {
+          "nodeId": "node_24",
+          "narrator_text": "5 minutes later",
+          "nextNodeId": "node_25"
+        },
+        {
+          "nodeId": "node_25",
+          "speaker": "You",
+          "text": "Bro! I just got a $10 tip!",
+          "nextNodeId": "node_26"
+        },
+        {
+          "nodeId": "node_26",
+          "speaker": "You",
+          "text": "The customer's coffee was only like $4 though.",
+          "nextNodeId": "node_27"
+        },
+        {
+          "nodeId": "node_27",
+          "speaker": "Raiyan",
+          "text": "Okay I see you! You must be vibrating some great energy for that tip!",
+          "nextNodeId": "node_28"
+        },
+        {
+          "nodeId": "node_28",
+          "speaker": "You",
+          "text": "Maybe working here was the best choice I got",
+          "nextNodeId": "node_29"
+        },
+        {
+          "nodeId": "node_29",
+          "speaker": "You",
+          "text": "Hold on this is odd. There's suddenly more customers coming in, like 8. It's only 11:30 right now.",
+          "nextNodeId": "node_30"
+        },
+        {
+          "nodeId": "node_30",
+          "speaker": "Raiyan",
+          "text": "Well, don't keep them waiting! Get to work!",
+          "nextNodeId": "node_31"
+        },
+        {
+          "nodeId": "node_31",
+          "command": "new_contact",
+          "contact_name": "Unknown",
+          "nextNodeId": "node_32"
+        },
+        {
+          "nodeId": "node_32",
+          "speaker": "Unknown",
+          "text": "Hello. I'd like to place an order for a chocolate chip cookie and a small maple latte.",
+          "nextNodeId": "node_33"
+        },
+        {
+          "nodeId": "node_33",
+          "speaker": "You",
+          "text": "Who are you?",
+          "nextNodeId": "node_34"
+        },
+        {
+          "nodeId": "node_34",
+          "speaker": "You",
+          "text": "Hello?",
+          "nextNodeId": "node_35"
+        },
+        {
+          "nodeId": "node_35",
+          "narrator_text": "You have a line of 5 people. Do you take the next person's order or do you fulfill the unknown's order?",
+          "choices": [
+            {
+              "text": "Take the next person's order",
+              "nextNodeId": "node_38"
+            },
+            {
+              "text": "Start working on the unknown's order",
+              "nextNodeId": "node_39"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_38",
+          "narrator_text": "Wrong Move!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_39",
+          "narrator_text": "You start working on the unknown person's order. As a result, 3 customers left the shop. You then take the remaining 2 people's orders, and  they go on with their nights. Just when you thought you could relax, you hear the door open. Stepping in is a tall (at least 7 ft 7) human. You can't see their face. They point towards the food you have prepared for them. You hand them their food and move on with your shift.",
+          "choices": []
+        },
+        {
+          "nodeId": "node_40",
+          "command": "new_contact",
+          "contact_name": "Raiyan",
+          "nextNodeId": "node_41"
+        },
+        {
+          "nodeId": "node_41",
+          "speaker": "You",
+          "text": "Some really tall dude, I'm talking like at least 7 ft, walked into the store. He was eerily quiet, but thankfully I prepared his order ahead of time.",
+          "nextNodeId": "node_42"
+        },
+        {
+          "nodeId": "node_42",
+          "speaker": "Raiyan",
+          "text": "7 ft? Dang that's really tall! Anyway, I presume you've just finished serving the customers who suddenly came in?",
+          "nextNodeId": "node_43"
+        },
+        {
+          "nodeId": "node_43",
+          "speaker": "You",
+          "text": "Yup! How's your group project going?",
+          "nextNodeId": "node_44"
+        },
+        {
+          "nodeId": "node_44",
+          "speaker": "Raiyan",
+          "text": "Don't ask. All you have to know is, it's going horrendous.",
+          "nextNodeId": "node_45"
+        },
+        {
+          "nodeId": "node_45",
+          "speaker": "Raiyan",
+          "text": "My teammates keep missing our planned meetings for this thing. It feels like me and this other guy are the only ones who are actually trying to pass the course!",
+          "nextNodeId": "node_46"
+        },
+        {
+          "nodeId": "node_46",
+          "speaker": "You",
+          "text": "Man that's rough. Yeah group projects are always risky becuase you never know your teammate's work ethics (even they even have those) until it's too late",
+          "nextNodeId": "node_47"
+        },
+        {
+          "nodeId": "node_47",
+          "narrator_text": "To be continued ..."
+        }
+      ]
     },
     {
       "id": "story_7",
       "title": "Possession",
       "description": "When Omar notices that his mother has been acting off recently, he realizes he has a long battle to fight.",
-      "nodes": []
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "You",
+          "text": "Dad?",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "You",
+          "text": "Where are you?",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "speaker": "Dad",
+          "text": "I'm still at work. Why?",
+          "nextNodeId": "node_3"
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "You",
+          "text": "Grandma has been acting weird ever since I got here.",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "Dad",
+          "text": "How so?",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "You",
+          "text": "When you left, her smile disappeared. Usually she's happy to see me. But today she seemed cold.",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "You",
+          "text": "Later she gave me lunch. I thought she was going to eat with me today like usual, but instead she told me she already ate.",
+          "nextNodeId": "node_7"
+        },
+        {
+          "nodeId": "node_7",
+          "speaker": "You",
+          "text": "Now I hear whispers coming from her room. Did I do something wrong?",
+          "nextNodeId": "node_8"
+        },
+        {
+          "nodeId": "node_8",
+          "speaker": "Dad",
+          "text": "No, you didn't do anything wrong.",
+          "nextNodeId": "node_9"
+        },
+        {
+          "nodeId": "node_9",
+          "speaker": "Dad",
+          "text": "Gradnma is just a bit sick, that's all.",
+          "nextNodeId": "node_10"
+        },
+        {
+          "nodeId": "node_10",
+          "speaker": "Dad",
+          "text": "But whatever you do, please don't go into her room, no matter what.",
+          "nextNodeId": "node_11"
+        },
+        {
+          "nodeId": "node_11",
+          "speaker": "Dad",
+          "text": "I don't want you to get sick.",
+          "nextNodeId": "node_12"
+        },
+        {
+          "nodeId": "node_12",
+          "speaker": "You",
+          "text": "If she's sick, why did you even send me to stay with her?",
+          "nextNodeId": "node_13"
+        },
+        {
+          "nodeId": "node_13",
+          "speaker": "Dad",
+          "text": "I'm sorry, young one. I'd normally hire a babysitter for you, but right now times are tough.",
+          "nextNodeId": "node_14"
+        },
+        {
+          "nodeId": "node_14",
+          "speaker": "Dad",
+          "text": "And the last time I left you to be home alone, you almost burnt the house down by just boiling a pot of water. I don't know how you even managed to do that to this day.",
+          "nextNodeId": "node_15"
+        },
+        {
+          "nodeId": "node_15",
+          "speaker": "Dad",
+          "text": "Anyway, I actually just finished my shift, so I'm coming to pick you up now.",
+          "nextNodeId": "node_16"
+        },
+        {
+          "nodeId": "node_16",
+          "speaker": "You",
+          "text": "Okay, please hurry. Grandma's starting to act even more weird now.",
+          "nextNodeId": "node_17"
+        },
+        {
+          "nodeId": "node_17",
+          "speaker": "Dad",
+          "text": "I'm using speech to text right now to talk with you. What is Grandma doing now?",
+          "nextNodeId": "node_18"
+        },
+        {
+          "nodeId": "node_18",
+          "speaker": "You",
+          "text": "I keep hearing scratching from her bedroom door. And the whispers from her room are getting louder.",
+          "nextNodeId": "node_19"
+        },
+        {
+          "nodeId": "node_19",
+          "speaker": "Dad",
+          "text": "Okay, Emily, I need you to listen to me very carefully.",
+          "nextNodeId": "node_20"
+        },
+        {
+          "nodeId": "node_20",
+          "speaker": "Dad",
+          "text": "The person in Grandma's room right now is NOT her. I repeat, she is NOT your Grandma now.",
+          "nextNodeId": "node_21"
+        },
+        {
+          "nodeId": "node_21",
+          "speaker": "You",
+          "text": "What???",
+          "nextNodeId": "node_22"
+        },
+        {
+          "nodeId": "node_22",
+          "speaker": "You",
+          "text": "That makes no sense. I saw her physically go into her room and lock herself in there.",
+          "nextNodeId": "node_23"
+        },
+        {
+          "nodeId": "node_23",
+          "speaker": "You",
+          "text": "And I'm hearing her voice right now.",
+          "nextNodeId": "node_24"
+        },
+        {
+          "nodeId": "node_24",
+          "speaker": "Dad",
+          "text": "What is she saying?",
+          "nextNodeId": "node_25"
+        },
+        {
+          "nodeId": "node_25",
+          "speaker": "You",
+          "text": "She's asking me to bring her a glass of water.",
+          "nextNodeId": "node_26"
+        },
+        {
+          "nodeId": "node_26",
+          "speaker": "Dad",
+          "text": "Emily, DO NOT BRING HER THE WATER.",
+          "nextNodeId": "node_27"
+        },
+        {
+          "nodeId": "node_27",
+          "speaker": "You",
+          "text": "But she's thirsty? Why would I not give her water?",
+          "nextNodeId": "node_28"
+        },
+        {
+          "nodeId": "node_28",
+          "speaker": "Dad",
+          "text": "Because like I said, right now, that's not your Grandma.",
+          "nextNodeId": "node_29"
+        },
+        {
+          "nodeId": "node_29",
+          "speaker": "Dad",
+          "text": "More importantly, Emily, I need you to hide somewhere. Please! If you do, I'll let you stay home alone from now on.",
+          "nextNodeId": "node_30"
+        },
+        {
+          "nodeId": "node_30",
+          "speaker": "Dad",
+          "text": "Emily?",
+          "nextNodeId": "node_31"
+        },
+        {
+          "nodeId": "node_31",
+          "speaker": "Dad",
+          "text": "Emily are you okay?",
+          "nextNodeId": "node_32"
+        },
+        {
+          "nodeId": "node_32",
+          "speaker": "You",
+          "text": "I'm fine. I'm currently hiding in the kitchen pantry.",
+          "nextNodeId": "node_33"
+        },
+        {
+          "nodeId": "node_33",
+          "speaker": "Dad",
+          "text": "Look for anything to defend yourself with, if you can.",
+          "nextNodeId": "node_34"
+        },
+        {
+          "nodeId": "node_34",
+          "speaker": "You",
+          "text": "I have a baseball bat. Since when did Grandma play baseball?",
+          "nextNodeId": "node_35"
+        },
+        {
+          "nodeId": "node_35",
+          "speaker": "Dad",
+          "text": "She never played baseball. You have my bat from when I used to play baseball.",
+          "nextNodeId": "node_36"
+        },
+        {
+          "nodeId": "node_36",
+          "speaker": "Dad",
+          "text": "But enough about my past, do you hear anything right now?",
+          "nextNodeId": "node_37"
+        },
+        {
+          "nodeId": "node_37",
+          "speaker": "You",
+          "text": "Actually, no. As I was moving to the kitchen, the scratching stopped. I don't hear her voice, anymore.",
+          "nextNodeId": "node_38"
+        },
+        {
+          "nodeId": "node_38",
+          "speaker": "Dad",
+          "text": "Okay. Don't leave the pantry yet, I'm almost here.",
+          "nextNodeId": "node_39"
+        },
+        {
+          "nodeId": "node_39",
+          "speaker": "You",
+          "text": "DAD",
+          "nextNodeId": "node_40"
+        },
+        {
+          "nodeId": "node_40",
+          "speaker": "You",
+          "text": "GRANDMA'S SCREAMING RIGHT NOW",
+          "nextNodeId": "node_41"
+        },
+        {
+          "nodeId": "node_41",
+          "speaker": "Dad",
+          "text": "EMILY DO NOT GO TO HER",
+          "nextNodeId": "node_42"
+        },
+        {
+          "nodeId": "node_42",
+          "speaker": "You",
+          "text": "BUT SHE'S IN PAIN. I HEAR HER CRYING.",
+          "nextNodeId": "node_43"
+        },
+        {
+          "nodeId": "node_43",
+          "speaker": "You",
+          "text": "YOU KEEP SAYING THAT'S NOT GRANDMA. WHAT IS GOING ON? YOU'RE NOT TELLING ME ANYTHING.",
+          "nextNodeId": "node_44"
+        },
+        {
+          "nodeId": "node_44",
+          "speaker": "Dad",
+          "text": "I'LL TELL YOU AFTER I PICK YOU UP. PLEASE, DO NOT GO TO HER. I PROMISE YOU THAT IS NOT HER!",
+          "choices": [
+            {
+              "text": "Help Grandma",
+              "nextNodeId": "node_47"
+            },
+            {
+              "text": "Stay In The Pantry",
+              "nextNodeId": "node_65"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_47",
+          "speaker": "You",
+          "text": "I'm going to help her! You're making no sense!",
+          "nextNodeId": "node_48"
+        },
+        {
+          "nodeId": "node_48",
+          "speaker": "Dad",
+          "text": "EMILY NO!",
+          "nextNodeId": "node_49"
+        },
+        {
+          "nodeId": "node_49",
+          "speaker": "Dad",
+          "text": "EMILY",
+          "nextNodeId": "node_50"
+        },
+        {
+          "nodeId": "node_50",
+          "speaker": "Dad",
+          "text": "EMILY!",
+          "nextNodeId": "node_51"
+        },
+        {
+          "nodeId": "node_51",
+          "speaker": "You",
+          "text": "Emily can't come to the phone right now",
+          "nextNodeId": "node_52"
+        },
+        {
+          "nodeId": "node_52",
+          "speaker": "Dad",
+          "text": "LEAVE MY CHILD ALONE, YOU DEMON!",
+          "nextNodeId": "node_53"
+        },
+        {
+          "nodeId": "node_53",
+          "speaker": "You",
+          "text": "Oh she's left alone all right.",
+          "nextNodeId": "node_54"
+        },
+        {
+          "nodeId": "node_54",
+          "speaker": "Dad",
+          "text": "What did you do to her?",
+          "nextNodeId": "node_55"
+        },
+        {
+          "nodeId": "node_55",
+          "speaker": "You",
+          "text": "I just put her to sleep, temporarily. She'll wake up soon, but by then your mother will be gone!",
+          "nextNodeId": "node_56"
+        },
+        {
+          "nodeId": "node_56",
+          "speaker": "Dad",
+          "text": "Oh no you don't!",
+          "nextNodeId": "node_57"
+        },
+        {
+          "nodeId": "node_57",
+          "speaker": "You",
+          "text": "DAD!",
+          "nextNodeId": "node_58"
+        },
+        {
+          "nodeId": "node_58",
+          "speaker": "Dad",
+          "text": "Emily?",
+          "nextNodeId": "node_59"
+        },
+        {
+          "nodeId": "node_59",
+          "speaker": "You",
+          "text": "I knocked the thing out.",
+          "nextNodeId": "node_60"
+        },
+        {
+          "nodeId": "node_60",
+          "speaker": "Dad",
+          "text": "That's great! I'm in the driveway! Can you run to the car?",
+          "nextNodeId": "node_61"
+        },
+        {
+          "nodeId": "node_61",
+          "speaker": "You",
+          "text": "Already on my way!",
+          "nextNodeId": "node_62"
+        },
+        {
+          "nodeId": "node_62",
+          "speaker": "Dad",
+          "text": "I see you",
+          "nextNodeId": "node_63"
+        },
+        {
+          "nodeId": "node_63",
+          "speaker": "Dad",
+          "text": "... You're not Emily, aren't you",
+          "nextNodeId": "node_64"
+        },
+        {
+          "nodeId": "node_64",
+          "speaker": "You",
+          "text": "NOPE!",
+          "choices": []
+        },
+        {
+          "nodeId": "node_65",
+          "speaker": "You",
+          "text": "I'm staying here.",
+          "nextNodeId": "node_66"
+        },
+        {
+          "nodeId": "node_66",
+          "speaker": "Dad",
+          "text": "Okay, good!",
+          "nextNodeId": "node_67"
+        },
+        {
+          "nodeId": "node_67",
+          "speaker": "Dad",
+          "text": "Just give me 2-3 minutes, Emily. I'm nearly there.",
+          "nextNodeId": "node_68"
+        },
+        {
+          "nodeId": "node_68",
+          "speaker": "You",
+          "text": "You have to tell me what's going on though.",
+          "nextNodeId": "node_69"
+        },
+        {
+          "nodeId": "node_69",
+          "speaker": "Dad",
+          "text": "I don't even know where to begin.",
+          "nextNodeId": "node_70"
+        },
+        {
+          "nodeId": "node_70",
+          "speaker": "You",
+          "text": "Just try!",
+          "nextNodeId": "node_71"
+        },
+        {
+          "nodeId": "node_71",
+          "speaker": "Dad",
+          "text": "Alright, here I go.",
+          "nextNodeId": "node_72"
+        },
+        {
+          "nodeId": "node_72",
+          "speaker": "Dad",
+          "text": "Your Grandma was the only child of a member who was a part of a cult back a few decades ago.",
+          "nextNodeId": "node_73"
+        },
+        {
+          "nodeId": "node_73",
+          "speaker": "Dad",
+          "text": "As soon as your grandma was born, your great grandparents did everything in their power to leave the cult.",
+          "nextNodeId": "node_74"
+        },
+        {
+          "nodeId": "node_74",
+          "speaker": "Dad",
+          "text": "They were almost successful, actually, until the leader found out.",
+          "nextNodeId": "node_75"
+        },
+        {
+          "nodeId": "node_75",
+          "speaker": "Dad",
+          "text": "To punish your great grandparents, the cult kidnapped your grandma and performed a ritual on her. This ritual would result in her being possessed by a demon every few random years. Your great grandparents did everything they could in their power to stop the demon from coming back, but nothing worked.",
+          "nextNodeId": "node_76"
+        },
+        {
+          "nodeId": "node_76",
+          "speaker": "Dad",
+          "text": "Despite all this, grandma managed to live a normal life. She met your grandpa, he found out about the situation, but still decided to propose to her anyway.",
+          "nextNodeId": "node_77"
+        },
+        {
+          "nodeId": "node_77",
+          "speaker": "Dad",
+          "text": "I haven't really told you the truth about Grandpa's death, Emily.",
+          "nextNodeId": "node_78"
+        },
+        {
+          "nodeId": "node_78",
+          "speaker": "Dad",
+          "text": "He didn't die in his sleep from natural causes.",
+          "nextNodeId": "node_79"
+        },
+        {
+          "nodeId": "node_79",
+          "speaker": "Dad",
+          "text": "On the night of his death, grandma had a nother posession episode. Grandpa thought he was prepared though. He tried to perform an exorcism on her. Unlike the other attempts of an exorcism on her done by her parents, this one actually succeeded. Or, that's what we both thought.",
+          "nextNodeId": "node_80"
+        },
+        {
+          "nodeId": "node_80",
+          "speaker": "Dad",
+          "text": "We all went to sleep. It was around 1 in the morning when I heard your Grandpa scream.",
+          "nextNodeId": "node_81"
+        },
+        {
+          "nodeId": "node_81",
+          "speaker": "Dad",
+          "text": "I rushed into the bedroom, and saw your grandma, standing over your grandpa.",
+          "nextNodeId": "node_82"
+        },
+        {
+          "nodeId": "node_82",
+          "speaker": "Dad",
+          "text": "Only, it wasn't her. Again, it was the demon.",
+          "nextNodeId": "node_83"
+        },
+        {
+          "nodeId": "node_83",
+          "speaker": "Dad",
+          "text": "I tried to save him, but the demon kept using his dark magic to prevent me from stepping closer into the room.",
+          "nextNodeId": "node_84"
+        },
+        {
+          "nodeId": "node_84",
+          "speaker": "Dad",
+          "text": "In the end, the demon killed him, and grandma fell on the floor unconscious.",
+          "nextNodeId": "node_85"
+        },
+        {
+          "nodeId": "node_85",
+          "speaker": "You",
+          "text": "AND YOU THOUGHT IT'D BE BETTER TO BRING ME HERE AND RISK MY LIFE THAN TO SIMPLY JUST RISK THE HOUSE BEING BURNED DOWN????",
+          "nextNodeId": "node_86"
+        },
+        {
+          "nodeId": "node_86",
+          "speaker": "You",
+          "text": "WHAT IS ACTUALLY WRONG WITH YOU? ARE YOU EVEN MY FATHER?",
+          "nextNodeId": "node_87"
+        },
+        {
+          "nodeId": "node_87",
+          "speaker": "Dad",
+          "text": "Emily, please, I'm sorry!",
+          "nextNodeId": "node_88"
+        },
+        {
+          "nodeId": "node_88",
+          "speaker": "Dad",
+          "text": "She had another posession episode last month, so I thought it'd be safe to bring you here.",
+          "nextNodeId": "node_89"
+        },
+        {
+          "nodeId": "node_89",
+          "speaker": "Dad",
+          "text": "I thought it was only once every couple years.",
+          "nextNodeId": "node_90"
+        },
+        {
+          "nodeId": "node_90",
+          "speaker": "You",
+          "text": "Alright.",
+          "nextNodeId": "node_91"
+        },
+        {
+          "nodeId": "node_91",
+          "speaker": "Dad",
+          "text": "I'll take you to your favorite ice cream store after this. I just got into the driveway.",
+          "nextNodeId": "node_92"
+        },
+        {
+          "nodeId": "node_92",
+          "speaker": "Dad",
+          "text": "Please, do not come out just yet.",
+          "nextNodeId": "node_93"
+        },
+        {
+          "nodeId": "node_93",
+          "speaker": "You",
+          "text": "How are you going to get in?",
+          "nextNodeId": "node_94"
+        },
+        {
+          "nodeId": "node_94",
+          "speaker": "Dad",
+          "text": "Spare key.",
+          "nextNodeId": "node_95"
+        },
+        {
+          "nodeId": "node_95",
+          "speaker": "You",
+          "text": "Okay, but be careful.",
+          "nextNodeId": "node_96"
+        },
+        {
+          "nodeId": "node_96",
+          "speaker": "You",
+          "text": "I heard the door open.",
+          "nextNodeId": "node_97"
+        },
+        {
+          "nodeId": "node_97",
+          "speaker": "You",
+          "text": "Wait, you're already here? I hear breathing outside the pantry.",
+          "nextNodeId": "node_98"
+        },
+        {
+          "nodeId": "node_98",
+          "speaker": "Dad",
+          "text": "Emily, I'm in the hallway right now. That's not me.",
+          "nextNodeId": "node_99"
+        },
+        {
+          "nodeId": "node_99",
+          "speaker": "You",
+          "text": "SHE'S TWISTING THE DOORKNOB. DAD HELP!",
+          "nextNodeId": "node_100"
+        },
+        {
+          "nodeId": "node_100",
+          "speaker": "You",
+          "text": "Dad?",
+          "nextNodeId": "node_101"
+        },
+        {
+          "nodeId": "node_101",
+          "narrator_text": "Emily's father managed to successfully knock out 'Grandma'. Emily was then rescued. A week after this incident, Emily and her father moved out of town to get away from her grandma. They ended up living with the father's friend. However, her grandma was shortly reported missing after that. The police checked the household, but found no signs of her.",
+          "nextNodeId": "node_102"
+        },
+        {
+          "nodeId": "node_102",
+          "narrator_text": "A few years later...",
+          "nextNodeId": "node_103"
+        },
+        {
+          "nodeId": "node_103",
+          "speaker": "You",
+          "text": "Dad I got into the engineering program!",
+          "nextNodeId": "node_104"
+        },
+        {
+          "nodeId": "node_104",
+          "speaker": "Dad",
+          "text": "I knew you could do it! I'm so proud of you!",
+          "nextNodeId": "node_105"
+        },
+        {
+          "nodeId": "node_105",
+          "speaker": "You",
+          "text": "Not only that, but they also gave me a full-ride entry scholarship!",
+          "nextNodeId": "node_106"
+        },
+        {
+          "nodeId": "node_106",
+          "speaker": "Dad",
+          "text": "That's my daughter! How about we go out to that Lebanese restaurant to celebrate?",
+          "nextNodeId": "node_107"
+        },
+        {
+          "nodeId": "node_107",
+          "speaker": "You",
+          "text": "Okay!",
+          "nextNodeId": "node_108"
+        },
+        {
+          "nodeId": "node_108",
+          "speaker": "You",
+          "text": "Wait, you're home already?",
+          "nextNodeId": "node_109"
+        },
+        {
+          "nodeId": "node_109",
+          "speaker": "Dad",
+          "text": "What? No? I'm still at work.",
+          "nextNodeId": "node_110"
+        },
+        {
+          "nodeId": "node_110",
+          "speaker": "You",
+          "text": "Maybe it's John who's making all those footsteps downstairs.",
+          "nextNodeId": "node_111"
+        },
+        {
+          "nodeId": "node_111",
+          "speaker": "Dad",
+          "text": "Emily, hide now!",
+          "nextNodeId": "node_112"
+        },
+        {
+          "nodeId": "node_112",
+          "speaker": "Dad",
+          "text": "John went out of town to go to his sister's wedding",
+          "nextNodeId": "node_113"
+        },
+        {
+          "nodeId": "node_113",
+          "speaker": "You",
+          "text": "What?",
+          "nextNodeId": "node_114"
+        },
+        {
+          "nodeId": "node_114",
+          "narrator_text": "Emily hears a familiar voice call her name",
+          "nextNodeId": "node_115"
+        },
+        {
+          "nodeId": "node_115",
+          "narrator_text": "It was her grandma.",
+          "choices": []
+        }
+      ]
     },
     {
       "id": "story_8",
       "title": "Doppelganger",
       "description": "Sofia always thought she had a normal family. That was, until a certain somebody texted her.",
-      "nodes": []
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "You",
+          "text": "Camping trip is in 5 days! You excited?",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "Allie",
+          "text": "Absolutely! This is the first time my parents are letting me go out of town without them!",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "speaker": "You",
+          "text": "Well, we just finished university, so we lowkey could use this trip.",
+          "nextNodeId": "node_3"
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "Allie",
+          "text": "Agreed. Make sure you bring the fishing rods! You keep bragging about how many fish you catch every time you go fishing.",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "You",
+          "text": "I must have the 'Luck Of The Sea' enchantment in real life! My last trip I caught like 15 basses in 2 hours. I caught so much that when I was on my 10th fish, my father asked if he could attempt to reel the fish in.",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "speaker": "Allie",
+          "text": "Souds like this trip is going to be promising then. I already got my fishing license, so we should be good.",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "You",
+          "text": "Hang on, I just heard a knock on my door. I'll brb!",
+          "nextNodeId": "node_7"
+        },
+        {
+          "nodeId": "node_7",
+          "speaker": "You",
+          "text": "THE HELL?!?",
+          "nextNodeId": "node_8"
+        },
+        {
+          "nodeId": "node_8",
+          "speaker": "Allie",
+          "text": "Sofia? What's going on?",
+          "nextNodeId": "node_9"
+        },
+        {
+          "nodeId": "node_9",
+          "command": "new_contact",
+          "contact_name": "Unknown",
+          "nextNodeId": "node_10"
+        },
+        {
+          "nodeId": "node_10",
+          "speaker": "Unknown",
+          "text": "Hello, Sofia",
+          "nextNodeId": "node_11"
+        },
+        {
+          "nodeId": "node_11",
+          "speaker": "You",
+          "text": "I think you may have the wrong number",
+          "nextNodeId": "node_12"
+        },
+        {
+          "nodeId": "node_12",
+          "speaker": "Unknown",
+          "text": "I'm pretty confident you're my intended contact, Sofia Garcia.",
+          "nextNodeId": "node_13"
+        },
+        {
+          "nodeId": "node_13",
+          "speaker": "You",
+          "text": "Who are you? How do you know my full name?",
+          "nextNodeId": "node_14"
+        },
+        {
+          "nodeId": "node_14",
+          "speaker": "Unknown",
+          "text": "If I were to tell you, you would not believe me.",
+          "nextNodeId": "node_15"
+        },
+        {
+          "nodeId": "node_15",
+          "speaker": "Unknown",
+          "text": "But it's okay, I'm going to tell you anyway. I'm your sister.",
+          "nextNodeId": "node_16"
+        },
+        {
+          "nodeId": "node_16",
+          "speaker": "You",
+          "text": "What are you talking about? I don't have a sister.",
+          "nextNodeId": "node_17"
+        },
+        {
+          "nodeId": "node_17",
+          "speaker": "Unknown",
+          "text": "Of course they hid me from you. Your parents kept me hidden from you. You were never an only child like they made you think.",
+          "nextNodeId": "node_18"
+        },
+        {
+          "nodeId": "node_18",
+          "speaker": "You",
+          "text": "Quit playing this sick prank on me, whoever you are. Leave me alone!",
+          "nextNodeId": "node_19"
+        },
+        {
+          "nodeId": "node_19",
+          "speaker": "Unknown",
+          "text": "You can try to ignore this, but it's not going to work.",
+          "nextNodeId": "node_20"
+        },
+        {
+          "nodeId": "node_20",
+          "speaker": "Unknown",
+          "text": "I knew you weren't going to believe me. Thankfully, the evidence to my claims are actually in your house right now.",
+          "nextNodeId": "node_21"
+        },
+        {
+          "nodeId": "node_21",
+          "speaker": "Unknown",
+          "text": "Your room has a green carpet, you have a Minecraft poster hanging above your bed, and you also have that teddy bear your mother gave you when you were 4.",
+          "nextNodeId": "node_22"
+        },
+        {
+          "nodeId": "node_22",
+          "speaker": "You",
+          "text": "Why do you know all of this information?",
+          "nextNodeId": "node_23"
+        },
+        {
+          "nodeId": "node_23",
+          "speaker": "Unknown",
+          "text": "That's not important. Now, I'd like you to get off your couch and head to your parents room.",
+          "nextNodeId": "node_24"
+        },
+        {
+          "nodeId": "node_24",
+          "speaker": "You",
+          "text": "Why?",
+          "nextNodeId": "node_25"
+        },
+        {
+          "nodeId": "node_25",
+          "speaker": "Unknown",
+          "text": "Because my proof lies in your parents bedroom.",
+          "nextNodeId": "node_26"
+        },
+        {
+          "nodeId": "node_26",
+          "speaker": "You",
+          "text": "Okay.",
+          "nextNodeId": "node_27"
+        },
+        {
+          "nodeId": "node_27",
+          "speaker": "You",
+          "text": "Alright I'm here.",
+          "nextNodeId": "node_28"
+        },
+        {
+          "nodeId": "node_28",
+          "speaker": "Unknown",
+          "text": "Now go under your parents bed.",
+          "nextNodeId": "node_29"
+        },
+        {
+          "nodeId": "node_29",
+          "speaker": "You",
+          "text": "I see a bunch of coins underneath the bed.",
+          "nextNodeId": "node_30"
+        },
+        {
+          "nodeId": "node_30",
+          "speaker": "You",
+          "text": "How are these coins proof that I have a sister?",
+          "nextNodeId": "node_31"
+        },
+        {
+          "nodeId": "node_31",
+          "speaker": "Unknown",
+          "text": "They're not. Take one of the coins underneath the bed and look at it. Do they look like normal coins to you?",
+          "nextNodeId": "node_32"
+        },
+        {
+          "nodeId": "node_32",
+          "speaker": "You",
+          "text": "Actually no. They don't have anything on it, actually, besides the ridges.",
+          "nextNodeId": "node_33"
+        },
+        {
+          "nodeId": "node_33",
+          "speaker": "Unknown",
+          "text": "Perfect. Now go to the piggy bank on the tablestand right next to the bookshelf, and insert the coin.",
+          "nextNodeId": "node_34"
+        },
+        {
+          "nodeId": "node_34",
+          "speaker": "You",
+          "text": "Doing that right now.",
+          "nextNodeId": "node_35"
+        },
+        {
+          "nodeId": "node_35",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_36"
+        },
+        {
+          "nodeId": "node_36",
+          "speaker": "You",
+          "text": "The bookshelf is moving.",
+          "nextNodeId": "node_37"
+        },
+        {
+          "nodeId": "node_37",
+          "speaker": "You",
+          "text": "What the- there's a secret room here.",
+          "nextNodeId": "node_38"
+        },
+        {
+          "nodeId": "node_38",
+          "speaker": "Unknown",
+          "text": "With a safe on a stand?",
+          "nextNodeId": "node_39"
+        },
+        {
+          "nodeId": "node_39",
+          "speaker": "You",
+          "text": "Yeah!",
+          "nextNodeId": "node_40"
+        },
+        {
+          "nodeId": "node_40",
+          "speaker": "Unknown",
+          "text": "Inside the safe lies the evidence that I exist as your sibling.",
+          "nextNodeId": "node_41"
+        },
+        {
+          "nodeId": "node_41",
+          "speaker": "You",
+          "text": "You seem to know about the interior of my house a little too well, including a secret room that I was not aware of.",
+          "nextNodeId": "node_42"
+        },
+        {
+          "nodeId": "node_42",
+          "speaker": "You",
+          "text": "I'm going to assume you know where the key is.",
+          "nextNodeId": "node_43"
+        },
+        {
+          "nodeId": "node_43",
+          "speaker": "Unknown",
+          "text": "Actualy, no. I don't know where the key is. I know that it is a red key with 3 'a''s back-to-back.",
+          "nextNodeId": "node_44"
+        },
+        {
+          "nodeId": "node_44",
+          "narrator_text": "Sofia hears the front door getting unlocked.",
+          "nextNodeId": "node_45"
+        },
+        {
+          "nodeId": "node_45",
+          "speaker": "You",
+          "text": "My parents are here! What do I do?",
+          "nextNodeId": "node_46"
+        },
+        {
+          "nodeId": "node_46",
+          "speaker": "Unknown",
+          "text": "Don't panic. Get out of the room, tap the piggy bank's nose to move the bookshelf right back into it's original place, and get out of the room!",
+          "nextNodeId": "node_47"
+        },
+        {
+          "nodeId": "node_47",
+          "speaker": "You",
+          "text": "Done and dusted!",
+          "nextNodeId": "node_48"
+        },
+        {
+          "nodeId": "node_48",
+          "speaker": "Unknown",
+          "text": "Now, whatever you do, do NOT tell your parents any of this. I'll text you tomorrow. Good night!",
+          "nextNodeId": "node_49"
+        },
+        {
+          "nodeId": "node_49",
+          "narrator_text": "To be continued ...\\"
+        }
+      ]
     },
     {
       "id": "story_9",
       "title": "Babysitting",
       "description": "Kate has always babysat the Greenspoon's child. This time, Kate is not aware of what she was about to face.",
-      "nodes": []
+      "nodes": [
+        {
+          "nodeId": "node_0",
+          "speaker": "Mr. Greenspoon",
+          "text": "Hello Kate",
+          "nextNodeId": "node_1"
+        },
+        {
+          "nodeId": "node_1",
+          "speaker": "You",
+          "text": "Hi Mr. Greenspoon!",
+          "nextNodeId": "node_2"
+        },
+        {
+          "nodeId": "node_2",
+          "speaker": "Mr. Greenspoon",
+          "text": "My wife and I are planning to go out this Saturday night. I was wondering if you'd be able to babysit Jackson from 9 PM to 1 AM?",
+          "nextNodeId": "node_3"
+        },
+        {
+          "nodeId": "node_3",
+          "speaker": "You",
+          "text": "Yes, I'm available for that time that day!",
+          "nextNodeId": "node_4"
+        },
+        {
+          "nodeId": "node_4",
+          "speaker": "Mr. Greenspoon",
+          "text": "Okay, thank you! I'll see you then!",
+          "nextNodeId": "node_5"
+        },
+        {
+          "nodeId": "node_5",
+          "command": "new_contact",
+          "contact_name": "Joseph",
+          "nextNodeId": "node_6"
+        },
+        {
+          "nodeId": "node_6",
+          "speaker": "Joseph",
+          "text": "Hey Kate, are you down to get some milkshakes this Saturday night?",
+          "nextNodeId": "node_7"
+        },
+        {
+          "nodeId": "node_7",
+          "speaker": "You",
+          "text": "I'd like to, but I can't. I told Mr. Greenspoon that I'd babysit his child that day.",
+          "nextNodeId": "node_8"
+        },
+        {
+          "nodeId": "node_8",
+          "speaker": "Joseph",
+          "text": "Aw man.",
+          "nextNodeId": "node_9"
+        },
+        {
+          "nodeId": "node_9",
+          "speaker": "Joseph",
+          "text": "At least you'll be paid a lot, because he's rich.",
+          "nextNodeId": "node_10"
+        },
+        {
+          "nodeId": "node_10",
+          "speaker": "Joseph",
+          "text": "Actually, now that I think about it, how do the Greenspoons have so much money?",
+          "nextNodeId": "node_11"
+        },
+        {
+          "nodeId": "node_11",
+          "speaker": "You",
+          "text": "I actually don't know. But I don't really care. As long as I'm getting paid, I have no reason to care.",
+          "nextNodeId": "node_12"
+        },
+        {
+          "nodeId": "node_12",
+          "speaker": "Joseph",
+          "text": "Sounds a bit harsh reading that from you.",
+          "nextNodeId": "node_13"
+        },
+        {
+          "nodeId": "node_13",
+          "speaker": "You",
+          "text": "I don't really care. Anyway, I gotta go eat dinner now. I'll talk to you soon!",
+          "nextNodeId": "node_14"
+        },
+        {
+          "nodeId": "node_14",
+          "command": "new_contact",
+          "contact_name": "Milkshake Minions",
+          "nextNodeId": "node_15"
+        },
+        {
+          "nodeId": "node_15",
+          "speaker": "Anna",
+          "text": "Kate, are you sure you can't join us for milkshakes tonight?",
+          "nextNodeId": "node_16"
+        },
+        {
+          "nodeId": "node_16",
+          "speaker": "You",
+          "text": "I'm already near the Greenspoon's residence. Even if I weren't, I already told Mr. Greenspoon I'd babysit Jackson. On the bright side, I'm going to be making like $400 when I finish this shift.",
+          "nextNodeId": "node_17"
+        },
+        {
+          "nodeId": "node_17",
+          "speaker": "Joseph",
+          "text": "Let her get that money, Anna. Plus, who knows? Maybe Kate will buy us those leather jackets we wanted?",
+          "nextNodeId": "node_18"
+        },
+        {
+          "nodeId": "node_18",
+          "speaker": "You",
+          "text": "Not a chance, Joseph",
+          "nextNodeId": "node_19"
+        },
+        {
+          "nodeId": "node_19",
+          "speaker": "Joseph",
+          "text": "It was worth a shot.",
+          "nextNodeId": "node_20"
+        },
+        {
+          "nodeId": "node_20",
+          "speaker": "Mike",
+          "text": "Hey guys, I just woke up! What'd I miss?",
+          "nextNodeId": "node_21"
+        },
+        {
+          "nodeId": "node_21",
+          "speaker": "Anna",
+          "text": "Mike, it's 8:45 PM. What time did you sleep?",
+          "nextNodeId": "node_22"
+        },
+        {
+          "nodeId": "node_22",
+          "speaker": "Anna",
+          "text": "Actually, don't answer that. I don't want to even comprehend.",
+          "nextNodeId": "node_23"
+        },
+        {
+          "nodeId": "node_23",
+          "speaker": "Mike",
+          "text": "You guys are getting milkshakes? Without me?",
+          "nextNodeId": "node_24"
+        },
+        {
+          "nodeId": "node_24",
+          "speaker": "Joseph",
+          "text": "I tried calling you like 7 times 30 minutes ago. You're a very deep sleeper!",
+          "nextNodeId": "node_25"
+        },
+        {
+          "nodeId": "node_25",
+          "speaker": "Mike",
+          "text": "Oooh - I see the missed calls.",
+          "nextNodeId": "node_26"
+        },
+        {
+          "nodeId": "node_26",
+          "speaker": "Anna",
+          "text": "Kate's not going either because of a babysitting gig.",
+          "nextNodeId": "node_27"
+        },
+        {
+          "nodeId": "node_27",
+          "speaker": "Mike",
+          "text": "Hey Kate, split some of that money with us, would you?",
+          "nextNodeId": "node_28"
+        },
+        {
+          "nodeId": "node_28",
+          "speaker": "Joseph",
+          "text": "I already tried, but she rejected the idea.",
+          "nextNodeId": "node_29"
+        },
+        {
+          "nodeId": "node_29",
+          "speaker": "Mike",
+          "text": "Understandable.",
+          "nextNodeId": "node_30"
+        },
+        {
+          "nodeId": "node_30",
+          "speaker": "Mike",
+          "text": "So the rest are still going?",
+          "nextNodeId": "node_31"
+        },
+        {
+          "nodeId": "node_31",
+          "speaker": "Anna",
+          "text": "Yup!",
+          "nextNodeId": "node_32"
+        },
+        {
+          "nodeId": "node_32",
+          "speaker": "Mike",
+          "text": "Alright, I'll meet y'all at the Diner. It's gonna take a while for me to get ready.",
+          "nextNodeId": "node_33"
+        },
+        {
+          "nodeId": "node_33",
+          "speaker": "You",
+          "text": "Just got to the Greenspoon's driveway. Maybe once Jackson goes to sleep, I can text y'all.",
+          "nextNodeId": "node_34"
+        },
+        {
+          "nodeId": "node_34",
+          "speaker": "Joseph",
+          "text": "Sounds like a great plan!",
+          "nextNodeId": "node_35"
+        },
+        {
+          "nodeId": "node_35",
+          "command": "new_contact",
+          "contact_name": "Mr. Greenspoon",
+          "nextNodeId": "node_36"
+        },
+        {
+          "nodeId": "node_36",
+          "speaker": "Kate",
+          "text": "Mr. Greenspoon, I'm here.",
+          "nextNodeId": "node_37"
+        },
+        {
+          "nodeId": "node_37",
+          "speaker": "You",
+          "text": "I don't see your car at all?",
+          "nextNodeId": "node_38"
+        },
+        {
+          "nodeId": "node_38",
+          "speaker": "Mr. Greenspoon",
+          "text": "Hi Kate. I apologize, but my wife and I messed up our dinner reservations. I accidentally selected 8:45 instead.",
+          "nextNodeId": "node_39"
+        },
+        {
+          "nodeId": "node_39",
+          "speaker": "Mr. Greenspoon",
+          "text": "I left a spare key under the mat. Jackson's already asleep, so feel free to make yourself something to eat.",
+          "nextNodeId": "node_40"
+        },
+        {
+          "nodeId": "node_40",
+          "speaker": "Mr. Greenspoon",
+          "text": "We'll still be back around 1 in the morning. If there's an emergency, don't hesitate to contact me.",
+          "nextNodeId": "node_41"
+        },
+        {
+          "nodeId": "node_41",
+          "speaker": "You",
+          "text": "Alright, thank you!",
+          "nextNodeId": "node_42"
+        },
+        {
+          "nodeId": "node_42",
+          "speaker": "Mr. Greenspoon",
+          "text": "I'm sorry.",
+          "nextNodeId": "node_43"
+        },
+        {
+          "nodeId": "node_43",
+          "speaker": "You",
+          "text": "It's alright. We all make mistakes, sometimes.",
+          "nextNodeId": "node_44"
+        },
+        {
+          "nodeId": "node_44",
+          "command": "new_contact",
+          "contact_name": "Milkshake Minions",
+          "nextNodeId": "node_45"
+        },
+        {
+          "nodeId": "node_45",
+          "speaker": "You",
+          "text": "Well that was weird.",
+          "nextNodeId": "node_46"
+        },
+        {
+          "nodeId": "node_46",
+          "speaker": "Joseph",
+          "text": "What happened?",
+          "nextNodeId": "node_47"
+        },
+        {
+          "nodeId": "node_47",
+          "speaker": "You",
+          "text": "Mr Greenspoon already left the house before I got there. He said he messed up his reservations.",
+          "nextNodeId": "node_48"
+        },
+        {
+          "nodeId": "node_48",
+          "speaker": "You",
+          "text": "Normally he'd wait for me to enter his house and give me instructions in-person.",
+          "nextNodeId": "node_49"
+        },
+        {
+          "nodeId": "node_49",
+          "speaker": "Anna",
+          "text": "Huh, that is weird.",
+          "nextNodeId": "node_50"
+        },
+        {
+          "nodeId": "node_50",
+          "speaker": "Mike",
+          "text": "So your gig got cancelled?",
+          "nextNodeId": "node_51"
+        },
+        {
+          "nodeId": "node_51",
+          "speaker": "You",
+          "text": "No - he left a spare key, and told me to watch over Jackson.",
+          "nextNodeId": "node_52"
+        },
+        {
+          "nodeId": "node_52",
+          "speaker": "Mike",
+          "text": "Aw, I was getting excited thinking we were going to enjoy a night out as a group again.",
+          "nextNodeId": "node_53"
+        },
+        {
+          "nodeId": "node_53",
+          "speaker": "You",
+          "text": "Well, I'm going to be free tomorrow, if y'all want to do something.",
+          "nextNodeId": "node_54"
+        },
+        {
+          "nodeId": "node_54",
+          "speaker": "Anna",
+          "text": "I say we go to a haunted house attraction! I can't wait to see Joseph get so scared he throws up!",
+          "nextNodeId": "node_55"
+        },
+        {
+          "nodeId": "node_55",
+          "speaker": "Joseph",
+          "text": "Don't remind me",
+          "nextNodeId": "node_56"
+        },
+        {
+          "nodeId": "node_56",
+          "speaker": "Mike",
+          "text": "Oh those were some really funny times. But yeah, I'm down for that!",
+          "nextNodeId": "node_57"
+        },
+        {
+          "nodeId": "node_57",
+          "speaker": "Joseph",
+          "text": "Same, and this time I'm going to be brave!",
+          "nextNodeId": "node_58"
+        },
+        {
+          "nodeId": "node_58",
+          "speaker": "You",
+          "text": "I'm down too!",
+          "nextNodeId": "node_59"
+        },
+        {
+          "nodeId": "node_59",
+          "speaker": "You",
+          "text": "Anyway, since Jackson's sleeping, I can text y'all on the job!",
+          "nextNodeId": "node_60"
+        },
+        {
+          "nodeId": "node_60",
+          "speaker": "Mike",
+          "text": "You're not gonna check on him?",
+          "nextNodeId": "node_61"
+        },
+        {
+          "nodeId": "node_61",
+          "speaker": "You",
+          "text": "Now that you mention it, I probably should. Just to make sure he's sleeping, and if not, well he'll now know that his favorite babysitter is here!",
+          "nextNodeId": "node_62"
+        },
+        {
+          "nodeId": "node_62",
+          "speaker": "Joseph",
+          "text": "I thought you only wanted the money.",
+          "nextNodeId": "node_63"
+        },
+        {
+          "nodeId": "node_63",
+          "speaker": "You",
+          "text": "Well sometimes as a babysitter, you tend to bond with the kids whom you babysit. Jackson's no exception over here.",
+          "nextNodeId": "node_64"
+        },
+        {
+          "nodeId": "node_64",
+          "speaker": "You",
+          "text": "Enough chatting, I'm gonna check on him.",
+          "nextNodeId": "node_65"
+        },
+        {
+          "nodeId": "node_65",
+          "speaker": "Anna",
+          "text": "While she's doing that, I just got a table for us at the diner.",
+          "nextNodeId": "node_66"
+        },
+        {
+          "nodeId": "node_66",
+          "speaker": "Anna",
+          "text": "How far out are you guys right now?",
+          "nextNodeId": "node_67"
+        },
+        {
+          "nodeId": "node_67",
+          "speaker": "Joseph",
+          "text": "I'm like 5 minutes away. Mike?",
+          "nextNodeId": "node_68"
+        },
+        {
+          "nodeId": "node_68",
+          "speaker": "Mike",
+          "text": "I'm currently in the shower.",
+          "nextNodeId": "node_69"
+        },
+        {
+          "nodeId": "node_69",
+          "speaker": "Anna",
+          "text": "sorry",
+          "nextNodeId": "node_70"
+        },
+        {
+          "nodeId": "node_70",
+          "speaker": "Anna",
+          "text": "WHAT?",
+          "nextNodeId": "node_71"
+        },
+        {
+          "nodeId": "node_71",
+          "speaker": "Joseph",
+          "text": "Like, you have your phone with you right now, while you're showering?",
+          "nextNodeId": "node_72"
+        },
+        {
+          "nodeId": "node_72",
+          "speaker": "Mike",
+          "text": "yeah?",
+          "nextNodeId": "node_73"
+        },
+        {
+          "nodeId": "node_73",
+          "speaker": "Joseph",
+          "text": "...",
+          "nextNodeId": "node_74"
+        },
+        {
+          "nodeId": "node_74",
+          "speaker": "Anna",
+          "text": "I'm not surprised. Just don't stay too long in the shower.",
+          "nextNodeId": "node_75"
+        },
+        {
+          "nodeId": "node_75",
+          "speaker": "Mike",
+          "text": "No need to. I just got out. I'll get to the diner in 15 minutes.",
+          "nextNodeId": "node_76"
+        },
+        {
+          "nodeId": "node_76",
+          "speaker": "You",
+          "text": "",
+          "nextNodeId": "node_77"
+        },
+        {
+          "nodeId": "node_77",
+          "speaker": "You",
+          "text": "Guys",
+          "nextNodeId": "node_78"
+        },
+        {
+          "nodeId": "node_78",
+          "speaker": "You",
+          "text": "I just checked on him. He seems to be in a deep sleep. I'm not going to wake him up.",
+          "nextNodeId": "node_79"
+        },
+        {
+          "nodeId": "node_79",
+          "speaker": "You",
+          "text": "Also Mike, you really need to learn when to not be on your phone. No sane person brings a phone into the shower!",
+          "nextNodeId": "node_80"
+        },
+        {
+          "nodeId": "node_80",
+          "speaker": "Mike",
+          "text": "And continue missing out on these conversations? No way!",
+          "nextNodeId": "node_81"
+        },
+        {
+          "nodeId": "node_81",
+          "speaker": "Anna",
+          "text": "Wow, you're hopeless.",
+          "nextNodeId": "node_82"
+        },
+        {
+          "nodeId": "node_82",
+          "speaker": "Anna",
+          "text": "The diner is awfully quiet, tonight.",
+          "nextNodeId": "node_83"
+        },
+        {
+          "nodeId": "node_83",
+          "speaker": "Joseph",
+          "text": "Really?",
+          "nextNodeId": "node_84"
+        },
+        {
+          "nodeId": "node_84",
+          "speaker": "Anna",
+          "text": "Yeah there's like, no customers at all.",
+          "nextNodeId": "node_85"
+        },
+        {
+          "nodeId": "node_85",
+          "speaker": "Anna",
+          "text": "Actually, I just realized, I'm the only customer here.",
+          "nextNodeId": "node_86"
+        },
+        {
+          "nodeId": "node_86",
+          "speaker": "Mike",
+          "text": "Ooh, spooky!",
+          "nextNodeId": "node_87"
+        },
+        {
+          "nodeId": "node_87",
+          "speaker": "Anna",
+          "text": "Shut up, Mike! Jane and the other staff are still here, thankfully.",
+          "nextNodeId": "node_88"
+        },
+        {
+          "nodeId": "node_88",
+          "speaker": "Anna",
+          "text": "And they're playing Yiruma over the speakers! Now this is the vibe I love to enjoy!",
+          "nextNodeId": "node_89"
+        },
+        {
+          "nodeId": "node_89",
+          "speaker": "Joseph",
+          "text": "I'm almost there, Anna!",
+          "nextNodeId": "node_90"
+        },
+        {
+          "nodeId": "node_90",
+          "speaker": "You",
+          "text": "Now y'all are making me regret not coming with y'all.",
+          "nextNodeId": "node_91"
+        },
+        {
+          "nodeId": "node_91",
+          "speaker": "Mike",
+          "text": "Hey, we still have that haunted house gig tomorrow.",
+          "nextNodeId": "node_92"
+        },
+        {
+          "nodeId": "node_92",
+          "speaker": "You",
+          "text": "Yeah, I'm gonna be looking forward to Joseph's reaction!",
+          "nextNodeId": "node_93"
+        },
+        {
+          "nodeId": "node_93",
+          "speaker": "Joseph",
+          "text": "Wow",
+          "nextNodeId": "node_94"
+        },
+        {
+          "nodeId": "node_94",
+          "speaker": "You",
+          "text": "Well, while you guys enjoy your milkshakes, I'm gonna make myself a sandwich.",
+          "nextNodeId": "node_95"
+        },
+        {
+          "nodeId": "node_95",
+          "speaker": "Anna",
+          "text": "And Joseph's here!",
+          "nextNodeId": "node_96"
+        },
+        {
+          "nodeId": "node_96",
+          "speaker": "Joseph",
+          "text": "Guys she wasn't kidding. It's quiet here.",
+          "nextNodeId": "node_97"
+        },
+        {
+          "nodeId": "node_97",
+          "speaker": "Joseph",
+          "text": "But I missed the Yiruma music, so now they're playing Shawn Mendes",
+          "nextNodeId": "node_98"
+        },
+        {
+          "nodeId": "node_98",
+          "speaker": "Mike",
+          "text": "I just left the house. Someone start the 15 minute timer now!",
+          "nextNodeId": "node_99"
+        },
+        {
+          "nodeId": "node_99",
+          "speaker": "Joseph",
+          "text": "Started the timer! If we don't see you when the timer runs out, you're going to be mixing ketchup and mustard into your milkshake.",
+          "nextNodeId": "node_100"
+        },
+        {
+          "nodeId": "node_100",
+          "speaker": "Mike",
+          "text": "And if I get there beforehand, BOTH YOU and Anna are going to do just that!",
+          "nextNodeId": "node_101"
+        },
+        {
+          "nodeId": "node_101",
+          "speaker": "Joseph",
+          "text": "Deal!",
+          "nextNodeId": "node_102"
+        },
+        {
+          "nodeId": "node_102",
+          "speaker": "Anna",
+          "text": "I did not agree to this!",
+          "nextNodeId": "node_103"
+        },
+        {
+          "nodeId": "node_103",
+          "speaker": "Joseph",
+          "text": "Too bad! Now you're in on the bet!",
+          "nextNodeId": "node_104"
+        },
+        {
+          "nodeId": "node_104",
+          "speaker": "Anna",
+          "text": "Hey Kate, will Mr. Greenspoon allow me to visit you?",
+          "nextNodeId": "node_105"
+        },
+        {
+          "nodeId": "node_105",
+          "speaker": "You",
+          "text": "Sorry Anna, but it seems like you're on your own!",
+          "nextNodeId": "node_106"
+        },
+        {
+          "nodeId": "node_106",
+          "speaker": "You",
+          "text": "...",
+          "nextNodeId": "node_107"
+        },
+        {
+          "nodeId": "node_107",
+          "speaker": "You",
+          "text": "Guys?",
+          "nextNodeId": "node_108"
+        },
+        {
+          "nodeId": "node_108",
+          "speaker": "Joseph",
+          "text": "What's up?",
+          "nextNodeId": "node_109"
+        },
+        {
+          "nodeId": "node_109",
+          "speaker": "You",
+          "text": "There's someone outside the front door",
+          "nextNodeId": "node_110"
+        },
+        {
+          "nodeId": "node_110",
+          "speaker": "You",
+          "text": "He's wearing a creepy mask",
+          "nextNodeId": "node_111"
+        },
+        {
+          "nodeId": "node_111",
+          "speaker": "You",
+          "text": "HE'S GOT A KNIFE",
+          "nextNodeId": "node_112"
+        },
+        {
+          "nodeId": "node_112",
+          "speaker": "Joseph",
+          "text": "WHAT?",
+          "nextNodeId": "node_113"
+        },
+        {
+          "nodeId": "node_113",
+          "speaker": "Anna",
+          "text": "CALL 911!",
+          "nextNodeId": "node_114"
+        },
+        {
+          "nodeId": "node_114",
+          "speaker": "Mike",
+          "text": "I just left the house. I'm coming over, Kate!",
+          "nextNodeId": "node_115"
+        },
+        {
+          "nodeId": "node_115",
+          "speaker": "Joseph",
+          "text": "Me and Anna are also on our way!",
+          "nextNodeId": "node_116"
+        },
+        {
+          "nodeId": "node_116",
+          "speaker": "You",
+          "text": "I'm on the phone with the operator.",
+          "nextNodeId": "node_117"
+        },
+        {
+          "nodeId": "node_117",
+          "speaker": "You",
+          "text": "They said the police will get here in 15 minutes",
+          "nextNodeId": "node_118"
+        },
+        {
+          "nodeId": "node_118",
+          "speaker": "Joseph",
+          "text": "You think you can hold the guy off for 15 minutes? Actually, is he doing anything else?",
+          "nextNodeId": "node_119"
+        },
+        {
+          "nodeId": "node_119",
+          "speaker": "You",
+          "text": "No. Matter of fact, he's not at the door anymore.",
+          "nextNodeId": "node_120"
+        },
+        {
+          "nodeId": "node_120",
+          "speaker": "You",
+          "text": "Maybe it's some guy playing a sick prank? It's almost Halloween after all.",
+          "nextNodeId": "node_121"
+        },
+        {
+          "nodeId": "node_121",
+          "speaker": "Anna",
+          "text": "We're still coming over. Better safe than sorry.",
+          "nextNodeId": "node_122"
+        },
+        {
+          "nodeId": "node_122",
+          "speaker": "Joseph",
+          "text": "Mike, your house is the closest out of all of us to the Greenspoon's residence. How far away are you from it?",
+          "nextNodeId": "node_123"
+        },
+        {
+          "nodeId": "node_123",
+          "speaker": "Mike",
+          "text": "I'm 5 minutes away. I should be able to get here before the cops.",
+          "nextNodeId": "node_124"
+        },
+        {
+          "nodeId": "node_124",
+          "speaker": "You",
+          "text": "I got a knife, just in case.",
+          "nextNodeId": "node_125"
+        },
+        {
+          "nodeId": "node_125",
+          "speaker": "Anna",
+          "text": "Good!",
+          "nextNodeId": "node_126"
+        },
+        {
+          "nodeId": "node_126",
+          "speaker": "Joseph",
+          "text": "Kate, check in on Jackson.",
+          "nextNodeId": "node_127"
+        },
+        {
+          "nodeId": "node_127",
+          "speaker": "You",
+          "text": "Will do.",
+          "nextNodeId": "node_128"
+        },
+        {
+          "nodeId": "node_128",
+          "speaker": "You",
+          "text": "Now that I think of it, Jackson's room is horrifyingly close to the entrance.",
+          "nextNodeId": "node_129"
+        },
+        {
+          "nodeId": "node_129",
+          "speaker": "Mike",
+          "text": "Take him out of there, and find somewhere safer to hide.",
+          "nextNodeId": "node_130"
+        },
+        {
+          "nodeId": "node_130",
+          "speaker": "You",
+          "text": "I'll hide in the attic. Heading over to his room right now.",
+          "nextNodeId": "node_131"
+        },
+        {
+          "nodeId": "node_131",
+          "speaker": "You",
+          "text": "uhm, guys",
+          "nextNodeId": "node_132"
+        },
+        {
+          "nodeId": "node_132",
+          "speaker": "You",
+          "text": "<send image>",
+          "nextNodeId": "node_133"
+        },
+        {
+          "nodeId": "node_133",
+          "speaker": "Anna",
+          "text": "huh?",
+          "nextNodeId": "node_134"
+        },
+        {
+          "nodeId": "node_134",
+          "speaker": "Mike",
+          "text": "What?",
+          "nextNodeId": "node_135"
+        },
+        {
+          "nodeId": "node_135",
+          "speaker": "Joseph",
+          "text": "The hell?",
+          "nextNodeId": "node_136"
+        },
+        {
+          "nodeId": "node_136",
+          "speaker": "Joseph",
+          "text": "That explains his wealth.",
+          "nextNodeId": "node_137"
+        },
+        {
+          "nodeId": "node_137",
+          "speaker": "Mike",
+          "text": "Kate I'm here! I don't see the masked guy anywhere.",
+          "nextNodeId": "node_138"
+        },
+        {
+          "nodeId": "node_138",
+          "speaker": "Mike",
+          "text": "Where are you guys?",
+          "nextNodeId": "node_139"
+        },
+        {
+          "nodeId": "node_139",
+          "speaker": "Anna",
+          "text": "We're 5 minutes away.",
+          "nextNodeId": "node_140"
+        },
+        {
+          "nodeId": "node_140",
+          "speaker": "You",
+          "text": "HE'S IN THE HOUSE!",
+          "nextNodeId": "node_141"
+        },
+        {
+          "nodeId": "node_141",
+          "speaker": "Mike",
+          "text": "WHERE?",
+          "nextNodeId": "node_142"
+        },
+        {
+          "nodeId": "node_142",
+          "speaker": "You",
+          "text": "I DON'T KNOW, BUT ALL I HEAR ARE FOOTSTEPS UPSTAIRS!",
+          "nextNodeId": "node_143"
+        },
+        {
+          "nodeId": "node_143",
+          "speaker": "Mike",
+          "text": "HANG ON KATE",
+          "nextNodeId": "node_144"
+        },
+        {
+          "nodeId": "node_144",
+          "speaker": "Anna",
+          "text": "Kate, where are you?",
+          "nextNodeId": "node_145"
+        },
+        {
+          "nodeId": "node_145",
+          "speaker": "You",
+          "text": "Still in Jackson's room!",
+          "nextNodeId": "node_146"
+        },
+        {
+          "nodeId": "node_146",
+          "speaker": "You",
+          "text": "I'm hiding under his bed",
+          "nextNodeId": "node_147"
+        },
+        {
+          "nodeId": "node_147",
+          "speaker": "Mike",
+          "text": "I'm at the front door. Kate, you said Jackson's bedroom is really close to the main door. Do you think you'd be able to rush there and let me in, or is it too risky?",
+          "choices": [
+            {
+              "text": "Rush to the door to let Mike in",
+              "nextNodeId": "node_150"
+            },
+            {
+              "text": "Stay hidden in Jackson's room",
+              "nextNodeId": "node_153"
+            }
+          ]
+        },
+        {
+          "nodeId": "node_150",
+          "speaker": "You",
+          "text": "Stand by, Mike. I'm going to let you in.",
+          "nextNodeId": "node_151"
+        },
+        {
+          "nodeId": "node_151",
+          "speaker": "Mike",
+          "text": "Roger that!",
+          "nextNodeId": "node_152"
+        },
+        {
+          "nodeId": "node_152",
+          "narrator_text": "To be continued...",
+          "choices": []
+        },
+        {
+          "nodeId": "node_153",
+          "speaker": "You",
+          "text": "I'm going to stay here",
+          "nextNodeId": "node_154"
+        },
+        {
+          "nodeId": "node_154",
+          "narrator_text": "To be continued...",
+          "choices": []
+        }
+      ]
     },
     {
       "id": "story_10",
