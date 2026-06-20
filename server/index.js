@@ -332,10 +332,13 @@ app.post("/register", async (req, res) => {
   }
 
 
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   const newUser = new User({
     email,
-    password
+    password: hashedPassword
   });
+
 
   await newUser.save();
 
@@ -371,7 +374,7 @@ app.post("/register", async (req, res) => {
 
             <h2 style="margin-top:0;">Welcome to TextTales 🎉</h2>
 
-            <p>Hi ${name || "there"},</p>
+            <p>Hi there!,</p>
 
             <p>
               Your account has been successfully created, and you’re ready to start exploring interactive stories.
