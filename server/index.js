@@ -273,7 +273,7 @@ app.get("/limit-info", async (req, res) => {
       );
     }
 
-    const remaining = Math.max(0, 4 - data.count);
+    const remaining = Math.max(0, 2 - data.count);
     const timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
 
     res.json({ remaining, timeLeft });
