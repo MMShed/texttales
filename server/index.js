@@ -78,7 +78,7 @@ app.use(cookieParser());
 
 app.get("/stories", async (req, res) => {
   try {
-    const stories = await Story.find()
+    const stories = await Story.find().sort({ ready: -1 })
     res.json(stories);
   } catch (err) {
     console.error(err);
@@ -162,18 +162,8 @@ app.get("/stories/:id", async (req, res) => {
     }
 
     //  Fetch story
-    
-    let story;
-
-    if (!isCheckOnly) {
-      story = await Story.findByIdAndUpdate(
-        req.params.id,
-        { $inc: { view_count: 1 } },
-        { new: true }
-      );
-    } else {
-      story = await Story.findById(req.params.id);
-    }
+    const story = await Story.findById(req.params.id);
+    let storyResult = story;
 
     
 if (story && story.nodes) {
@@ -184,7 +174,6 @@ if (story && story.nodes) {
 
     let imageUrl = null;
 
-    
     if (isLoggedIn) {
       imageUrl = cloudinary.utils.private_download_url(
         node.imagePublicId,
@@ -199,14 +188,13 @@ if (story && story.nodes) {
       imageUrl = "https://picsum.photos/800/500";
     }
 
-
     return {
       ...node,
       imageUrl
     };
   });
 
-  story = {
+  storyResult = {
     ...plainStory,
     nodes: updatedNodes
   };
@@ -218,7 +206,7 @@ if (story && story.nodes) {
 
     //  ALWAYS send remaining/timeLeft
     res.json({
-      story,
+      story: storyResult,
       remaining,
       timeLeft
     });
@@ -232,6 +220,16 @@ if (story && story.nodes) {
 });
 
 
+
+app.post("/stories/:id/view", async (req, res) => {
+  try {
+    await Story.findByIdAndUpdate(req.params.id, { $inc: { view_count: 1 } });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
 
 app.get("/limit-info", async (req, res) => {
   try {

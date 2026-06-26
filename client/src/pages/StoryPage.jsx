@@ -30,17 +30,17 @@ function StoryPage() {
 
   // fetch story
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchStory = async () => {
       try {
-        
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/stories/${id}`,
           {
-            credentials: "include"
+            credentials: "include",
+            signal: controller.signal
           }
         );
-
-
 
         if (!res.ok) {
           console.error("Failed to fetch story");
@@ -55,12 +55,20 @@ function StoryPage() {
         setCurrentContactName(
           data.story.contact_name || "Unknown"
         );
+
+        fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/view`, {
+          method: "POST",
+          credentials: "include"
+        });
       } catch (err) {
+        if (err.name === "AbortError") return;
         console.error(err);
       }
     };
 
     fetchStory();
+
+    return () => controller.abort();
   }, [id]);
 
   // start story
