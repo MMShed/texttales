@@ -1,0 +1,165 @@
+.account-page {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.account-loading {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 60px;
+}
+
+/* PROFILE */
+.account-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 20px;
+}
+
+.account-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.account-email {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.account-since {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* CARDS */
+.account-card {
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.account-card-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ROWS */
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  gap: 12px;
+}
+
+.account-row:last-of-type {
+  border-bottom: none;
+}
+
+.account-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.account-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* BUTTONS */
+.account-btn-secondary {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+
+.account-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.account-btn-danger {
+  padding: 10px 20px;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  background: transparent;
+  color: #ef4444;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  align-self: flex-start;
+}
+
+.account-btn-danger:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* DANGER CARD */
+.account-danger-card {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.danger-title {
+  color: #ef4444;
+}
+
+/* DELETE CONFIRM */
+.delete-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.delete-confirm-text {
+  font-size: 0.9rem;
+  color: #ef4444;
+  margin: 0;
+}
+
+.delete-confirm-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
