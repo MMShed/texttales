@@ -8,7 +8,11 @@ const jwt = require("jsonwebtoken");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const Usage = require("./models/Usage");
+const { Redis } = require("@upstash/redis");
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN
+});
 
 const crypto = require("crypto");
 
@@ -97,10 +101,10 @@ function hashIdentifier(value) {
     .digest("hex");
 }
 
+const GUEST_LIMIT = 2;
+
 app.get("/stories/:id", async (req, res) => {
   try {
-    const GUEST_LIMIT = 2
-
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
@@ -119,45 +123,28 @@ app.get("/stories/:id", async (req, res) => {
 
     //  ONLY track guests
     if (!isLoggedIn) {
-      const hashedId = hashIdentifier(ip);
+      const key = `guest:${hashIdentifier(ip)}`;
+      const ONE_DAY_SECONDS = 24 * 60 * 60;
 
-      let data = await Usage.findOne({ identifier: hashedId });
+      const count = parseInt(await redis.get(key)) || 0;
+      const ttlSeconds = await redis.ttl(key);
+      timeLeft = ttlSeconds > 0 ? ttlSeconds * 1000 : ONE_DAY_SECONDS * 1000;
+      remaining = Math.max(0, GUEST_LIMIT - count);
 
-      //  Reset window
-      if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
-        data = await Usage.findOneAndUpdate(
-          { identifier: hashedId },
-          {
-            identifier: hashedId,
-            count: 0,
-            startTime: new Date()
-          },
-          { upsert: true, returnDocument: "after" }
-        );
-      }
-
-      //  NOW compute remaining/timeLeft (after data exists)
-      remaining = Math.max(0, 4 - data.count);
-      timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
-
-      //  LIMIT CHECK
-      if (data.count >= GUEST_LIMIT) {
+      if (count >= GUEST_LIMIT) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED",
-          remaining,
+          remaining: 0,
           timeLeft
         });
       }
 
-      //  Increment only on real fetch
       if (!isCheckOnly) {
-        await Usage.updateOne(
-          { identifier: hashedId },
-          { $inc: { count: 1 } }
-        );
-
-        //  update remaining AFTER increment
-        remaining = Math.max(0, remaining - 1);
+        const newCount = await redis.incr(key);
+        if (newCount === 1) {
+          await redis.expire(key, ONE_DAY_SECONDS);
+        }
+        remaining = Math.max(0, GUEST_LIMIT - newCount);
       }
     }
 
@@ -244,9 +231,6 @@ app.get("/limit-info", async (req, res) => {
     const isLoggedIn = !!userId;
 
 
-    const now = Date.now();
-    const ONE_DAY = 24 * 60 * 60 * 1000;
-
     //Logged-in -> unlimited
     if (isLoggedIn) {
       return res.json({
@@ -255,24 +239,13 @@ app.get("/limit-info", async (req, res) => {
       });
     }
 
-    const hashedId = hashIdentifier(ip);
+    const key = `guest:${hashIdentifier(ip)}`;
+    const ONE_DAY_SECONDS = 24 * 60 * 60;
 
-    let data = await Usage.findOne({ identifier: hashedId });
-
-    if (!data) {
-      data = await Usage.findOneAndUpdate(
-        { identifier: hashedId },
-        {
-          identifier: hashedId,
-          count: 0,
-          startTime: new Date()
-        },
-        { upsert: true, returnDocument: "after" }
-      );
-    }
-
-    const remaining = Math.max(0, 2 - data.count);
-    const timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
+    const count = parseInt(await redis.get(key)) || 0;
+    const ttlSeconds = await redis.ttl(key);
+    const timeLeft = ttlSeconds > 0 ? ttlSeconds * 1000 : ONE_DAY_SECONDS * 1000;
+    const remaining = Math.max(0, GUEST_LIMIT - count);
 
     res.json({ remaining, timeLeft });
 
@@ -311,6 +284,37 @@ function auth(req, res, next) {
 
 
 
+app.get("/account", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    const user = await User.findById(userId).select("email createdAt");
+    if (!user) return res.status(404).json({ error: "USER_NOT_FOUND" });
+    res.json({ email: user.email, createdAt: user.createdAt });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.delete("/account", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    await User.findByIdAndDelete(userId);
+    req.session.destroy();
+    res.clearCookie("connect.sid");
+    res.json({ message: "Account deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 app.post("/register", async (req, res) => {
   const { email, password, confirmPassword } = req.body;
 
@@ -322,10 +326,15 @@ app.post("/register", async (req, res) => {
     });
   }
 
-
   if (password !== confirmPassword) {
     return res.status(400).json({
       error: "PASSWORDS_DO_NOT_MATCH"
+    });
+  }
+
+  if (!PASSWORD_REGEX.test(password)) {
+    return res.status(400).json({
+      error: "WEAK_PASSWORD"
     });
   }
 
