@@ -16,6 +16,10 @@ const nodeSchema = new mongoose.Schema({
 
   narrator_text: String,
 
+  isCheckpoint: {
+    type: Boolean,
+    default: false
+  },
 
   choices: {
     type: [choiceSchema],
@@ -42,6 +46,10 @@ const storySchema = new mongoose.Schema({
     default: 0
   },
 
+  likes: {
+    type: [mongoose.Schema.Types.ObjectId],
+    default: []
+  },
 
   nodes: [nodeSchema],
 
