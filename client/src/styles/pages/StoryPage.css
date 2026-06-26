@@ -12,9 +12,62 @@
   }
 }
 
+.story-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
 .story-title {
-  text-align: center;
   color: white;
+  margin: 0;
+}
+
+.story-title-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.story-like-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  color: white;
+  font-size: 0.9rem;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.story-like-btn:hover {
+  color: #e53e3e;
+  border-color: #e53e3e;
+  transform: scale(1.05);
+}
+
+.story-like-btn.liked {
+  color: #e53e3e;
+  border-color: #e53e3e;
+}
+
+.story-reset-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.story-reset-btn:hover {
+  color: white;
+  border-color: rgba(255,255,255,0.5);
 }
 
 .chat-header {

@@ -11,22 +11,21 @@ function StoryPage() {
   const [story, setStory] = useState(null);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-
-  // ✅ NEW: dynamic contact name
   const [currentContactName, setCurrentContactName] = useState("");
 
+  const [userLiked, setUserLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
   useEffect(() => {
-  const checkLogin = async () => {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
-      credentials: "include"
-    });
-
-    const data = await res.json();
-    setLoggedIn(data.loggedIn);
-  };
-
-  checkLogin();
-}, []);
+    const checkLogin = async () => {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
+        credentials: "include"
+      });
+      const data = await res.json();
+      setLoggedIn(data.loggedIn);
+    };
+    checkLogin();
+  }, []);
 
   // fetch story
   useEffect(() => {
@@ -50,11 +49,14 @@ function StoryPage() {
         const data = await res.json();
 
         setStory(data.story);
+        setCurrentContactName(data.story.contact_name || "Unknown");
+        setUserLiked(data.userLiked || false);
+        setLikeCount(data.story.likes ? data.story.likes.length : 0);
 
-        // ✅ initialize contact name
-        setCurrentContactName(
-          data.story.contact_name || "Unknown"
-        );
+        // store savedNodeId so start story effect can use it
+        if (data.savedNodeId) {
+          sessionStorage.setItem(`checkpoint_${id}`, data.savedNodeId);
+        }
 
         fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/view`, {
           method: "POST",
@@ -71,35 +73,74 @@ function StoryPage() {
     return () => controller.abort();
   }, [id]);
 
-  // start story
+  // start story — resume from checkpoint if available
   useEffect(() => {
-    if (story && story.nodes.length > 0) {
-      setMessages([story.nodes[0]]);
+    if (!story || story.nodes.length === 0) return;
+
+    const savedNodeId = sessionStorage.getItem(`checkpoint_${id}`);
+
+    if (savedNodeId) {
+      const savedNode = story.nodes.find(n => n.nodeId === savedNodeId);
+      if (savedNode) {
+        setMessages([savedNode]);
+        return;
+      }
     }
-  }, [story]);
+
+    setMessages([story.nodes[0]]);
+  }, [story, id]);
+
+  const saveProgress = (nodeId) => {
+    if (!loggedIn) return;
+    fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/progress`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nodeId })
+    });
+  };
+
+  const handleReset = async () => {
+    if (!story) return;
+    sessionStorage.removeItem(`checkpoint_${id}`);
+    if (loggedIn) {
+      await fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/progress`, {
+        method: "DELETE",
+        credentials: "include"
+      });
+    }
+    setMessages([story.nodes[0]]);
+  };
+
+  const handleLike = async () => {
+    if (!loggedIn) {
+      alert("Create an account to like stories!");
+      return;
+    }
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/like`, {
+        method: "POST",
+        credentials: "include"
+      });
+      const data = await res.json();
+      setUserLiked(data.liked);
+      setLikeCount(data.likeCount);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const goToNext = (nextId, playerText = null) => {
-    const nextNode = story.nodes.find(
-      (node) => node.nodeId === nextId
-    );
-
+    const nextNode = story.nodes.find((node) => node.nodeId === nextId);
     if (!nextNode) return;
 
-    // ✅ HANDLE COMMAND: new_contact
+    // HANDLE COMMAND: new_contact
     if (nextNode.command === "new_contact") {
-      setCurrentContactName(
-        nextNode.contact_name || "Unknown"
-      );
-
-      setMessages([]); // clear chat
-
-      // continue story automatically
+      setCurrentContactName(nextNode.contact_name || "Unknown");
+      setMessages([]);
       if (nextNode.nextNodeId) {
-        setTimeout(() => {
-          goToNext(nextNode.nextNodeId);
-        }, 300);
+        setTimeout(() => goToNext(nextNode.nextNodeId), 300);
       }
-
       return;
     }
 
@@ -116,19 +157,18 @@ function StoryPage() {
       ]);
     }
 
-    const isNextPlayerMessage =
-      nextNode.speaker === "You";
+    const isNextPlayerMessage = nextNode.speaker === "You";
 
-    // show typing only for NPC text messages
     if (!isNextPlayerMessage && !nextNode.narrator_text) {
       setIsTyping(true);
-
       setTimeout(() => {
         setIsTyping(false);
         setMessages((prev) => [...prev, nextNode]);
+        if (nextNode.isCheckpoint) saveProgress(nextNode.nodeId);
       }, 1000);
     } else {
       setMessages((prev) => [...prev, nextNode]);
+      if (nextNode.isCheckpoint) saveProgress(nextNode.nodeId);
     }
   };
 
@@ -144,28 +184,34 @@ function StoryPage() {
         <title>{story.title}</title>
       </head>
 
-      <h2 className="story-title">{story.title}</h2>
+      <div className="story-title-row">
+        <h2 className="story-title">{story.title}</h2>
+        <div className="story-title-actions">
+          <button
+            className={`story-like-btn ${userLiked ? "liked" : ""}`}
+            onClick={handleLike}
+          >
+            {userLiked ? "♥" : "♡"} {likeCount}
+          </button>
+          <button className="story-reset-btn" onClick={handleReset}>
+            ↺ Restart
+          </button>
+        </div>
+      </div>
 
       {/* HEADER */}
       <div className="chat-header">
         <div className="avatar"></div>
-
-        <h3 className="chat-name">
-          {currentContactName || "Unknown"}
-        </h3>
+        <h3 className="chat-name">{currentContactName || "Unknown"}</h3>
       </div>
 
       {/* CHAT */}
       <div className="chat-container">
         {messages.map((node, index) => {
           const previous = messages[index - 1];
-
           const showName =
-            node.speaker &&
-            (!previous || previous.speaker !== node.speaker);
-
-          const isPlayerMessage =
-            node.speaker === "You" || node.isPlayer;
+            node.speaker && (!previous || previous.speaker !== node.speaker);
+          const isPlayerMessage = node.speaker === "You" || node.isPlayer;
 
           return (
             <div
@@ -178,48 +224,34 @@ function StoryPage() {
                   : "npc"
               }`}
             >
-              {/* NARRATOR */}
               {node.narrator_text ? (
-                <div className="narrator-text">
-                  {node.narrator_text}
-                </div>
+                <div className="narrator-text">{node.narrator_text}</div>
               ) : (
                 <>
-                  {/* show name only for NPC */}
                   {!isPlayerMessage && showName && (
-                    <h4 className="speaker-name">
-                      {node.speaker}
-                    </h4>
+                    <h4 className="speaker-name">{node.speaker}</h4>
                   )}
 
-                  
                   {node.imageUrl && (
-                      <div className="bubble image-bubble">
-                        <div className="image-wrapper">
-                          <img src={node.imageUrl} className="story-image" />
-
-                          {!loggedIn && (
-                            <div className="image-overlay">
-                              🔒 Create an account to view images
-                            </div>
-                          )}
-                        </div>
+                    <div className="bubble image-bubble">
+                      <div className="image-wrapper">
+                        <img src={node.imageUrl} className="story-image" />
+                        {!loggedIn && (
+                          <div className="image-overlay">
+                            🔒 Create an account to view images
+                          </div>
+                        )}
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    {node.text && (
-                      <div className="bubble">
-                        {node.text}
-                      </div>
-                    )}
-
+                  {node.text && <div className="bubble">{node.text}</div>}
                 </>
               )}
             </div>
           );
         })}
 
-        {/* Typing animation */}
         {isTyping && (
           <div className="message-container npc">
             <div className="bubble typing">
@@ -238,25 +270,17 @@ function StoryPage() {
             <button
               key={choice.nextNodeId}
               className="choice-btn"
-              onClick={() =>
-                goToNext(choice.nextNodeId, choice.playerText)
-              }
+              onClick={() => goToNext(choice.nextNodeId, choice.playerText)}
             >
               {choice.text}
             </button>
           ))
         ) : currentNode.nextNodeId ? (
-          <button
-            className="choice-btn"
-            onClick={() => goToNext(currentNode.nextNodeId)}
-          >
+          <button className="choice-btn" onClick={() => goToNext(currentNode.nextNodeId)}>
             Next
           </button>
         ) : (
-          <button
-            className="end-btn"
-            onClick={() => navigate("/explore")}
-          >
+          <button className="end-btn" onClick={() => navigate("/explore")}>
             Back to Explore
           </button>
         )}

@@ -38,6 +38,7 @@ app.use(cors({
 
 
 const Story = require("./models/Story");
+const Progress = require("./models/Progress");
 
 const cloudinary = require("cloudinary").v2;
 
@@ -82,8 +83,21 @@ app.use(cookieParser());
 
 app.get("/stories", async (req, res) => {
   try {
-    const stories = await Story.find().sort({ ready: -1 })
-    res.json(stories);
+    const stories = await Story.find().sort({ ready: -1 });
+    const userId = req.session.userId;
+
+    const result = stories.map(s => {
+      const plain = s.toObject();
+      return {
+        ...plain,
+        likeCount: plain.likes ? plain.likes.length : 0,
+        userLiked: userId
+          ? (plain.likes || []).some(id => id.toString() === userId.toString())
+          : false
+      };
+    });
+
+    res.json(result);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching stories ❌");
@@ -191,11 +205,25 @@ if (story && story.nodes) {
 
     
 
+    // Attach like status and saved progress for logged-in users
+    let userLiked = false;
+    let savedNodeId = null;
+
+    if (isLoggedIn && storyResult) {
+      const plainLikes = storyResult.likes || [];
+      userLiked = plainLikes.some(id => id.toString() === userId.toString());
+
+      const progress = await Progress.findOne({ userId, storyId: req.params.id });
+      if (progress) savedNodeId = progress.nodeId;
+    }
+
     //  ALWAYS send remaining/timeLeft
     res.json({
       story: storyResult,
       remaining,
-      timeLeft
+      timeLeft,
+      userLiked,
+      savedNodeId
     });
 
   } catch (err) {
@@ -212,6 +240,76 @@ app.post("/stories/:id/view", async (req, res) => {
   try {
     await Story.findByIdAndUpdate(req.params.id, { $inc: { view_count: 1 } });
     res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.post("/stories/:id/like", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    const story = await Story.findById(req.params.id);
+    if (!story) return res.status(404).json({ error: "NOT_FOUND" });
+
+    const alreadyLiked = story.likes.some(id => id.toString() === userId.toString());
+
+    if (alreadyLiked) {
+      await Story.findByIdAndUpdate(req.params.id, { $pull: { likes: userId } });
+    } else {
+      await Story.findByIdAndUpdate(req.params.id, { $addToSet: { likes: userId } });
+    }
+
+    const updated = await Story.findById(req.params.id).select("likes");
+    res.json({ liked: !alreadyLiked, likeCount: updated.likes.length });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.post("/stories/:id/progress", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  const { nodeId } = req.body;
+  if (!nodeId) return res.status(400).json({ error: "MISSING_NODE_ID" });
+
+  try {
+    await Progress.findOneAndUpdate(
+      { userId, storyId: req.params.id },
+      { nodeId },
+      { upsert: true }
+    );
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.delete("/stories/:id/progress", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    await Progress.findOneAndDelete({ userId, storyId: req.params.id });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.get("/me/progress", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.json({ progress: [] });
+
+  try {
+    const records = await Progress.find({ userId }).select("storyId nodeId");
+    res.json({ progress: records });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "SERVER_ERROR" });

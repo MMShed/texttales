@@ -132,10 +132,40 @@
   justify-content: center;
 }
 
+.story_card_meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .story_views {
   font-size: 0.85rem;
   color: gray;
-  margin-top: 4px
+}
+
+.like_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: gray;
+  padding: 0;
+  transition: color 0.15s, transform 0.15s;
+}
+
+.like_button:hover {
+  color: #e53e3e;
+  transform: scale(1.15);
+}
+
+.like_button.liked {
+  color: #e53e3e;
+}
+
+.continue_badge {
+  font-size: 0.75rem;
+  color: #22c55e;
+  font-weight: 600;
 }
 
 .story_card_bottom_content {
