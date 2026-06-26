@@ -1,6 +1,6 @@
 import "../styles/pages/StoryPage.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function StoryPage() {
@@ -14,7 +14,6 @@ function StoryPage() {
 
   // ✅ NEW: dynamic contact name
   const [currentContactName, setCurrentContactName] = useState("");
-  const viewRecorded = useRef(false);
 
   useEffect(() => {
   const checkLogin = async () => {
@@ -31,17 +30,17 @@ function StoryPage() {
 
   // fetch story
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchStory = async () => {
       try {
-        
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/stories/${id}`,
           {
-            credentials: "include"
+            credentials: "include",
+            signal: controller.signal
           }
         );
-
-
 
         if (!res.ok) {
           console.error("Failed to fetch story");
@@ -57,19 +56,19 @@ function StoryPage() {
           data.story.contact_name || "Unknown"
         );
 
-        if (!viewRecorded.current) {
-          viewRecorded.current = true;
-          fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/view`, {
-            method: "POST",
-            credentials: "include"
-          });
-        }
+        fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/view`, {
+          method: "POST",
+          credentials: "include"
+        });
       } catch (err) {
+        if (err.name === "AbortError") return;
         console.error(err);
       }
     };
 
     fetchStory();
+
+    return () => controller.abort();
   }, [id]);
 
   // start story
