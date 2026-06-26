@@ -1,6 +1,6 @@
 import "../styles/pages/StoryPage.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function StoryPage() {
@@ -14,6 +14,7 @@ function StoryPage() {
 
   // ✅ NEW: dynamic contact name
   const [currentContactName, setCurrentContactName] = useState("");
+  const viewRecorded = useRef(false);
 
   useEffect(() => {
   const checkLogin = async () => {
@@ -55,6 +56,14 @@ function StoryPage() {
         setCurrentContactName(
           data.story.contact_name || "Unknown"
         );
+
+        if (!viewRecorded.current) {
+          viewRecorded.current = true;
+          fetch(`${import.meta.env.VITE_API_URL}/stories/${id}/view`, {
+            method: "POST",
+            credentials: "include"
+          });
+        }
       } catch (err) {
         console.error(err);
       }
