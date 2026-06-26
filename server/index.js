@@ -78,7 +78,7 @@ app.use(cookieParser());
 
 app.get("/stories", async (req, res) => {
   try {
-    const stories = await Story.find()
+    const stories = await Story.find().sort({ ready: -1 })
     res.json(stories);
   } catch (err) {
     console.error(err);
