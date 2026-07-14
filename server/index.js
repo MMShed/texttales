@@ -8,7 +8,11 @@ const jwt = require("jsonwebtoken");
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const Usage = require("./models/Usage");
+const { Redis } = require("@upstash/redis");
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN
+});
 
 const crypto = require("crypto");
 
@@ -34,6 +38,7 @@ app.use(cors({
 
 
 const Story = require("./models/Story");
+const Progress = require("./models/Progress");
 
 const cloudinary = require("cloudinary").v2;
 
@@ -78,8 +83,21 @@ app.use(cookieParser());
 
 app.get("/stories", async (req, res) => {
   try {
-    const stories = await Story.find()
-    res.json(stories);
+    const stories = await Story.find().sort({ ready: -1 });
+    const userId = req.session.userId;
+
+    const result = stories.map(s => {
+      const plain = s.toObject();
+      return {
+        ...plain,
+        likeCount: plain.likes ? plain.likes.length : 0,
+        userLiked: userId
+          ? (plain.likes || []).some(id => id.toString() === userId.toString())
+          : false
+      };
+    });
+
+    res.json(result);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching stories ❌");
@@ -97,10 +115,10 @@ function hashIdentifier(value) {
     .digest("hex");
 }
 
+const GUEST_LIMIT = 2;
+
 app.get("/stories/:id", async (req, res) => {
   try {
-    const GUEST_LIMIT = 2
-
     const rawIP = req.headers["x-forwarded-for"] || req.ip;
     const ip = rawIP.split(",")[0].trim().replace("::ffff:", "");
 
@@ -119,61 +137,34 @@ app.get("/stories/:id", async (req, res) => {
 
     //  ONLY track guests
     if (!isLoggedIn) {
-      const hashedId = hashIdentifier(ip);
+      const key = `guest:${hashIdentifier(ip)}`;
+      const ONE_DAY_SECONDS = 24 * 60 * 60;
 
-      let data = await Usage.findOne({ identifier: hashedId });
+      const count = parseInt(await redis.get(key)) || 0;
+      const ttlSeconds = await redis.ttl(key);
+      timeLeft = ttlSeconds > 0 ? ttlSeconds * 1000 : ONE_DAY_SECONDS * 1000;
+      remaining = Math.max(0, GUEST_LIMIT - count);
 
-      //  Reset window
-      if (!data || now - new Date(data.startTime).getTime() > ONE_DAY) {
-        data = await Usage.findOneAndUpdate(
-          { identifier: hashedId },
-          {
-            identifier: hashedId,
-            count: 0,
-            startTime: new Date()
-          },
-          { upsert: true, returnDocument: "after" }
-        );
-      }
-
-      //  NOW compute remaining/timeLeft (after data exists)
-      remaining = Math.max(0, 4 - data.count);
-      timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
-
-      //  LIMIT CHECK
-      if (data.count >= GUEST_LIMIT) {
+      if (count >= GUEST_LIMIT) {
         return res.status(403).json({
           error: "FREE_LIMIT_REACHED",
-          remaining,
+          remaining: 0,
           timeLeft
         });
       }
 
-      //  Increment only on real fetch
       if (!isCheckOnly) {
-        await Usage.updateOne(
-          { identifier: hashedId },
-          { $inc: { count: 1 } }
-        );
-
-        //  update remaining AFTER increment
-        remaining = Math.max(0, remaining - 1);
+        const newCount = await redis.incr(key);
+        if (newCount === 1) {
+          await redis.expire(key, ONE_DAY_SECONDS);
+        }
+        remaining = Math.max(0, GUEST_LIMIT - newCount);
       }
     }
 
     //  Fetch story
-    
-    let story;
-
-    if (!isCheckOnly) {
-      story = await Story.findByIdAndUpdate(
-        req.params.id,
-        { $inc: { view_count: 1 } },
-        { new: true }
-      );
-    } else {
-      story = await Story.findById(req.params.id);
-    }
+    const story = await Story.findById(req.params.id);
+    let storyResult = story;
 
     
 if (story && story.nodes) {
@@ -184,7 +175,6 @@ if (story && story.nodes) {
 
     let imageUrl = null;
 
-    
     if (isLoggedIn) {
       imageUrl = cloudinary.utils.private_download_url(
         node.imagePublicId,
@@ -199,14 +189,13 @@ if (story && story.nodes) {
       imageUrl = "https://picsum.photos/800/500";
     }
 
-
     return {
       ...node,
       imageUrl
     };
   });
 
-  story = {
+  storyResult = {
     ...plainStory,
     nodes: updatedNodes
   };
@@ -216,11 +205,25 @@ if (story && story.nodes) {
 
     
 
+    // Attach like status and saved progress for logged-in users
+    let userLiked = false;
+    let savedNodeId = null;
+
+    if (isLoggedIn && storyResult) {
+      const plainLikes = storyResult.likes || [];
+      userLiked = plainLikes.some(id => id.toString() === userId.toString());
+
+      const progress = await Progress.findOne({ userId, storyId: req.params.id });
+      if (progress) savedNodeId = progress.nodeId;
+    }
+
     //  ALWAYS send remaining/timeLeft
     res.json({
-      story,
+      story: storyResult,
       remaining,
-      timeLeft
+      timeLeft,
+      userLiked,
+      savedNodeId
     });
 
   } catch (err) {
@@ -232,6 +235,86 @@ if (story && story.nodes) {
 });
 
 
+
+app.post("/stories/:id/view", async (req, res) => {
+  try {
+    await Story.findByIdAndUpdate(req.params.id, { $inc: { view_count: 1 } });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.post("/stories/:id/like", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    const story = await Story.findById(req.params.id);
+    if (!story) return res.status(404).json({ error: "NOT_FOUND" });
+
+    const alreadyLiked = story.likes.some(id => id.toString() === userId.toString());
+
+    if (alreadyLiked) {
+      await Story.findByIdAndUpdate(req.params.id, { $pull: { likes: userId } });
+    } else {
+      await Story.findByIdAndUpdate(req.params.id, { $addToSet: { likes: userId } });
+    }
+
+    const updated = await Story.findById(req.params.id).select("likes");
+    res.json({ liked: !alreadyLiked, likeCount: updated.likes.length });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.post("/stories/:id/progress", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  const { nodeId } = req.body;
+  if (!nodeId) return res.status(400).json({ error: "MISSING_NODE_ID" });
+
+  try {
+    await Progress.findOneAndUpdate(
+      { userId, storyId: req.params.id },
+      { nodeId },
+      { upsert: true }
+    );
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.delete("/stories/:id/progress", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    await Progress.findOneAndDelete({ userId, storyId: req.params.id });
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.get("/me/progress", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.json({ progress: [] });
+
+  try {
+    const records = await Progress.find({ userId }).select("storyId nodeId");
+    res.json({ progress: records });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
 
 app.get("/limit-info", async (req, res) => {
   try {
@@ -246,9 +329,6 @@ app.get("/limit-info", async (req, res) => {
     const isLoggedIn = !!userId;
 
 
-    const now = Date.now();
-    const ONE_DAY = 24 * 60 * 60 * 1000;
-
     //Logged-in -> unlimited
     if (isLoggedIn) {
       return res.json({
@@ -257,24 +337,13 @@ app.get("/limit-info", async (req, res) => {
       });
     }
 
-    const hashedId = hashIdentifier(ip);
+    const key = `guest:${hashIdentifier(ip)}`;
+    const ONE_DAY_SECONDS = 24 * 60 * 60;
 
-    let data = await Usage.findOne({ identifier: hashedId });
-
-    if (!data) {
-      data = await Usage.findOneAndUpdate(
-        { identifier: hashedId },
-        {
-          identifier: hashedId,
-          count: 0,
-          startTime: new Date()
-        },
-        { upsert: true, returnDocument: "after" }
-      );
-    }
-
-    const remaining = Math.max(0, 2 - data.count);
-    const timeLeft = ONE_DAY - (now - new Date(data.startTime).getTime());
+    const count = parseInt(await redis.get(key)) || 0;
+    const ttlSeconds = await redis.ttl(key);
+    const timeLeft = ttlSeconds > 0 ? ttlSeconds * 1000 : ONE_DAY_SECONDS * 1000;
+    const remaining = Math.max(0, GUEST_LIMIT - count);
 
     res.json({ remaining, timeLeft });
 
@@ -313,6 +382,37 @@ function auth(req, res, next) {
 
 
 
+app.get("/account", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    const user = await User.findById(userId).select("email createdAt");
+    if (!user) return res.status(404).json({ error: "USER_NOT_FOUND" });
+    res.json({ email: user.email, createdAt: user.createdAt });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+app.delete("/account", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "NOT_LOGGED_IN" });
+
+  try {
+    await User.findByIdAndDelete(userId);
+    req.session.destroy();
+    res.clearCookie("connect.sid");
+    res.json({ message: "Account deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "SERVER_ERROR" });
+  }
+});
+
+const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 app.post("/register", async (req, res) => {
   const { email, password, confirmPassword } = req.body;
 
@@ -324,10 +424,15 @@ app.post("/register", async (req, res) => {
     });
   }
 
-
   if (password !== confirmPassword) {
     return res.status(400).json({
       error: "PASSWORDS_DO_NOT_MATCH"
+    });
+  }
+
+  if (!PASSWORD_REGEX.test(password)) {
+    return res.status(400).json({
+      error: "WEAK_PASSWORD"
     });
   }
 

@@ -5,30 +5,17 @@ import { useNavigate } from "react-router-dom";
 function Explore() {
   const navigate = useNavigate();
 
-  let [filter, setFilter] = useState("All");
   const [stories, setStories] = useState([]);
-
   const [remaining, setRemaining] = useState(null);
   const [timeLeft, setTimeLeft] = useState(null);
-
   const [loading, setLoading] = useState(true);
-
-  const filter_selections = [
-    "All",
-    "Horror",
-    "Mystery",
-    "Comedy",
-    "Sci-Fi",
-    "Fantasy",
-    "Thriller"
-  ];
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [progressMap, setProgressMap] = useState({});
 
   function formatTime(ms) {
     if (!ms) return "";
-
     const hours = Math.floor(ms / (1000 * 60 * 60));
     const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
-
     return `${hours}h ${minutes}m`;
   }
 
@@ -37,27 +24,34 @@ function Explore() {
       try {
         setLoading(true);
 
-        const storiesRes = await fetch(`${import.meta.env.VITE_API_URL}/stories`);
+        const [storiesRes, limitRes, meRes, progressRes] = await Promise.all([
+          fetch(`${import.meta.env.VITE_API_URL}/stories`, { credentials: "include" }),
+          fetch(`${import.meta.env.VITE_API_URL}/limit-info`, { credentials: "include" }),
+          fetch(`${import.meta.env.VITE_API_URL}/me`, { credentials: "include" }),
+          fetch(`${import.meta.env.VITE_API_URL}/me/progress`, { credentials: "include" })
+        ]);
+
         const storiesData = await storiesRes.json();
         setStories(storiesData);
 
-        const limitRes = await fetch(
-          `${import.meta.env.VITE_API_URL}/limit-info`,
-          {
-            credentials: "include"
-          }
-        );
-
-
         const limitData = await limitRes.json();
-
         setRemaining(limitData.remaining);
         setTimeLeft(limitData.timeLeft);
+
+        const meData = await meRes.json();
+        setLoggedIn(meData.loggedIn);
+
+        const progressData = await progressRes.json();
+        const map = {};
+        (progressData.progress || []).forEach(p => {
+          map[p.storyId] = p.nodeId;
+        });
+        setProgressMap(map);
 
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -72,14 +66,40 @@ function Explore() {
         return prev - 1000;
       });
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
+
+  const handleLike = async (e, storyId) => {
+    e.stopPropagation();
+
+    if (!loggedIn) {
+      alert("Create an account to like stories!");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/stories/${storyId}/like`, {
+        method: "POST",
+        credentials: "include"
+      });
+      const data = await res.json();
+
+      setStories(prev =>
+        prev.map(s =>
+          s._id === storyId
+            ? { ...s, userLiked: data.liked, likeCount: data.likeCount }
+            : s
+        )
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="explore_page">
       <head>
-          <title>Explore</title>
+        <title>Explore</title>
       </head>
 
       <p className="explore_title">Explore Stories</p>
@@ -93,7 +113,6 @@ function Explore() {
         </div>
       )}
 
-      {/* ✅ LOADING UI */}
       {loading ? (
         <div className="story_container">
           <p className="loading_message">Loading stories...</p>
@@ -105,26 +124,23 @@ function Explore() {
               <div className="card_content">
                 <h3>{story.title}</h3>
                 <p className="story_description">{story.description}</p>
-
               </div>
 
               {story.ready ? (
                 <div className="story_card_bottom_content">
+                  {progressMap[story._id] && (
+                    <span className="continue_badge">▶ In progress</span>
+                  )}
+
                   <button
                     className="play_button"
                     onClick={async () => {
                       try {
-                        
                         const res = await fetch(
                           `${import.meta.env.VITE_API_URL}/stories/${story._id}?check=true`,
-                          {
-                            credentials: "include"
-                          }
+                          { credentials: "include" }
                         );
-
-
                         const data = await res.json();
-
                         setRemaining(data.remaining);
                         setTimeLeft(data.timeLeft);
 
@@ -134,18 +150,23 @@ function Explore() {
                             return;
                           }
                         }
-
                         navigate(`/stories/${story._id}`);
                       } catch (err) {
                         console.error(err);
                       }
                     }}
                   >
-                    Play Story
+                    {progressMap[story._id] ? "Continue" : "Play Story"}
                   </button>
 
-                  <div className="story_views">
-                    👁 {story.view_count || 0} views
+                  <div className="story_card_meta">
+                    <span className="story_views">👁 {story.view_count || 0}</span>
+                    <button
+                      className={`like_button ${story.userLiked ? "liked" : ""}`}
+                      onClick={(e) => handleLike(e, story._id)}
+                    >
+                      {story.userLiked ? "♥" : "♡"} {story.likeCount || 0}
+                    </button>
                   </div>
                 </div>
               ) : (

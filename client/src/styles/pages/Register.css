@@ -97,3 +97,52 @@
     font-weight: 500;
     margin-bottom: 1rem;
 }
+
+/* PASSWORD STRENGTH */
+.strength-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.strength-segments {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.strength-segment {
+    height: 4px;
+    flex: 1;
+    border-radius: 2px;
+    transition: background 0.2s;
+}
+
+.strength-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    min-width: 60px;
+    text-align: right;
+}
+
+.strength-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.strength-checklist li {
+    font-size: 0.82rem;
+}
+
+.check-pass {
+    color: #22c55e;
+}
+
+.check-fail {
+    color: rgba(255, 255, 255, 0.4);
+}
